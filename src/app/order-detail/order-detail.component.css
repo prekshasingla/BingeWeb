@@ -1,0 +1,16 @@
+agm-map {
+  height: 250px;
+  width: 100%;
+}
+
+h5{
+  color: #000;
+}
+
+.modal-body{
+  color: #000;
+}
+
+#map{
+  height: 200px;
+}

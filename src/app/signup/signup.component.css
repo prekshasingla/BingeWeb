@@ -1,0 +1,22 @@
+.input-group{
+  width: 500px;
+}
+
+.form , form{
+  align-items: center;
+  margin-left: 20%;
+  margin-top: 8%;
+}
+
+button{
+  width: 500px;
+}
+
+.form-group{
+  width: 500px;
+}
+
+#map{
+  height: 300px;
+  width: 100%;
+}

@@ -1,0 +1,68 @@
+<!--<div class="order" *ngIf="ShowOrder !== null">-->
+  <!--<div class="row">-->
+    <!--<agm-map [latitude]="ShowOrder.location_lat" [longitude]="ShowOrder.location_long">-->
+      <!--<agm-marker [latitude]="ShowOrder.location_lat" [longitude]="ShowOrder.location_long"></agm-marker>-->
+    <!--</agm-map>-->
+  <!--</div>-->
+  <!--<br>-->
+  <!--<div class="row">-->
+    <!--<div class="col-xs-12"><h5>User id : {{ ShowOrder.userId }}</h5></div>-->
+  <!--</div>-->
+  <!--<div class="row" *ngFor="let dish of dishes">-->
+    <!--<div class="col-xs-12" *ngFor="let quantity of quantities"><p class="h5">{{dish}}-{{quantity}}</p></div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="col-xs-12"><p class="h5">cart value : {{ ShowOrder.cart_value }}</p></div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="col-xs-12"><p class="h5"> {{ShowOrder.location_lat}} , {{ShowOrder.location_long}}</p></div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="col-xs-4">-->
+      <!--<button class="btn btn-primary" (click)="UpdateOrder(ShowOrder)">-->
+        <!--Update Order-->
+      <!--</button>-->
+    <!--</div>-->
+    <!--<div class="col-xs-4">-->
+      <!--<button class="btn btn-primary" (click)="DeleteOrder(ShowOrder)">-->
+        <!--Delete Order-->
+      <!--</button>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">-->
+  <!--View Details-->
+<!--</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> {{ ShowOrder.userId }} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <agm-map [latitude]="ShowOrder.location_lat" [longitude]="ShowOrder.location_long">
+          <agm-marker [latitude]="ShowOrder.location_lat" [longitude]="ShowOrder.location_long"></agm-marker>
+        </agm-map>
+      </div>
+      <div class="modal-body" *ngFor="let dish of dishes">
+        <p *ngFor="let quantity of quantities"> {{ dish }} - {{ quantity }}</p>
+      </div>
+      <div class="modal-body">
+        <p>cart value : {{ ShowOrder.cart_value }}</p>
+        <p> <strong> payment via: Credit-Card</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="UpdateOrder(ShowOrder,'Recieved')">Order Recieved</button>
+        <button type="button" class="btn btn-primary" (click)="UpdateOrder(ShowOrder,'MealPrepared')">Meal Prepared</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="DeleteOrder(ShowOrder)">Order Delivered</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container" *ngIf="SelectedOrder">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Time</th>
+      <th scope="col">Date</th>
+      <th scope="col">User</th>
+      <th scope="col">Person</th>
+      <th scope="col">Table No.</th>
+      <th scope="col">status</th>
+      <th scope="col">Action</th>
+      <th scope="col">Assign Table</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of SelectedOrder">
+      <td>10:00</td>
+      <td>09-4-2018</td>
+      <td> {{ order.userId }} </td>
+      <td>5</td>
+      <td> {{ TableNo || 7 }} </td>
+      <td> {{ status || "Rejected" }} </td>
+      <td> <select [(ngModel)]="status" class="form-control form-control-sm">
+        <option>Approve</option>
+        <option>Reject</option>
+      </select>
+      </td>
+      <td><select [(ngModel)]="TableNo" class="form-control form-control-sm">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+      </select>
+      </td>
+    </tbody>
+  </table>
+
+</div>
+
+

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#" (click)="featureSelected('homepage')">Binge</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div *ngIf="user" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" (click)="featureSelected('Orders')">Orders <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" (click)="featureSelected('TableBooking')">Table-Booking <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" (click)="featureSelected('Menu')">Menu Items <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" (click)="featureSelected('Offers')">Offers <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+
+    <ul *ngIf="!user" class="navbar-nav navbar-right">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" (click)="featureSelected('Signup')">Signup <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" (click)="featureSelected('Login')">Login <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+    <ul *ngIf="user" class="navbar-nav navbar-right">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" (click)="featureSelected('Login')">Logout <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+  </div>
+</nav>

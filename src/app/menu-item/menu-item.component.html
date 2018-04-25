@@ -1,0 +1,104 @@
+<div *ngIf="Restaurant">
+  <div class="row">
+    <div class="col-sm-10"></div>
+    <div class="col-sm-2">
+      <button class="btn btn-group-lg" (click)="ShowMenuForm()">Add Menu Item</button>
+    </div>
+  </div>
+  <br>
+
+  <!-----------Menu Item Form------------------->
+
+  <div *ngIf="MenuForm" class="menu-form">
+    <form>
+      <div class="form-group row">
+        <label for="Title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text" [(ngModel)]="title" name="title" class="form-control" id="Title" placeholder="Title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" name="desc" [(ngModel)]="desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="category" class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-10">
+          <input type="text" name="category" [(ngModel)]="category" class="form-control" id="category" placeholder="Category">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Price" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+          <input type="number" name="price" [(ngModel)]="price" class="form-control" id="Price" placeholder="Price">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="veg-nonveg" class="col-sm-2 col-form-label">Veg/Non-Veg</label>
+        <div class="col-sm-10">
+          <select class="custom-select" name="veg/non-veg" [(ngModel)]="veg" id="veg-nonveg">
+            <option selected>Category</option>
+            <option value="1">Veg</option>
+            <option value="2">Non Veg</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Course Type" class="col-sm-2 col-form-label">Course Type</label>
+        <div class="col-sm-10">
+          <select class="custom-select" name="courseType" [(ngModel)]="course_type" id="Course Type">
+            <option selected>Course Type</option>
+            <option>course 1</option>
+            <option>course 2</option>
+            <option>course 3</option>
+            <option>course 4</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Serving" class="col-sm-2 col-form-label">Serving</label>
+        <div class="col-sm-10">
+          <select class="custom-select" name="serving" [(ngModel)]="serving" id="Serving">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" (click)="SaveMenu(title,desc,category,price,veg,course_type,serving)" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <br>
+
+  <!-------------Menu Table--------------------->
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Veg/Non-Veg</th>
+      <th scope="col">Category</th>
+      <th scope="col">Serving</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of Menu">
+      <td>{{item.title}}</td>
+      <td>{{item.price}}</td>
+      <td *ngIf="item.veg === 0 ">Non-veg</td>
+      <td *ngIf="item.veg === 1 " >Veg</td>
+      <td> {{ item.category }}</td>
+      <td>{{ item.serving }}</td>
+      <td><button class="btn btn-primary btn-sm">Edit</button></td>
+      <td><button class="btn btn-danger btn-sm">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

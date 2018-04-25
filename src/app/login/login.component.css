@@ -1,0 +1,19 @@
+.input-group , .form-group{
+  width: 500px;
+}
+
+.form{
+  align-items: center;
+  margin-left: 20%;
+  margin-top: 8%;
+}
+
+form{
+  align-items: center;
+  margin-left: 20%;
+  margin-top: 8%;
+}
+
+button{
+  width: 500px;
+}
