@@ -30,3 +30,11 @@ tr:nth-child(1) {
 login{
   align-items: center;
 }
+card{
+  background-color: red;
+  background: red;
+}
+
+.bg-primary{
+
+}

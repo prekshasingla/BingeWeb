@@ -1,22 +1,10 @@
-.input-group{
-  width: 500px;
-}
-
-.form , form{
-  align-items: center;
-  margin-left: 20%;
-  margin-top: 8%;
+form{
+  width: 60%;
+  margin: 0 auto;
 }
 
 button{
-  width: 500px;
-}
-
-.form-group{
-  width: 500px;
-}
-
-#map{
-  height: 300px;
+  text-align: center;
   width: 100%;
+  margin: 0 auto;
 }

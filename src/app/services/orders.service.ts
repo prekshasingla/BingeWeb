@@ -19,15 +19,14 @@ export class OrdersService {
   menu: Menu;
 
   constructor(public afs: AngularFirestore) {
-
-    this.OrdersCollection = this.afs.collection('orders/too_indian_delhi1/order');
     this.UsersCollection = this.afs.collection('login/');
 
     this.Users = this.afs.collection('login').valueChanges();
   }
 
   getOrders(restaurant_id: string) {
-    this.Orders = this.afs.collection(`orders/${restaurant_id}/order`).snapshotChanges().map(changes => {
+    this.OrdersCollection = this.afs.collection(`orders/${restaurant_id}/order` , ref => ref.orderBy('location_lat' , 'asc'));
+    this.Orders = this.OrdersCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data();
         data.id = a.payload.doc.id;
@@ -90,6 +89,32 @@ export class OrdersService {
       price: price,
       veg: veg,
       serving: serving
+    });
+  }
+
+  SaveOffer(restaurant_id, title, date, day, start_time, end_time, discount){
+    console.log(restaurant_id, title, date, day, start_time, end_time, discount);
+    this.afs.collection(`Offers/${restaurant_id}/offer`).add({
+      title: title,
+      date: date,
+      day: day,
+      start_time: start_time,
+      end_time: end_time,
+      discount: discount
+    });
+  }
+
+  addRestaurantInfo(restaurant_id, Email , desc , Address , FacebookLink , TwitterLink , Location , ContactNo , RestaurantName) {
+    // console.log(restaurant_id, Email , desc , Address , FacebookLink , TwitterLink , Location , ContactNo , RestaurantName);
+    this.afs.collection(`Restaurant Info`).add({
+      Email: Email,
+      Description: desc,
+      Address: Address,
+      FacebookLink: FacebookLink,
+      TwitterLink: TwitterLink,
+      Location: Location,
+      Contact: ContactNo,
+      RestaurantName: RestaurantName
     });
   }
 }

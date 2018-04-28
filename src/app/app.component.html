@@ -3,8 +3,10 @@
 <br>
 <div class="container" *ngIf="LoadedFeature == 'Orders'">
  <div class="row">
-   <div class="col-sm-12 col-lg-4" *ngFor="let order of Orders ; let i = index;">
-       <div class="card text-white bg-success mb-3 " style="width: 18rem;">
+   <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let order of Orders ; let i = index;">
+       <div class="card text-white mb-3"
+            [ngClass]="{'bg-danger' : i >= 0 && i<10 , 'bg-warning' : i >= 10 && i<15 , 'bg-success' : i >= 15  }"
+            style="width: 18rem;">
          <div class="card-body">
            <h5 class="card-title"> Order No : {{ i+1 }}</h5>
            <p class="card-text">User       : {{order.userId}} <br> cart value : {{order.cart_value}}</p>
@@ -23,11 +25,21 @@
     <div class="table-booking">
       <app-table-booking *ngIf="LoadedFeature === 'TableBooking'" [SelectedOrder]="Orders"></app-table-booking>
     </div>
+
+</div>
+
+<div class="container" *ngIf="LoadedFeature === 'Menu'">
+  <app-menu-item [Restaurant]="LoggedInUser" [Menu]="MenuItems"></app-menu-item>
 </div>
 
 <div class="container">
-  <app-discount *ngIf="LoadedFeature === 'Offers'"></app-discount>
+  <app-discount [Restaurant]="LoggedInUser" *ngIf="LoadedFeature === 'Offers'"></app-discount>
 </div>
+
+<div class="container">
+  <app-restaurant-info [Restaurant]="LoggedInUser" *ngIf="LoadedFeature == 'info'"></app-restaurant-info>
+</div>
+
 
 <div class="container login" *ngIf="LoadedFeature === 'Login'">
   <app-login (LoginSuccess)="showOrders($event)"></app-login>
@@ -35,10 +47,6 @@
 
 <div class="container" *ngIf="LoadedFeature === 'Signup'">
   <app-signup></app-signup>
-</div>
-
-<div class="container" *ngIf="LoadedFeature === 'Menu'">
-  <app-menu-item [Restaurant]="LoggedInUser" [Menu]="MenuItems"></app-menu-item>
 </div>
 
 <!--<div id="map"></div>-->

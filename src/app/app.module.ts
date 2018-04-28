@@ -25,6 +25,7 @@ import { ThirdSectionComponent } from './homepage/third-section/third-section.co
 import { FourthSectionComponent } from './homepage/fourth-section/fourth-section.component';
 import { FifthSectionComponent } from './homepage/fifth-section/fifth-section.component';
 import { SixthSectionComponent } from './homepage/sixth-section/sixth-section.component';
+import { RestaurantInfoComponent } from './restaurant-info/restaurant-info.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SixthSectionComponent } from './homepage/sixth-section/sixth-section.co
     FourthSectionComponent,
     FifthSectionComponent,
     SixthSectionComponent,
+    RestaurantInfoComponent,
   ],
   imports: [
     BrowserModule,
