@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {OrdersService} from './services/orders.service';
 import { OnInit} from '@angular/core';
 import { User } from './models/User.model';
+import { Offer } from './models/Offer.model';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ import { User } from './models/User.model';
 export class AppComponent implements OnInit {
   Orders: Array<Object>;
   MenuItems: Array<Object>;
+  Offers: Array<Offer>;
+  CurrentOffers: Array<Offer> = [];
   public selectedOrder;
   public Dishes;
   public Quantity;
@@ -43,6 +46,7 @@ export class AppComponent implements OnInit {
     });
     this.LoadedFeature = 'Orders';
     this.getMenuItems();
+    this.getOffers();
   }
 
   getMenuItems() {
@@ -50,4 +54,29 @@ export class AppComponent implements OnInit {
       this.MenuItems = item;
     });
   }
+
+  getOffers() {
+    this.ordersService.getOffers(this.LoggedInUser.restaurant_id).subscribe(offer => {
+      this.Offers = offer;
+      this.getCurrentOffer();
+    });
+  }
+
+  getCurrentOffer() {
+    if (this.Offers) {
+      for (let i = 0; i < this.Offers.length; i++) {
+          const open = this.Offers[i].date + ' ' + this.Offers[i].start_time;
+          const close = this.Offers[i].date + ' ' + this.Offers[i].end_time;
+          const start = new Date(open).getTime();
+          const end = new Date(close).getTime();
+          const currTime = new Date().getTime();
+          if (currTime > start && currTime < end) {
+            this.CurrentOffers.push(this.Offers[i]);
+          }
+      }
+    } else {
+      console.log('Offers does not exist');
+    }
+  }
+
 }

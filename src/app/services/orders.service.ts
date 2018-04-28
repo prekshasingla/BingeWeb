@@ -12,6 +12,7 @@ export class OrdersService {
   UserCollection: AngularFirestoreCollection<any>;
   Orders: Observable<any[]>;
   MenuItems: Observable<any[]>;
+  Offers: Observable<any[]>;
   Users: Observable<User[]>;
   OrdersDoc: AngularFirestoreDocument<any>;
   UsersDoc: AngularFirestoreDocument<any>;
@@ -70,15 +71,6 @@ export class OrdersService {
   }
 
   SaveMenuItem(restaurant_id: string , title: string, desc: string, category: string , price: string , veg: number , course_type: string, serving: string) {
-    // this.menu.title = title;
-    // this.menu.description = desc;
-    // this.menu.category = category;
-    // this.menu.price = price;
-    // this.menu.veg = veg;
-    // this.menu.serving = serving;
-    //
-    // console.log(this.menu);
-
     console.log(title, desc , category , price , veg , course_type , serving);
 
 
@@ -92,7 +84,7 @@ export class OrdersService {
     });
   }
 
-  SaveOffer(restaurant_id, title, date, day, start_time, end_time, discount){
+  SaveOffer(restaurant_id, title, date, day, start_time, end_time, discount) {
     console.log(restaurant_id, title, date, day, start_time, end_time, discount);
     this.afs.collection(`Offers/${restaurant_id}/offer`).add({
       title: title,
@@ -116,5 +108,17 @@ export class OrdersService {
       Contact: ContactNo,
       RestaurantName: RestaurantName
     });
+  }
+
+  getOffers(restaurant_id) {
+    this.Offers = this.afs.collection(`Offers/${restaurant_id}/offer`).snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.Offers;
+
   }
 }

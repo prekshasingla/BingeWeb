@@ -33,7 +33,7 @@
 </div>
 
 <div class="container">
-  <app-discount [Restaurant]="LoggedInUser" *ngIf="LoadedFeature === 'Offers'"></app-discount>
+  <app-discount [CurrentOffers]="CurrentOffers" [Restaurant]="LoggedInUser" *ngIf="LoadedFeature === 'Offers'"></app-discount>
 </div>
 
 <div class="container">

@@ -11,9 +11,9 @@ export class DiscountComponent implements OnInit {
   public OfferForm = false;
   public Discount: Discountitem;
   @Input() Restaurant;
+  @Input() CurrentOffers;
   day;
   date; start_time ; name; end_time ; percentage;
-  current_date;
 
   constructor(private Services: OrdersService) { }
 
@@ -34,20 +34,21 @@ export class DiscountComponent implements OnInit {
   }
 
   SaveOffer(name, date , start_time , end_time , percentage ) {
-    // const start = date + ' ' + this.start_time;
-    // console.log(start);
-    // const s = new Date(start);
-    // console.log(s);
-    // const st = s.getTime();
-    // console.log(st);
-    // this.current_date = new Date();
-    // console.log(this.current_date);
-    // const timestamp = this.current_date.getTime();
-    // console.log(timestamp);
-    //
-    // if (st > timestamp){
-    //   console.log('yes');
-    // }
+    switch (this.day) {
+      case 0: this.day = 'Sunday';
+      break;
+      case 1: this.day = 'Monday';
+      break;
+      case 2: this.day = 'Tuesday';
+      break;
+      case 3: this.day = 'Wednesday';
+      break;
+      case 4: this.day = 'Thursday';
+      break;
+      case 5: this.day = 'Friday';
+      break;
+      case 6: this.day = 'Saturday';
+    }
     percentage = percentage + '%';
     this.Services.SaveOffer(this.Restaurant.restaurant_id, name, date, this.day, start_time, end_time, percentage);
   }
