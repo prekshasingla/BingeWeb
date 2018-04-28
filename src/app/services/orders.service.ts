@@ -104,15 +104,15 @@ export class OrdersService {
     });
   }
 
-  addRestaurantInfo(restaurant_id, Email , desc , Address , FacebookLink , TwitterLink , Location , ContactNo , RestaurantName) {
-    // console.log(restaurant_id, Email , desc , Address , FacebookLink , TwitterLink , Location , ContactNo , RestaurantName);
+  addRestaurantInfo(restaurant_id, Email , desc , Address , FacebookLink , TwitterLink , Location_lat , Location_long , ContactNo , RestaurantName) {
     this.afs.collection(`Restaurant Info`).add({
       Email: Email,
       Description: desc,
       Address: Address,
       FacebookLink: FacebookLink,
       TwitterLink: TwitterLink,
-      Location: Location,
+      Latitude: Location_lat,
+      Longitude: Location_long,
       Contact: ContactNo,
       RestaurantName: RestaurantName
     });
