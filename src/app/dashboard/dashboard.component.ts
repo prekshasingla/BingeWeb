@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import strip_bom = require("strip-bom");
 
 @Component({
   selector: 'app-dashboard',
