@@ -1,0 +1,20 @@
+{
+	"name": "binge-testing",
+	"version": "1.0.0",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": "8.9.4"
+	},
+	"dependencies": {
+		"angularfire2": "^5.0.0-rc.6",
+		"bootstrap": "^4.0.0",
+		"core-js": "^2.4.1",
+		"express": "^4.16.3",
+		"firebase": "^4.12.1",
+		"npm": "^5.8.0",
+		"path": "^0.12.7"
+	}
+}
