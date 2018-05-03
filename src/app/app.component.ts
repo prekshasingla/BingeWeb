@@ -63,6 +63,11 @@ export class AppComponent implements OnInit {
   }
 
   getCurrentOffer() {
+    if (this.CurrentOffers) {
+      for ( let i = 0; i < this.CurrentOffers.length; i++) {
+        this.CurrentOffers.pop();
+      }
+    }
     if (this.Offers) {
       for (let i = 0; i < this.Offers.length; i++) {
           const open = this.Offers[i].date + ' ' + this.Offers[i].start_time;

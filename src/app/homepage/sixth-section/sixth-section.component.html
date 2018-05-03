@@ -1,69 +1,69 @@
-<div class="sixth-section">
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <!--            CONTACT FORM                         -->
-        <div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="row">
-                <div class="col-sm-12 col-sm-offset-2">
-                  <div>
-                    <h2>CONTACT US</h2>
-                  </div>
-                  <form method="post" data-form-title="CONTACT US">
-                    <input type="hidden" data-form-email="true">
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="name" required="" placeholder="Name*" data-form-field="Name">
-                    </div>
-                    <div class="form-group">
-                      <input type="email" class="form-control" name="email" required="" placeholder="Email*" data-form-field="Email">
-                    </div>
-                    <div class="form-group">
-                      <input type="tel" class="form-control" name="phone" placeholder="Phone" data-form-field="Phone">
-                    </div>
-                    <div class="form-group">
-                      <textarea class="form-control" name="message" placeholder="Message" rows="7" data-form-field="Message"></textarea>
-                    </div>
+<section class="features" id="features">
+  <div class="sixth-section">
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <!--            CONTACT FORM                         -->
+          <div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-12 col-sm-offset-2">
                     <div>
-                      <button type="submit" class="btn btn-lg btn-danger">CONTACT US</button>
+                      <h2>CONTACT US</h2>
                     </div>
-                  </form>
+                    <form method="post" data-form-title="CONTACT US">
+                      <input type="hidden" data-form-email="true">
+                      <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="name" name="name" required="" placeholder="Name*" data-form-field="Name">
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control" [(ngModel)]="email" name="email" required="" placeholder="Email*" data-form-field="Email">
+                      </div>
+                      <div class="form-group">
+                        <textarea class="form-control" name="message" [(ngModel)]="message" placeholder="Message" rows="7" data-form-field="Message"></textarea>
+                      </div>
+                      <div>
+                        <button type="submit" (click)="submit()" class="btn btn-lg btn-danger">CONTACT US</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!--                     END                             -->
+          <!--                     END                             -->
 
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <section class="contact bg-primary" id="contact">
-          <div class="container">
-            <h2>We
-              <i class="fa fa-heart"></i>
-              new friends!</h2>
-            <ul class="list-inline list-social">
-              <li class="list-inline-item social-twitter">
-                <a href="#">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item social-facebook">
-                <a href="#">
-                  <i class="fa fa-facebook"></i>
-                </a>
-              </li>
-              <li class="list-inline-item social-google-plus">
-                <a href="#">
-                  <i class="fa fa-google-plus"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <section class="contact bg-primary" id="contact">
+            <div class="container">
+              <h2>We
+                <i class="fa fa-heart"></i>
+                new friends!</h2>
+              <ul class="list-inline list-social">
+                <li class="list-inline-item social-twitter">
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item social-facebook">
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item social-google-plus">
+                  <a href="#">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+</section>

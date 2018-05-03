@@ -22,10 +22,15 @@
 </div>
 
 <div class="container">
+  <div class="dashboard">
+    <app-dashboard [Orders]="Orders" [MenuItems]="MenuItems" *ngIf="LoadedFeature === 'Home'"></app-dashboard>
+  </div>
+</div>
+
+<div class="container">
     <div class="table-booking">
       <app-table-booking *ngIf="LoadedFeature === 'TableBooking'" [SelectedOrder]="Orders"></app-table-booking>
     </div>
-
 </div>
 
 <div class="container" *ngIf="LoadedFeature === 'Menu'">
@@ -48,6 +53,8 @@
 <div class="container" *ngIf="LoadedFeature === 'Signup'">
   <app-signup></app-signup>
 </div>
+
+<app-footer *ngIf="LoadedFeature === 'homepage'"></app-footer>
 
 
 

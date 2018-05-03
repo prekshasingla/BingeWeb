@@ -121,4 +121,13 @@ export class OrdersService {
     return this.Offers;
 
   }
+
+  SubmitContact(name: string, email: string, message: string){
+    console.log(name,email,message);
+    this.afs.collection('ContactUs/').add({
+      Email: email,
+      Name: name,
+      Message: message
+    });
+  }
 }

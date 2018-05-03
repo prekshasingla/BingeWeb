@@ -26,6 +26,8 @@ import { FourthSectionComponent } from './homepage/fourth-section/fourth-section
 import { FifthSectionComponent } from './homepage/fifth-section/fifth-section.component';
 import { SixthSectionComponent } from './homepage/sixth-section/sixth-section.component';
 import { RestaurantInfoComponent } from './restaurant-info/restaurant-info.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './homepage/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { RestaurantInfoComponent } from './restaurant-info/restaurant-info.compo
     FifthSectionComponent,
     SixthSectionComponent,
     RestaurantInfoComponent,
+    DashboardComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
