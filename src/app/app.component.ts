@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   public selectedOrder;
   public Dishes;
   public Quantity;
-  public LoadedFeature = 'Login';
+  public LoadedFeature = 'homepage';
   public LoggedInUser: User;
 
   constructor(private ordersService: OrdersService) {}
