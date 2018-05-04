@@ -48,7 +48,7 @@ export class OrderDetailComponent implements OnInit {
   calculateAndDisplayRoute(directionsService, directionsDisplay) {
     const start = new google.maps.LatLng(this.ShowOrder.location_lat, this.ShowOrder.location_long);
     const end = new google.maps.LatLng(28.5244, 77.1855);
-    console.log(start.lat(),start.lng());
+    // console.log(start.lat(), start.lng());
     const req = {
       origin: start,
       destination: end,

@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(username: string, password: string) {
+  login() {
     if (this.Users) {
       for (let i = 0 ; i < this.Users.length ; i++) {
-        if (this.Users[i].username === username && this.Users[i].password === password) {
+        if (this.Users[i].username === this.username && this.Users[i].password === this.password) {
           // console.log('success');
           this.LoginUser = this.Users[i];
           this.LoginSuccess.emit(this.Users[i]);
