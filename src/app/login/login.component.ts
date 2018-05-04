@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
-    if (this.Users) {
+  login(f) {
+    if (this.Users && f.valid) {
       for (let i = 0 ; i < this.Users.length ; i++) {
         if (this.Users[i].username === this.username && this.Users[i].password === this.password) {
           // console.log('success');

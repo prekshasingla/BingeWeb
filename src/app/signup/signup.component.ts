@@ -8,13 +8,12 @@ import { User } from '../models/User.model';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  public user: User;
-  private username;
-  private password;
-  private Id;
-  private email;
-  private Name;
-  private phone;
+  public username;
+  public password;
+  public Id;
+  public email;
+  public Name;
+  public phone;
 
   constructor(private ordersService: OrdersService) { }
 
