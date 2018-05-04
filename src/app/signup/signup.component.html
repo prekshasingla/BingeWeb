@@ -1,21 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <form>
+      <form #f="ngForm" (ngSubmit)="signup(f)">
         <div class="form-group">
-          <label for="exampleInputEmail1">Username</label>
-          <input type="email" class="form-control" name="username" [(ngModel)]="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
+          <input type="text" class="form-control" name="name" [(ngModel)]="Name" placeholder="Restaurant Name" #RestaurantName="ngModel" minlength="3" required>
+          <p class="alert alert-danger" *ngIf="!RestaurantName.valid && RestaurantName.touched">Restaurant Name must be of atleast 3 letters </p>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" name="password" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="text" class="form-control" name="username" [(ngModel)]="username" placeholder="Username" #Username="ngModel" required minlength="3">
+          <p class="alert alert-danger" *ngIf="!Username.valid && Username.touched">Username must be of atleast 3 letters</p>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Id</label>
-          <input type="email" class="form-control" name="Id" [(ngModel)]="Id" placeholder="Id">
+          <input type="email" class="form-control" name="Id" [(ngModel)]="Id" placeholder="Restaurant Id" #RestaurantId="ngModel" required>
+          <p class="alert alert-danger" *ngIf="!RestaurantId.valid && RestaurantId.touched">Restaurant Id cannot be empty</p>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="signup(username,password,Id)">Signup</button>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" [(ngModel)]="email" id="exampleInputEmail1" #Email="ngModel" placeholder="Email Address" required email>
+          <p class="alert alert-danger" *ngIf="!Email.valid && Email.touched">Please enter a valid Email Address</p>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" [(ngModel)]="password" class="form-control" #Password="ngModel" placeholder="Password" required minlength="6">
+          <p class="alert alert-danger" *ngIf="!Password.valid && Password.touched">Please enter a valid Password</p>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="phone" [(ngModel)]="phone" placeholder="Contact No." #Phone="ngModel" required minlength="10">
+          <p class="alert alert-danger" *ngIf="!Phone.valid && Phone.touched">Enter a Valid Phone Number</p>
+        </div>
+        <small class="form-text text-muted">We'll never share your information with anyone else.</small>
+        <br>
+        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Signup</button>
       </form>
     </div>
   </div>

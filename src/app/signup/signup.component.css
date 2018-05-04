@@ -8,3 +8,12 @@ button{
   width: 100%;
   margin: 0 auto;
 }
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+
+p{
+  font-size: small;
+  margin-top: 5px;
+}

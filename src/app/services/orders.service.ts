@@ -53,10 +53,17 @@ export class OrdersService {
     return this.Users;
   }
 
-  signup(username: string , password: string , Id: string) {
+  signup(Name: string, username: string , Id: string , Email: string , password: string , Phone: string ) {
     console.log(username , password , Id);
     this.UserCollection = this.afs.collection('login');
-    this.UserCollection.add({username: username, password: password , restaurant_id: Id});
+    this.UserCollection.add({
+      RestaurantName: Name,
+      username: username,
+      Email: Email,
+      password: password,
+      restaurant_id: Id,
+      Phone: Phone
+    });
   }
 
   getMenuItem(restaurant_id: string) {

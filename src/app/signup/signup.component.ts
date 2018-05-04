@@ -9,17 +9,23 @@ import { User } from '../models/User.model';
 })
 export class SignupComponent implements OnInit {
   public user: User;
-  public username;
-  public password;
-  public Id;
+  private username;
+  private password;
+  private Id;
+  private email;
+  private Name;
+  private phone;
 
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
   }
 
-  signup(username: string , password: string , Id: string) {
-    this.ordersService.signup(username, password , Id);
+  signup(f) {
+    // console.log(this.Name, this.username , this.email , this.Id , this.password , this.phone);
+    if (f.valid) {
+      this.ordersService.signup(this.Name, this.username , this.Id , this.email , this.password , this.phone);
+    }
 
   }
 
