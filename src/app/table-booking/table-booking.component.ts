@@ -7,10 +7,25 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TableBookingComponent implements OnInit {
   @Input() SelectedOrder;
+  @Input() index;
+  public status = new Array();
+  public st;
 
-  constructor() { }
+  constructor() {
+    this.status.length = 50;
+  }
 
   ngOnInit() {
+  }
+
+  change (i) {
+    // console.log(this.st);
+    // console.log(i);
+    this.status[i] = this.st;
+    // console.log(this.status[i]);
+    // for(let j=0;j<50;j++){
+    //   console.log(this.status[j]);
+    // }
   }
 
 }

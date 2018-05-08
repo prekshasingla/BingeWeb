@@ -1,7 +1,7 @@
 <div class="container" *ngIf="SelectedOrder">
   <table class="table table-striped">
     <thead class="thead-dark">
-    <tr>
+    <tr *ngIf="index === 0">
       <th scope="col">Time</th>
       <th scope="col">Date</th>
       <th scope="col">User</th>
@@ -13,16 +13,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let order of SelectedOrder">
+    <tr>
       <td>10:00</td>
       <td>09-4-2018</td>
-      <td> {{ order.userId }} </td>
+      <td> {{ SelectedOrder.userId }} </td>
       <td>5</td>
       <td> {{ TableNo || 7 }} </td>
-      <td> {{ status || "Rejected" }} </td>
-      <td> <select [(ngModel)]="status" class="form-control form-control-sm">
-        <option>Approve</option>
-        <option>Reject</option>
+      <td> {{ status[i] || "Rejected" }} </td>
+      <td> <select class="custom-select" [(ngModel)]="st" (change)="change(i)" class="form-control form-control-sm">
+        <option selected>Approve</option>
+        <option>Rejected</option>
       </select>
       </td>
       <td><select [(ngModel)]="TableNo" class="form-control form-control-sm">

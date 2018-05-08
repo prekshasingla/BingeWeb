@@ -28,8 +28,8 @@
 </div>
 
 <div class="container">
-    <div class="table-booking">
-      <app-table-booking *ngIf="LoadedFeature === 'TableBooking'" [SelectedOrder]="Orders"></app-table-booking>
+    <div class="table-booking" *ngFor="let order of Orders;let i = index">
+      <app-table-booking *ngIf="LoadedFeature === 'TableBooking'" [SelectedOrder]="order" [index]="i"></app-table-booking>
     </div>
 </div>
 
