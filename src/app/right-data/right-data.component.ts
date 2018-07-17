@@ -1,7 +1,7 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import {AngularFireDatabase} from 'angularfire2/database';
 import { Observable, Subject, from, of} from 'rxjs';
-import { Component,ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component,ElementRef, NgZone, OnInit, ViewChild,Output,EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
@@ -15,6 +15,9 @@ import { MapsAPILoader } from '@agm/core';
 })
 
 export class RightDataComponent implements OnInit {
+
+      @Output() rightDataLoaded = new EventEmitter();
+
   catContainer : Observable<any[]>;
   satContainer : Observable<any[]>;
   activeQView:null;
@@ -262,7 +265,8 @@ export class RightDataComponent implements OnInit {
             }
 
             this.catContainer=of(tempCatContainer);
-          });
+            this.rightDataLoaded.emit();        //To see if particular cataegory is ready for selection
+          });          
 
       }
 

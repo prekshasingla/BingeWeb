@@ -23,15 +23,21 @@ export class SideNavComponent implements OnInit {
   }
 
   setActive(cat){
-    this.activeMenu = cat;
+    this.activeMenu = cat.toLowerCase();    
   }
 
   ngOnInit() {        
   
   }
 
+  rightDataReady(){ //this function will be called after the data is ready in right-data component
+    setTimeout(()=>{  //adding a sec gap to be safe about dom ready
+     this.navEleClick(this.category);
+    },1000);    
+ }
+
   ngAfterViewInit(){
-   
+   this.setActive(this.category.toLowerCase());     //setting the active element 
   }
   
   navEleClick(res){

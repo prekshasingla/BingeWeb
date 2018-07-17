@@ -13,6 +13,7 @@ body{
     border: none;                
     font-size:70%;  
     position :relative;
+    max-width: 30%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
 }
 
@@ -83,6 +84,6 @@ body{
 
 @media only screen and (max-width: 768px) {
     .custom-card{
-    
+        max-width: 100%;        
     }
 }

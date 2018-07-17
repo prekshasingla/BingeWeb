@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Order } from '../models/order';
-import { Observable} from 'rxjs';
+import { Observable} from 'rxjs/Rx';
 import { User } from '../models/User.model';
 import { Menu } from '../models/menu-item.model';
+
 import {map} from 'rxjs/operators'
+
+
 @Injectable()
 export class OrdersService {
   OrdersCollection: AngularFirestoreCollection<any>;
@@ -27,13 +30,13 @@ export class OrdersService {
 
   getOrders(restaurant_id: string) {
     this.OrdersCollection = this.afs.collection(`orders/${restaurant_id}/order` , ref => ref.orderBy('location_lat' , 'asc'));
-    this.Orders = this.OrdersCollection.snapshotChanges().pipe(map(changes => {
+    this.Orders = this.OrdersCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data();
         data.id = a.payload.doc.id;
         return data;
       });
-    }));
+    });
     return this.Orders;
   }
 
@@ -67,13 +70,13 @@ export class OrdersService {
   }
 
   getMenuItem(restaurant_id: string) {
-    this.MenuItems = this.afs.collection(`Menu/${restaurant_id}/course 1`).snapshotChanges().pipe(map(changes => {
+    this.MenuItems = this.afs.collection(`Menu/${restaurant_id}/course 1`).snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data();
         data.id = a.payload.doc.id;
         return data;
       });
-    }));
+    });
     return this.MenuItems;
   }
 
@@ -118,13 +121,13 @@ export class OrdersService {
   }
 
   getOffers(restaurant_id) {
-    this.Offers = this.afs.collection(`Offers/${restaurant_id}/offer`).snapshotChanges().pipe(map(changes => {
+    this.Offers = this.afs.collection(`Offers/${restaurant_id}/offer`).snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data();
         data.id = a.payload.doc.id;
         return data;
       });
-    }));
+    });
     return this.Offers;
 
   }
