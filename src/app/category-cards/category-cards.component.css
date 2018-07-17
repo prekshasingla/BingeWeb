@@ -1,0 +1,8 @@
+.cat-card{
+    display: inline-block;
+    background-color:white;
+    border-radius: 25%;
+    cursor:pointer;
+    border:2px solid #000099;
+    outline: none;
+}
