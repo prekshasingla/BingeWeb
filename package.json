@@ -8,8 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng run binge-testing:build:production --target=production --aot=true"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
