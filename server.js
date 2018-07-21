@@ -5,9 +5,8 @@ const PublicPath = path.join(__dirname , "/dist");
 
 app.use(express.static(PublicPath));
 
-app.get('/',function (req,res) {
-  // res.sendFile(path.join(__dirname + '/dist/index.html'));
-  res.send('hello');
+app.get('/*',function (req,res) {
+  res.sendFile(path.join(__dirname + '/dist/binge-testing/index.html'));  
 });
 
 app.listen(process.env.port || 4000,function () {
