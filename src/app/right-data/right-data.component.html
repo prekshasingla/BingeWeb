@@ -5,7 +5,11 @@
         <h3>{{ele[0].category | uppercase }} </h3>
         <br>
       <div class="card p-3 d-inline-block m-2 custom-card" *ngFor="let p of ele"  (mouseleave)="hideQuickView(p)">
-        <iframe  [src]='p.video_url' allowfullscreen>  </iframe>
+        
+        <div class="card-body" style="padding: 0">
+            <iframe  [src]='p.video_url' style="max-width: 100%;" allowfullscreen >  </iframe>
+        </div>
+
           <div class="card-body p-0">
               <h5 class="card-title">{{p.name}}</h5>
   
