@@ -13,8 +13,9 @@ body{
     border: none;                
     font-size:70%;  
     position :relative;
-    max-width: 30%;
+    width: 30%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+    text-align: center;
 }
 
 .custom-card h5{
@@ -28,7 +29,7 @@ body{
     overflow-y: scroll;
     top:-10%;
     right:70%;
-    width:140%;
+    width:120%;
     height: 120%;
     position:  absolute;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -82,8 +83,20 @@ body{
     display: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1445px) {
     .custom-card{
-        max-width: 100%;        
+        width: 45%;        
+    }
+    .quick-view-modal{
+        width:100%;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .custom-card{
+        width: 100%;        
+    }
+    .quick-view-modal{
+        width:65%;
     }
 }

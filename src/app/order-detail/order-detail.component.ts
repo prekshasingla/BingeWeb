@@ -14,10 +14,12 @@ export class OrderDetailComponent implements OnInit {
   @Input() user;
   private viewMap = false;
 
-  constructor(private ordersService: OrdersService) {
+  constructor(private ordersService: OrdersService) {    
   }
 
   ngOnInit() {
+    console.log(this.ShowOrder);
+    console.log(this.dishes);
   }
 
   DeleteOrder(order: Object) {

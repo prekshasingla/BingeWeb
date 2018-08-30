@@ -14,11 +14,12 @@
         <button class="btn btn-primary" (click)="initMap()">View map</button>
         <div class="googleMap" id="map"></div>
       </div>
-      <div class="modal-body" *ngFor="let dish of dishes">
-        <p *ngFor="let quantity of quantities"> {{ dish }} - {{ quantity }}</p>
+      <div class="modal-body" *ngFor="let dish of dishes;let i = index">
+        {{ dish }}  -  {{ quantities[i] }}
       </div>
       <div class="modal-body">
         <p>cart value : {{ ShowOrder.cart_value }}</p>
+        <p>order type : {{ ShowOrder.status }}</p>
         <p> <strong> payment via: Credit-Card</strong></p>
       </div>
       <div class="modal-footer">

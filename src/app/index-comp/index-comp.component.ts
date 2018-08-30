@@ -11,10 +11,14 @@ import { Offer } from '../models/Offer.model';
 })
 export class IndexCompComponent implements OnInit {
   Orders: Array<Object>;
+  PreOrders: Array<Object>;
+  InsideOrders: Array<Object>;
   MenuItems: Array<Object>;
   Offers: Array<Offer>;
   CurrentOffers: Array<Offer> = [];
   public selectedOrder;
+  private selectedPreOrder;
+  private selectedInsideOrder;
   public Dishes;
   public Quantity;
   public LoadedFeature = 'homepage';
@@ -44,6 +48,17 @@ export class IndexCompComponent implements OnInit {
       this.Orders = order;
       // console.log(this.Orders);
     });
+
+    this.ordersService.getPreOrders(user.restaurant_id).subscribe(PreOrder => {
+      this.PreOrders = PreOrder;
+      //console.log(this.PreOrders);
+    });
+
+    this.ordersService.getInsideOrders(user.restaurant_id).subscribe(InsideOrder => {
+      this.InsideOrders = InsideOrder;
+      // console.log(this.Orders);
+    });
+
     this.LoadedFeature = 'Orders';
     this.getMenuItems();
     this.getOffers();

@@ -3,20 +3,40 @@
 <br>
 <div class="container" *ngIf="LoadedFeature == 'Orders'">
  <div class="row">
-   <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let order of Orders ; let i = index;">
-       <div class="card text-white mb-3"
-            [ngClass]="{'bg-danger' : i >= 0 && i<10 , 'bg-warning' : i >= 10 && i<15 , 'bg-success' : i >= 15  }"
-            style="width: 18rem;">
-         <div class="card-body">
-           <h5 class="card-title"> Order No : {{ i+1 }}</h5>
-           <p class="card-text">User       : {{order.userId}} <br> cart value : {{order.cart_value}}</p>
-           <p class="card-text">Location: {{order.location_lat}} , {{order.location_long}}</p>
-           <button type="button" (click)="SendOrderDetail(order)" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
-             View Details
-           </button>
+   <div class="col-sm-12 col-md-6 col-lg-6 p-0" style="border-right: 0.8px solid black">
+      <h1 class="text-center">PreOrders</h1>
+       <div *ngFor="let order of PreOrders ; let i = index;" style="display:inline-block;width: 45%" class="p-1 ml-1">
+         <div class="card text-white mb-3 m-0"
+               [ngClass]="{'bg-danger' : i >= 0 && i<10 , 'bg-warning' : i >= 10 && i<15 , 'bg-success' : i >= 15  }"
+               style="width: 100%;">
+           <div class="card-body">
+             <h5 class="card-title"> Order No : {{ i+1 }}</h5>
+             <p class="card-text">User       : {{order.userId}} <br> cart value : {{order.cart_value}}</p>
+             <p class="card-text">Location: {{order.location_lat}} , {{order.location_long}}</p>
+             <button type="button" (click)="SendOrderDetail(order)" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+               View Details
+             </button>
+           </div>
          </div>
        </div>
-   </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 p-0">
+        <h1 class="text-center">InsideOrders</h1>
+         <div *ngFor="let order of InsideOrders ; let i = index;" style="display:inline-block;width: 45%" class="p-1 ml-1">
+           <div class="card text-white mb-3 m-0"
+                 [ngClass]="{'bg-danger' : i >= 0 && i<10 , 'bg-warning' : i >= 10 && i<15 , 'bg-success' : i >= 15  }"
+                 style="width: 100%;">
+             <div class="card-body">
+               <h5 class="card-title"> Order No : {{ i+1 }}</h5>
+               <p class="card-text">User       : {{order.userId}} <br> cart value : {{order.cart_value}}</p>
+               <p class="card-text">Location: {{order.location_lat}} , {{order.location_long}}</p>
+               <button type="button" (click)="SendOrderDetail(order)" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+                 View Details
+               </button>
+             </div>
+           </div>
+         </div>
+      </div>
    <app-order-detail *ngIf="selectedOrder" [user]="LoggedInUser" [ShowOrder]="selectedOrder" [dishes]="Dishes" [quantities]="Quantity"></app-order-detail>
  </div>
 </div>

@@ -14,6 +14,8 @@ export class OrdersService {
   UsersCollection: AngularFirestoreCollection<any>;
   UserCollection: AngularFirestoreCollection<any>;
   Orders: Observable<any[]>;
+  PreOrders: Observable<any[]>;
+  InsideOrders: Observable<any[]>;
   MenuItems: Observable<any[]>;
   Offers: Observable<any[]>;
   Users: Observable<User[]>;
@@ -38,6 +40,30 @@ export class OrdersService {
       });
     });
     return this.Orders;
+  }
+
+  getPreOrders(restaurant_id: string) {
+    this.OrdersCollection = this.afs.collection(`orders/${restaurant_id}/PreOrder` , ref => ref.orderBy('location_lat' , 'asc'));
+    this.PreOrders = this.OrdersCollection.snapshotChanges().map(changes => {      
+      return changes.map(a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        return data;        
+      });
+    });
+    return this.PreOrders;    
+  }
+
+  getInsideOrders(restaurant_id: string) {
+    this.OrdersCollection = this.afs.collection(`orders/${restaurant_id}/InsideOrder` , ref => ref.orderBy('location_lat' , 'asc'));
+    this.InsideOrders = this.OrdersCollection.snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.InsideOrders;
   }
 
   DeleteOrder(restaurant_id: string, order) {
