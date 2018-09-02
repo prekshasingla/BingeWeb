@@ -1,6 +1,7 @@
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output, AfterViewInit} from '@angular/core';
 import { OrdersService } from '../services/orders.service';
-import {} from '@types/googlemaps';
+import { } from '@types/googlemaps';
+declare var google: any;
 
 @Component({
   selector: 'app-order-detail',
@@ -12,14 +13,18 @@ export class OrderDetailComponent implements OnInit {
   @Input() dishes;
   @Input() quantities;
   @Input() user;
+  map: google.maps.Map;
   private viewMap = false;
+  public origin: any
+  public destination: any
 
-  constructor(private ordersService: OrdersService) {    
-  }
+  constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
     console.log(this.ShowOrder);
     console.log(this.dishes);
+    // this.initMap();
+   // this.getDirection();
   }
 
   DeleteOrder(order: Object) {
@@ -29,11 +34,17 @@ export class OrderDetailComponent implements OnInit {
   }
 
   UpdateOrder(order: Object , status: string) {
-    // console.log(this.dishes);
+     console.log(status);
     this.ordersService.UpdateOrder(this.user.restaurant_id, order, status);
   }
 
-// GOOGELE MAPS
+getDirection(){
+  this.origin = { lat: this.ShowOrder.location_lat, lng: this.ShowOrder.location_long };
+  this.destination = { lat: 28.5244, lng: 77.1855 };
+}
+
+
+// GOOGLE MAPS
 
   initMap() {
     this.viewMap = !this.viewMap;
@@ -41,7 +52,8 @@ export class OrderDetailComponent implements OnInit {
     const directionsDisplay = new google.maps.DirectionsRenderer;
     const map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
-      center: {lat: this.ShowOrder.location_lat, lng: this.ShowOrder.location_long}
+      center: {lat: this.ShowOrder.location_lat, lng: this.ShowOrder.location_long},
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     directionsDisplay.setMap(map);
     this.calculateAndDisplayRoute(directionsService, directionsDisplay);

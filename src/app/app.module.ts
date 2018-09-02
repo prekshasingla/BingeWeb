@@ -38,6 +38,8 @@ import { PageTwoRightDataComponent } from './page-two-right-data/page-two-right-
 import { RightDataComponent } from './right-data/right-data.component';
 import { LocationSearchComponent } from './location-search/location-search.component';
 import { IndexCompComponent } from './index-comp/index-comp.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,7 @@ import { IndexCompComponent } from './index-comp/index-comp.component';
     PageTwoTopComponent,
     PageTwoSideNavComponent,
     PageTwoRightDataComponent,
-    IndexCompComponent,    
+    IndexCompComponent,
   ],
   imports: [
     RouterModule.forRoot([
@@ -88,12 +90,13 @@ import { IndexCompComponent } from './index-comp/index-comp.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireDatabaseModule,    
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseCred),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyD0dnr8xuGHgv4fqEdLhLw4sDb97UP1a58",
       libraries: ["places"]
-    })    
+    }),
+    AgmDirectionModule
   ],
   providers: [AngularFirestore, OrdersService ],
   bootstrap: [AppComponent]
