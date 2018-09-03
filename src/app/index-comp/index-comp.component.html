@@ -29,7 +29,7 @@
              <div class="card-body">
                <h5 class="card-title"> Order No : {{ i+1 }}</h5>
                <p class="card-text">User       : {{order.userId}} <br> cart value : {{order.cart_value}}</p>
-               <p class="card-text">Location: {{order.location_lat}} , {{order.location_long}}</p>
+               <!--<p class="card-text">Location: {{order.location_lat}} , {{order.location_long}}</p>-->
                <button type="button" (click)="SendOrderDetail(order)" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
                  View Details
                </button>
