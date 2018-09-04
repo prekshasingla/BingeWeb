@@ -17,35 +17,37 @@ export class SideNavComponent implements OnInit {
   @Input() category;
   navEle : Observable<any[]>;
   activeMenu : null;
-  
+
   constructor(db: AngularFireDatabase) {
     this.navEle = db.list('categories').valueChanges();
   }
 
   setActive(cat){
-    this.activeMenu = cat.toLowerCase();    
+    this.activeMenu = cat.toLowerCase();
   }
 
-  ngOnInit() {        
-  
+  ngOnInit() {
+
   }
 
   rightDataReady(){ //this function will be called after the data is ready in right-data component
     setTimeout(()=>{  //adding a sec gap to be safe about dom ready
      this.navEleClick(this.category);
-    },1000);    
+    },1000);
  }
 
   ngAfterViewInit(){
-   this.setActive(this.category.toLowerCase());     //setting the active element 
+   this.setActive(this.category.toLowerCase());     //setting the active element
   }
-  
+
   navEleClick(res){
     console.log('navcli '+res);
     res=res.toLowerCase();
-    var ele = "[id='"+res+"']"; //selecting using this so that id's with spaces can be used    
-    var selectedDiv=$(ele);    
+    var ele = "[id='"+res+"']"; //selecting using this so that id's with spaces can be used
+    console.log(ele)
+    var selectedDiv=$(ele);
+    console.log (selectedDiv)
     $('body, html').animate({ scrollTop: selectedDiv.offset().top-250 }, 500);
   }
-  
+
 }

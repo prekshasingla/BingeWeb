@@ -1,7 +1,7 @@
     <div>
             <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
 
-    <div  style="max-width: 100%"  *ngFor="let ele of catContainer | async"  id="{{ele[0].category}}">
+    <div  style="max-width: 100%"  *ngFor="let ele of satContainer | async"  id="{{ele[0].category}}">
         <h3>{{ele[0].category | uppercase }} </h3>
         <br>
       <div class="card p-3 d-inline-block m-2 custom-card" *ngFor="let p of ele"  (mouseleave)="hideQuickView(p)">

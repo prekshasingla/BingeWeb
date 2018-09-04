@@ -16,7 +16,7 @@ declare var $:any;
 export class CategoryCardsComponent implements OnInit {
   navEle : Observable<any[]>;
   activeMenu : null;
-  
+
   constructor(db: AngularFireDatabase) {
     this.navEle = db.list('categories').valueChanges();
   }
@@ -26,11 +26,11 @@ export class CategoryCardsComponent implements OnInit {
   }
   ngOnInit() {
   }
-  
+
   navEleClick(res){
     res=res.toLowerCase();
-    var ele = "[id='"+res+"']"; //selecting using this so that id's with spaces can be used    
-    var selectedDiv=$(ele);
+    var ele = "[id='"+res+"']"; //selecting using this so that id's with spaces can be used
+    const selectedDiv=$(ele);
     console.log(res);
   }
 }

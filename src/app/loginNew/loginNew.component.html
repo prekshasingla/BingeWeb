@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Binge</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!--<div *ngIf="user" class="collapse navbar-collapse" id="navbarSupportedContent">-->
+      <!--<ul class="navbar-nav mr-auto">-->
+        <!--<li class="nav-item active">-->
+          <!--<a class="nav-link" href="javascript:void(0)" (click)="featureSelected('Home')">Home <span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item active">-->
+          <!--<a class="nav-link" href="javascript:void(0)" (click)="featureSelected('Orders')">Orders <span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item active">-->
+          <!--<a class="nav-link" href="javascript:void(0)" (click)="featureSelected('TableBooking')">Table-Booking <span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item active">-->
+          <!--<a class="nav-link" href="javascript:void(0)" (click)="featureSelected('Menu')">Menu Items <span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item active">-->
+          <!--<a class="nav-link" href="javascript:void(0)" (click)="featureSelected('Offers')">Offers <span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item active">-->
+          <!--<a class="nav-link" href="javascript:void(0)" (click)="featureSelected('info')">Restaurant Info<span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+
+    <ul class="navbar-nav navbar-right">
+      <li class="nav-item active">
+        <a class="nav-link" href="javascript:void(0)" (click)="featureSelected('Signup')">Signup <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/login" (click)="featureSelected('Login')">Login <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+    <!--<ul *ngIf="user" class="navbar-nav navbar-right">-->
+      <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" href="javascript:void(0)" (click)="featureSelected('Login')">Logout <span class="sr-only">(current)</span></a>-->
+      <!--</li>-->
+    <!--</ul>-->
+
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form #f="ngForm" (ngSubmit)="login(f)">
+        <div class="form-group">
+          <input type="email" class="form-control" name="username" [(ngModel)]="username" #Username="ngModel" placeholder="Username" required minlength="3">
+          <p class="alert alert-danger" *ngIf="!Username.valid && Username.touched">Username must be of atleast 3 letters </p>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" #Password="ngModel" required minlength="5">
+          <p class="alert alert-danger" *ngIf="!Password.valid && Password.touched">Please enter a valid Password</p>
+        </div>
+        <button type="submit" class="btn btn-primary">LogIn</button>
+      </form>
+    </div>
+  </div>
+</div>

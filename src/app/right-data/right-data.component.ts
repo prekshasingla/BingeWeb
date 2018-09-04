@@ -37,14 +37,14 @@ export class RightDataComponent implements OnInit {
       maximumAge        : 30000,
       timeout           : 27000
     };
-   
-   
+
+
     calcContent(){
       var EuropeanCat=[],pizzaCat=[],DessertCat=[],CaribbeanCat=[],ContinentalCat=[];
       var italianCat=[],AsianCat=[],BurgerCat=[],IndianCat=[],MexicanCat=[];
       var tempCatContainer=[];
       this.satContainer.subscribe((keys)=>{
-            var lev1=keys;    
+            var lev1=keys;
             for(var j in lev1){
                   var lev2=lev1[j];
                   var dist=this.distanceCalc(this.userLat,this.userLng,lev2.latitude,lev2.longitude);
@@ -61,7 +61,7 @@ export class RightDataComponent implements OnInit {
                                     lev4['restro_name'] = lev2.restaurant_name;
                                     lev4['latitude'] = lev2.longitude;
                                     lev4['longitude'] = lev2.longitude;
-                                    
+
                                     delete restro['longitude'];
                                     delete restro['restaurant_id'];
                                     delete restro['restaurant_name'];
@@ -69,7 +69,7 @@ export class RightDataComponent implements OnInit {
                                     lev4['restroDetails'] = restro;
                                     var vid_url ="https://www.youtube.com/embed/"+lev4['video_url']+"?rel=0";
                                     lev4['video_url'] = this._sanitizer.bypassSecurityTrustResourceUrl(vid_url);
-                                    
+
                                     pizzaCat.push(lev4);
                               }
                               else if(lev4['category']=='dessert'){
@@ -211,67 +211,70 @@ export class RightDataComponent implements OnInit {
                   }
                   }else{
                         console.log("Distance is larger.... Service unavailable");
-                  }                  
+                  }
             }
 
-            if(pizzaCat.length>0)            
+            if(pizzaCat.length>0)
             {
                   tempCatContainer.push(pizzaCat);
             }
-            
-            if(DessertCat.length>0)            
+
+            if(DessertCat.length>0)
             {
                   tempCatContainer.push(DessertCat);
             }
 
-            if(ContinentalCat.length>0)            
+            if(ContinentalCat.length>0)
             {
                   tempCatContainer.push(ContinentalCat);
             }
-            
-            if(CaribbeanCat.length>0)            
+
+            if(CaribbeanCat.length>0)
             {
-                  tempCatContainer.push(CaribbeanCat);            
-            }           
-            
-            if(italianCat.length>0)            
+                  tempCatContainer.push(CaribbeanCat);
+            }
+
+            if(italianCat.length>0)
             {
                   tempCatContainer.push(italianCat);
             }
-            
-            if(AsianCat.length>0)            
+
+            if(AsianCat.length>0)
             {
                   tempCatContainer.push(AsianCat);
             }
-            
-            if(EuropeanCat.length>0)            
+
+            if(EuropeanCat.length>0)
             {
                   tempCatContainer.push(EuropeanCat);
             }
-            
-            if(BurgerCat.length>0)            
+
+            if(BurgerCat.length>0)
             {
                   tempCatContainer.push(BurgerCat);
             }
-            
-            if(IndianCat.length>0)            
+
+            if(IndianCat.length>0)
             {
                   tempCatContainer.push(IndianCat);
             }
-            
-            if(MexicanCat.length>0)            
+
+            if(MexicanCat.length>0)
             {
                   tempCatContainer.push(MexicanCat);
             }
 
-            this.catContainer=of(tempCatContainer);
-            this.rightDataLoaded.emit();        //To see if particular cataegory is ready for selection
-          });          
+            this.satContainer= of(tempCatContainer);
+            console.log(this.satContainer)
+
+            this.rightDataLoaded.emit();//To see if particular cataegory is ready for selection
+          console.log(this.rightDataLoaded)
+      });
 
       }
 
 
-  constructor(db: AngularFireDatabase,private _sanitizer: DomSanitizer,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {      
+  constructor(db: AngularFireDatabase,private _sanitizer: DomSanitizer,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
 
     this.satContainer = db.list('menu').valueChanges();
 
@@ -284,24 +287,24 @@ export class RightDataComponent implements OnInit {
   }
 
 
-      showQuickView(quickViewItem){            
+      showQuickView(quickViewItem){
             this.activeQView=quickViewItem;
       }
 
       hideQuickView(quickViewItem){
             this.activeQView=null;
       }
-      
+
       distanceCalc(lat1, lon1, lat2, lon2) {
             var p = 0.017453292519943295;    // Math.PI / 180
             var c = Math.cos;
-            var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-                    c(lat1 * p) * c(lat2 * p) * 
+            var a = 0.5 - c((lat2 - lat1) * p)/2 +
+                    c(lat1 * p) * c(lat2 * p) *
                     (1 - c((lon2 - lon1) * p))/2;
-          
+
             return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
       }
-      
+
       getLocation() {
             if (navigator.geolocation) {
 
@@ -309,13 +312,13 @@ export class RightDataComponent implements OnInit {
                 console.log("Geolocation is not supported by the browser");
             }
         }
-        
+
         showPosition(position) {
             // console.log(position.coords.latitude);
             // console.log(position.coords.longitude);
             // console.log(position.coords.accuracy);
         }
-        
+
         showError(error) {
             switch(error.code) {
                 case error.PERMISSION_DENIED:
@@ -332,11 +335,11 @@ export class RightDataComponent implements OnInit {
                     break;
             }
         }
-       
+
       getLocationManually(){
             //create search FormControl
             this.searchControl = new FormControl();
-    
+
             //load Places Autocomplete
             this.mapsAPILoader.load().then(() => {
               let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -346,25 +349,26 @@ export class RightDataComponent implements OnInit {
                 this.ngZone.run(() => {
                   //get the place result
                   let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-        
+
                   //verify result
                   if (place.geometry === undefined || place.geometry === null) {
                     return;
                   }
-        
+
                   //set latitude, longitude and zoom
                   this.userLat = place.geometry.location.lat();
                   this.userLng = place.geometry.location.lng();
                   this.zoom = 12;
                   console.log(this.userLat);
-                  console.log(this.userLng);       
-                  this.calcContent();   
+                  console.log(this.userLng);
+                  this.calcContent();
                 });
               });
             });
       }
   ngOnInit() {
       this.getLocationManually();
+      //console.log(this.catContainer)
   }
 
 }

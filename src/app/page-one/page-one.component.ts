@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { snapshotChanges } from 'angularfire2/database';
 
@@ -8,6 +8,8 @@ import { snapshotChanges } from 'angularfire2/database';
   styleUrls: ['./page-one.component.css']
 })
 export class PageOneComponent implements OnInit {
+  @Input() user;
+  @Output() Feature = new EventEmitter<string>();
   catName:String;
   pm;
   constructor(private route:ActivatedRoute) {
@@ -17,7 +19,11 @@ export class PageOneComponent implements OnInit {
     console.log('page one'+this.catName);
    }
 
-  ngOnInit() {    
+  ngOnInit() {
+  }
+
+  featureSelected(str: string) {
+    this.Feature.emit(str);
   }
 
 }

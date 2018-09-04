@@ -12,6 +12,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { AgmCoreModule } from '@agm/core';
 import { OrdersService} from './services/orders.service';
 import { LoginComponent } from './login/login.component';
+import { LoginNewComponent } from './loginNew/loginNew.component';
 import { SignupComponent } from './signup/signup.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TableBookingComponent } from './table-booking/table-booking.component';
@@ -38,7 +39,6 @@ import { PageTwoRightDataComponent } from './page-two-right-data/page-two-right-
 import { RightDataComponent } from './right-data/right-data.component';
 import { LocationSearchComponent } from './location-search/location-search.component';
 import { IndexCompComponent } from './index-comp/index-comp.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
@@ -73,6 +73,7 @@ import { AgmDirectionModule } from 'agm-direction';
     PageTwoSideNavComponent,
     PageTwoRightDataComponent,
     IndexCompComponent,
+    LoginNewComponent,
   ],
   imports: [
     RouterModule.forRoot([
@@ -85,7 +86,8 @@ import { AgmDirectionModule } from 'agm-direction';
       },{
         path: '',
         component: IndexCompComponent
-      }
+      },
+
    ]),
     BrowserModule,
     FormsModule,
