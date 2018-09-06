@@ -30,7 +30,8 @@ export class OrderDetailComponent implements OnInit {
   DeleteOrder(order: Object) {
     this.ordersService.DeleteOrder(this.user.restaurant_id, order);
     this.ShowOrder = null;
-    // console.log(order);
+     console.log(order);
+    console.log(this.user.restaurant_id)
   }
 
   UpdateOrder(order: Object , status: string) {

@@ -30,6 +30,7 @@
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'Recieved'  || ShowOrder.status === 'MealPrepared' || ShowOrder.status === 'Delivered'" *ngIf="ShowOrder.location_lat != 0" (click)="UpdateOrder(ShowOrder,'Recieved')">Order Recieved</button>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'MealPrepared' || ShowOrder.status === 'Delivered'" *ngIf="ShowOrder.location_lat != 0"  (click)="UpdateOrder(ShowOrder,'MealPrepared')">Meal Prepared</button>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'Recieved' ||  ShowOrder.status === 'Delivered'" *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder , 'Delivered')">Order Delivered</button>
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.payment != 'done'" *ngIf="ShowOrder.location_lat === 0"  data-dismiss="modal" (click)="DeleteOrder(ShowOrder)">Delete</button>
       </div>
     </div>
   </div>
