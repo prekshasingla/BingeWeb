@@ -13,6 +13,7 @@ export class OrderDetailComponent implements OnInit {
   @Input() dishes;
   @Input() quantities;
   @Input() user;
+  @Input() time_to_reach;
   map: google.maps.Map;
   private viewMap = false;
   public origin: any
@@ -60,6 +61,7 @@ getDirection(){
     this.calculateAndDisplayRoute(directionsService, directionsDisplay);
   }
 
+   
   calculateAndDisplayRoute(directionsService, directionsDisplay) {
     const start = new google.maps.LatLng(this.ShowOrder.location_lat, this.ShowOrder.location_long);
     const end = new google.maps.LatLng(28.5244, 77.1855);

@@ -21,6 +21,7 @@ export class IndexCompComponent implements OnInit {
   private selectedInsideOrder;
   public Dishes;
   public Quantity;
+  public TimeToReach;
   public LoadedFeature = 'homepage';
   public LoggedInUser: User;
 
@@ -33,6 +34,8 @@ export class IndexCompComponent implements OnInit {
     this.selectedOrder = Order;
     this.Dishes = Object.keys(Order.dishes);
     this.Quantity = Object.values(Order.dishes);
+    this.TimeToReach = Object.values(Order.time_to_reach);
+    
   }
 
   OnNavigate(feature) {

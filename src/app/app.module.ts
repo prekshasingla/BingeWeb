@@ -95,7 +95,7 @@ import { AgmDirectionModule } from 'agm-direction';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseCred),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyD0dnr8xuGHgv4fqEdLhLw4sDb97UP1a58",
+      apiKey: "AIzaSyAyfSgfWLxQxcgl8D2RFsiaSJaaOTuyy48",
       libraries: ["places"]
     }),
     AgmDirectionModule

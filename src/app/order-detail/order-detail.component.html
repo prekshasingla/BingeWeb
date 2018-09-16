@@ -16,6 +16,9 @@
        <button class="btn btn-primary"  *ngIf="ShowOrder.location_lat != 0" (click)="initMap()">View map</button>
         <div class="googleMap"  *ngIf="ShowOrder.location_lat != 0"  id="map"></div>
       </div>
+      <div class="modal-body">
+        <p *ngIf="ShowOrder.location_lat != 0" >time to reach - {{time_to_reach}}<p>
+      </div>
       <div class="modal-body" *ngFor="let dish of dishes;let i = index">
         {{ dish }}  -  {{ quantities[i] }}
       </div>
@@ -27,11 +30,14 @@
         <p> <strong> payment via: Credit-Card</strong></p>
        </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'Recieved'  || ShowOrder.status === 'MealPrepared' || ShowOrder.status === 'Delivered'" *ngIf="ShowOrder.location_lat != 0" (click)="UpdateOrder(ShowOrder,'Recieved')">Order Recieved</button>
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'MealPrepared' || ShowOrder.status === 'Delivered'" *ngIf="ShowOrder.location_lat != 0"  (click)="UpdateOrder(ShowOrder,'MealPrepared')">Meal Prepared</button>
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'Recieved' ||  ShowOrder.status === 'Delivered'" *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder , 'Delivered')">Order Delivered</button>
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved'  || ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered'" *ngIf="ShowOrder.location_lat != 0" (click)="UpdateOrder(ShowOrder,'recieved')">Order Recieved</button>
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered' || ShowOrder.status === 'pending' "  *ngIf="ShowOrder.location_lat != 0"  (click)="UpdateOrder(ShowOrder,'mealPreparing')">Meal Preparing</button>
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved' ||  ShowOrder.status === 'delivered' || ShowOrder.status === 'pending'" *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder , 'delivered')">Order Delivered</button>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.payment != 'done'" *ngIf="ShowOrder.location_lat === 0"  data-dismiss="modal" (click)="DeleteOrder(ShowOrder)">Delete</button>
       </div>
     </div>
   </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMMAaX6-zLoun2a_W5WYqvlE_rLzi6MCc&callback=initMap"
+    async defer></script>
+

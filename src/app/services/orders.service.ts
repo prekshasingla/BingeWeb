@@ -66,7 +66,7 @@ export class OrdersService {
     return this.InsideOrders;
   }
 
-  DeleteOrder(restaurant_id: string, order) {
+  DeleteOrder(restaurant_id: string, order, ) {
     // console.log(order);
     this.OrdersDoc = this.afs.doc(`orders/${restaurant_id}/order/${order.id}`);
     this.OrdersDoc.delete();
@@ -74,7 +74,7 @@ export class OrdersService {
 
   UpdateOrder(restaurant_id: string, order , status) {
     order.status = status;
-    this.OrdersDoc = this.afs.doc(`orders/${restaurant_id}/order/${order.id}`);
+    this.OrdersDoc = this.afs.doc(`orders/${restaurant_id}/PreOrder/${order.id}`);
     this.OrdersDoc.update(order);
   }
 
