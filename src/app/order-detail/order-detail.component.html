@@ -22,6 +22,9 @@
       <div class="modal-body" *ngFor="let dish of dishes;let i = index">
         {{ dish }}  -  {{ quantities[i] }}
       </div>
+      <div class="modal-body" *ngFor="let dish of dishesOneObjKeys;let i = index">
+        {{ dish }}  -  {{ dishesOneQuantities[i] }}
+      </div>
       <div  class="modal-body">
         <p>cart value : {{ ShowOrder.cart_value }}</p>
         <p *ngIf="ShowOrder.location_lat != 0" >order type : {{ ShowOrder.status }}</p>

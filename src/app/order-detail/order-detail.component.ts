@@ -16,16 +16,22 @@ export class OrderDetailComponent implements OnInit {
   @Input() time_to_reach;
   map: google.maps.Map;
   private viewMap = false;
-  public origin: any
-  public destination: any
+  public origin: any;
+  public destination: any;
+  private dishesOneQuantities=[];
+  private dishesOneObjKeys=[];
 
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
-    console.log(this.ShowOrder);
-    console.log(this.dishes);
-    // this.initMap();
-   // this.getDirection();
+    let tempKeys:any;
+    for(let obj of this.ShowOrder.dishes1){
+      tempKeys=Object.keys(obj);
+      for(let obj1 of tempKeys){
+           this.dishesOneObjKeys.push(obj1);
+           this.dishesOneQuantities.push(obj[obj1]);
+      }
+    }
   }
 
   DeleteOrder(order: Object) {

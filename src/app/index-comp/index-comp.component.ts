@@ -31,6 +31,7 @@ export class IndexCompComponent implements OnInit {
   }
 
   SendOrderDetail(Order) {
+
     this.selectedOrder = Order;
     this.Dishes = Object.keys(Order.dishes);
     this.Quantity = Object.values(Order.dishes);
