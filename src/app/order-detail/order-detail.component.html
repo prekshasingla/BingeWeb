@@ -19,9 +19,9 @@
       <div class="modal-body">
         <p *ngIf="ShowOrder.location_lat != 0" >time to reach - {{time_to_reach}}<p>
       </div>
-      <div class="modal-body" *ngFor="let dish of dishes;let i = index">
+     <!--  <div class="modal-body" *ngFor="let dish of dishes;let i = index">
         {{ dish }}  -  {{ quantities[i] }}
-      </div>
+      </div> -->
       <div class="modal-body" *ngFor="let dish of dishesOneObjKeys;let i = index">
         {{ dish }}  -  {{ dishesOneQuantities[i] }}
       </div>
@@ -38,9 +38,22 @@
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved' ||  ShowOrder.status === 'delivered' || ShowOrder.status === 'pending'" *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder , 'delivered')">Order Delivered</button>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.payment != 'done'" *ngIf="ShowOrder.location_lat === 0"  data-dismiss="modal" (click)="DeleteOrder(ShowOrder)">Delete</button>
       </div>
+     <!--  <div id='printDiv'>
+         <table border='1px'>
+            <tr>
+              <th> Name </th>
+              <th> Class </th>
+            </tr>
+            <tr>
+              <td> Bhaskar</td>
+              <td> S-21 </td>
+            </tr>
+         </table> 
+      </div> -->
     </div>
   </div>
 </div>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMMAaX6-zLoun2a_W5WYqvlE_rLzi6MCc&callback=initMap"
     async defer></script>
 

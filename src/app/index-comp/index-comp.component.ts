@@ -24,6 +24,8 @@ export class IndexCompComponent implements OnInit {
   public TimeToReach;
   public LoadedFeature = 'homepage';
   public LoggedInUser: User;
+  keys:any;
+  values:any;
 
   constructor(private ordersService: OrdersService) {}
 
@@ -33,8 +35,8 @@ export class IndexCompComponent implements OnInit {
   SendOrderDetail(Order) {
 
     this.selectedOrder = Order;
-    this.Dishes = Object.keys(Order.dishes);
-    this.Quantity = Object.values(Order.dishes);
+   // this.Dishes = Object.keys(Order.dishes);
+   // this.Quantity = Object.values(Order.dishes);
     this.TimeToReach = Object.values(Order.time_to_reach);
     
   }
@@ -55,12 +57,12 @@ export class IndexCompComponent implements OnInit {
 
     this.ordersService.getPreOrders(user.restaurant_id).subscribe(PreOrder => {
       this.PreOrders = PreOrder;
-      //console.log(this.PreOrders);
+          console.log('this preorders',this.PreOrders);
     });
 
     this.ordersService.getInsideOrders(user.restaurant_id).subscribe(InsideOrder => {
       this.InsideOrders = InsideOrder;
-      // console.log(this.Orders);
+  
     });
 
     this.LoadedFeature = 'Orders';
@@ -102,5 +104,25 @@ export class IndexCompComponent implements OnInit {
       console.log('Offers does not exist');
     }
   }
+
+  separateKyesValues(data:any,type:any){
+     this.keys=Object.keys(data);
+     this.values=Object.values(data);
+     if(type=='loop'){
+       return this.keys;
+     }
+     else if(type=='length'){
+       return this.keys.length;
+     }
+  }
+
+   printFunction()  {
+    let printData=document.getElementById('printData').innerHTML;
+    let oldData=document.getElementById('holdprintData').innerHTML;
+    document.body.innerHTML=printData;
+    window.print();
+    document.body.innerHTML=oldData;
+  }
+
 
 }

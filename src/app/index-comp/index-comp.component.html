@@ -1,10 +1,12 @@
+<div id='holdprintData'>
 <app-navbar [user]="LoggedInUser" (Feature)="OnNavigate($event)"></app-navbar>
 <app-homepage *ngIf="LoadedFeature == 'homepage'"></app-homepage>
 <br>
 <div class="container" *ngIf="LoadedFeature == 'Orders'">
  <div class="row">
    <div class="col-sm-12 col-md-6 col-lg-6 p-0" style="border-right: 0.8px solid black">
-      <h1 class="text-center">PreOrders</h1>
+      <div class='9'><h1 class="text-center">PreOrders</h1></div>
+      <div class='3'> <button type="button" (click)="printFunction()" class="btn btn-light">Print</button></div>
        <div *ngFor="let order of PreOrders ; let i = index;" style="display:inline-block;width: 45%" class="p-1 ml-1">
          <div class="card text-white mb-3 m-0"
                [ngClass]="{'bg-danger' : i >= 0 && i<10 , 'bg-warning' : i >= 10 && i<15 , 'bg-success' : i >= 15  }"
@@ -36,8 +38,31 @@
              </div>
            </div>
          </div>
+         <div id='printData' style='display:none'>
+           <table border="1px">
+              <tr>
+                <th>Cart Number</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+              </tr>
+              <ng-container *ngFor='let obj of PreOrders'>
+               <tr>
+                  <td [attr.rowspan]="separateKyesValues(obj.dishes,'length')">{{obj.cart_value}}</td>
+                   <ng-container *ngFor='let data of  separateKyesValues(obj.dishes,"loop");let i=index'>
+                      <td *ngIf='i==0'>{{keys[i]}}</td>
+                      <td *ngIf='i==0'> {{values[i]}}</td>  
+                   </ng-container>    
+               </tr>
+               <tr *ngFor='let data of  separateKyesValues(obj.dishes,"loop");let i=index'>
+                    <td *ngIf='i+1<keys.length'>{{keys[i+1]}}</td>
+                    <td *ngIf='i+1<keys.length'> {{values[i+1]}}</td>    
+                </tr>
+              </ng-container>
+           </table>
+        </div>
       </div>
-   <app-order-detail *ngIf="selectedOrder" [user]="LoggedInUser" [ShowOrder]="selectedOrder" [dishes]="Dishes" [quantities]="Quantity" [time_to_reach]="TimeToReach"></app-order-detail>
+   <app-order-detail *ngIf="selectedOrder" [user]="LoggedInUser" [ShowOrder]="selectedOrder"  [time_to_reach]="TimeToReach"></app-order-detail>
+   <!-- [dishes]="Dishes" [quantities]="Quantity" -->
  </div>
 </div>
 
@@ -75,3 +100,4 @@
 </div>
 
 <app-footer *ngIf="LoadedFeature === 'homepage'"></app-footer>
+</div>

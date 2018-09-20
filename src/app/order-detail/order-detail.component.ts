@@ -10,10 +10,11 @@ declare var google: any;
 })
 export class OrderDetailComponent implements OnInit {
   @Input() ShowOrder;
-  @Input() dishes;
+  // @Input() dishes;
   @Input() quantities;
   @Input() user;
   @Input() time_to_reach;
+  @Output() naviGate = new EventEmitter<string>();
   map: google.maps.Map;
   private viewMap = false;
   public origin: any;
@@ -24,6 +25,7 @@ export class OrderDetailComponent implements OnInit {
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
+    console.log('orders',this.ShowOrder);
     let tempKeys:any;
     for(let obj of this.ShowOrder.dishes1){
       tempKeys=Object.keys(obj);
@@ -34,10 +36,20 @@ export class OrderDetailComponent implements OnInit {
     }
   }
 
+  printFunction()  {
+    // let printData=document.getElementById('printDiv').innerHTML;
+    // let oldData=document.getElementById('holdprintData').innerHTML;
+    // document.body.innerHTML=printData;
+    // window.print();
+    // document.body.innerHTML=oldData;
+    // document.getElementById('exampleModal').style.display='none';
+
+  }
+
   DeleteOrder(order: Object) {
     this.ordersService.DeleteOrder(this.user.restaurant_id, order);
     this.ShowOrder = null;
-     console.log(order);
+    console.log(order);
     console.log(this.user.restaurant_id)
   }
 

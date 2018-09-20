@@ -11,21 +11,21 @@
     width: 100%;
   }
   
-  table {
-    font-family: arial, sans-serif;
+table {
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  th {
-    border: 1px solid #dddddd;
+}
+
+th, td {
     text-align: left;
     padding: 8px;
-  }
-  
-  tr:nth-child(1) {
-    background-color: #dddddd;
-  }
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
   
   login{
     align-items: center;
