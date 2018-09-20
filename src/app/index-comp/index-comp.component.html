@@ -6,7 +6,7 @@
  <div class="row">
    <div class="col-sm-12 col-md-6 col-lg-6 p-0" style="border-right: 0.8px solid black">
       <div class='9'><h1 class="text-center">PreOrders</h1></div>
-      <div class='3'> <button type="button" (click)="printFunction()" class="btn btn-light">Print</button></div>
+      <!-- <div class='3'> <button type="button" (click)="printFunction()" class="btn btn-light">Print</button></div> -->
        <div *ngFor="let order of PreOrders ; let i = index;" style="display:inline-block;width: 45%" class="p-1 ml-1">
          <div class="card text-white mb-3 m-0"
                [ngClass]="{'bg-danger' : i >= 0 && i<10 , 'bg-warning' : i >= 10 && i<15 , 'bg-success' : i >= 15  }"
@@ -61,8 +61,7 @@
            </table>
         </div>
       </div>
-   <app-order-detail *ngIf="selectedOrder" [user]="LoggedInUser" [ShowOrder]="selectedOrder"  [time_to_reach]="TimeToReach"></app-order-detail>
-   <!-- [dishes]="Dishes" [quantities]="Quantity" -->
+   <app-order-detail *ngIf="selectedOrder" [user]="LoggedInUser" [ShowOrder]="selectedOrder" [dishes]="Dishes" [quantities]="Quantity"  [time_to_reach]="TimeToReach"></app-order-detail>
  </div>
 </div>
 

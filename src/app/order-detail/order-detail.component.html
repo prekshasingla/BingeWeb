@@ -19,11 +19,26 @@
       <div class="modal-body">
         <p *ngIf="ShowOrder.location_lat != 0" >time to reach - {{time_to_reach}}<p>
       </div>
-     <!--  <div class="modal-body" *ngFor="let dish of dishes;let i = index">
-        {{ dish }}  -  {{ quantities[i] }}
-      </div> -->
-      <div class="modal-body" *ngFor="let dish of dishesOneObjKeys;let i = index">
-        {{ dish }}  -  {{ dishesOneQuantities[i] }}
+      <div class="modal-body" >
+        
+           <table >
+              <tr>
+                <th>Cart Number</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+              </tr>
+               <tr>
+                  <td [attr.rowspan]="dishes.length">{{ShowOrder.cart_value}}</td>
+                   <ng-container *ngFor='let dishe of dishes ;let i=index'>
+                      <td *ngIf='i==0'>{{dishe}}</td>
+                      <td *ngIf='i==0'> {{quantities[i]}}</td>  
+                   </ng-container>    
+               </tr>
+               <tr *ngFor='let dishe of  dishes;let i=index'>
+                    <td *ngIf='i+1<dishes.length'>{{dishe}}</td>
+                    <td *ngIf='i+1<dishes.length'> {{quantities[i+1]}}</td>    
+                </tr>
+           </table>
       </div>
       <div  class="modal-body">
         <p>cart value : {{ ShowOrder.cart_value }}</p>
@@ -33,6 +48,7 @@
         <p> <strong> payment via: Credit-Card</strong></p>
        </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Print</button>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved'  || ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered'" *ngIf="ShowOrder.location_lat != 0" (click)="UpdateOrder(ShowOrder,'recieved')">Order Recieved</button>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered' || ShowOrder.status === 'pending' "  *ngIf="ShowOrder.location_lat != 0"  (click)="UpdateOrder(ShowOrder,'mealPreparing')">Meal Preparing</button>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved' ||  ShowOrder.status === 'delivered' || ShowOrder.status === 'pending'" *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder , 'delivered')">Order Delivered</button>

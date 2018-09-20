@@ -15,4 +15,18 @@ h5{
   height: 300px;
   width: 100%;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th, td ,tr{
+    text-align: left;
+    padding: 8px;
+     border:0.5px solid silver ;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}

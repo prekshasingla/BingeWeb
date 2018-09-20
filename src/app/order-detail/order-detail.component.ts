@@ -10,7 +10,7 @@ declare var google: any;
 })
 export class OrderDetailComponent implements OnInit {
   @Input() ShowOrder;
-  // @Input() dishes;
+  @Input() dishes;
   @Input() quantities;
   @Input() user;
   @Input() time_to_reach;
@@ -19,21 +19,10 @@ export class OrderDetailComponent implements OnInit {
   private viewMap = false;
   public origin: any;
   public destination: any;
-  private dishesOneQuantities=[];
-  private dishesOneObjKeys=[];
 
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
-    console.log('orders',this.ShowOrder);
-    let tempKeys:any;
-    for(let obj of this.ShowOrder.dishes1){
-      tempKeys=Object.keys(obj);
-      for(let obj1 of tempKeys){
-           this.dishesOneObjKeys.push(obj1);
-           this.dishesOneQuantities.push(obj[obj1]);
-      }
-    }
   }
 
   printFunction()  {

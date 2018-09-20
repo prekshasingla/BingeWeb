@@ -34,4 +34,8 @@ export class LoginNewComponent implements OnInit {
     }
   }
 
+  featureSelected(data:any){
+     //console.log(data);
+  }
+
 }

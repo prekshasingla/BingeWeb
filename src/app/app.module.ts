@@ -40,6 +40,7 @@ import { RightDataComponent } from './right-data/right-data.component';
 import { LocationSearchComponent } from './location-search/location-search.component';
 import { IndexCompComponent } from './index-comp/index-comp.component';
 import { AgmDirectionModule } from 'agm-direction';
+import { PrivayPolicyComponent } from './privay-policy/privay-policy.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { AgmDirectionModule } from 'agm-direction';
     PageTwoRightDataComponent,
     IndexCompComponent,
     LoginNewComponent,
+    PrivayPolicyComponent
   ],
   imports: [
     RouterModule.forRoot([
@@ -83,7 +85,12 @@ import { AgmDirectionModule } from 'agm-direction';
       },{
         path: 'page-one/:catName',
         component: PageOneComponent
-      },{
+      },
+      {
+        path: 'privacypolicy.html',
+        component: PrivayPolicyComponent
+      },
+      {
         path: '',
         component: IndexCompComponent
       },

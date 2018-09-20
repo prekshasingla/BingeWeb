@@ -33,10 +33,17 @@ export class IndexCompComponent implements OnInit {
   }
 
   SendOrderDetail(Order) {
-
+    this.Dishes=[];
+    this.Quantity=[];
     this.selectedOrder = Order;
-   // this.Dishes = Object.keys(Order.dishes);
-   // this.Quantity = Object.values(Order.dishes);
+    let tempKeys:any;
+    for(let obj of Order.dishes){
+      tempKeys=Object.keys(obj);
+      for(let obj1 of tempKeys){
+           this.Dishes.push(obj1);
+           this.Quantity.push(obj[obj1]);
+      }
+    }
     this.TimeToReach = Object.values(Order.time_to_reach);
     
   }
@@ -106,8 +113,16 @@ export class IndexCompComponent implements OnInit {
   }
 
   separateKyesValues(data:any,type:any){
-     this.keys=Object.keys(data);
-     this.values=Object.values(data);
+     this.keys=[];
+     this.values=[];
+     let tempKeys:any;
+     for(let obj of data){
+      tempKeys=Object.keys(obj);
+      for(let obj1 of tempKeys){
+           this.keys.push(obj1);
+           this.values.push(obj[obj1]);
+      }
+     }
      if(type=='loop'){
        return this.keys;
      }
@@ -117,11 +132,11 @@ export class IndexCompComponent implements OnInit {
   }
 
    printFunction()  {
-    let printData=document.getElementById('printData').innerHTML;
-    let oldData=document.getElementById('holdprintData').innerHTML;
-    document.body.innerHTML=printData;
-    window.print();
-    document.body.innerHTML=oldData;
+    // let printData=document.getElementById('printData').innerHTML;
+    // let oldData=document.getElementById('holdprintData').innerHTML;
+    // document.body.innerHTML=printData;
+    // window.print();
+    // document.body.innerHTML=oldData;
   }
 
 
