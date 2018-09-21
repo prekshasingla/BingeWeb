@@ -38,7 +38,7 @@
              </div>
            </div>
          </div>
-         <div id='printData' style='display:none'>
+        <!--  <div id='printData' style='display:none'>
            <table border="1px">
               <tr>
                 <th>Cart Number</th>
@@ -59,9 +59,10 @@
                 </tr>
               </ng-container>
            </table>
-        </div>
+        </div> -->
       </div>
-   <app-order-detail *ngIf="selectedOrder" [user]="LoggedInUser" [ShowOrder]="selectedOrder" [dishes]="Dishes" [quantities]="Quantity"  [time_to_reach]="TimeToReach"></app-order-detail>
+   <app-order-detail *ngIf="selectedOrder" [user]="LoggedInUser" [ShowOrder]="selectedOrder" [time_to_reach]="TimeToReach"></app-order-detail>
+   <!-- [dishes]="Dishes" [quantities]="Quantity" -->
  </div>
 </div>
 

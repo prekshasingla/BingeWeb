@@ -23,16 +23,17 @@ export class OrderDetailComponent implements OnInit {
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
+   console.log(this.ShowOrder);
   }
 
-  printFunction()  {
-    // let printData=document.getElementById('printDiv').innerHTML;
-    // let oldData=document.getElementById('holdprintData').innerHTML;
-    // document.body.innerHTML=printData;
-    // window.print();
-    // document.body.innerHTML=oldData;
-    // document.getElementById('exampleModal').style.display='none';
-
+  printFunction(event:any)  {
+    let printData=document.getElementById('printDiv').innerHTML;
+    let oldData=document.getElementById('holdprintData').innerHTML;
+    document.body.innerHTML=printData;
+    window.print();
+    document.body.innerHTML=oldData;
+    document.getElementById('exampleModal').style.display='none';
+    this.naviGate.emit('Orders');
   }
 
   DeleteOrder(order: Object) {
@@ -85,5 +86,14 @@ getDirection(){
         window.alert('Directions request failed due to ' + status);
       }
     });
+  }
+
+  separateKyesValues(data:any,type:any){
+     this.dishes=Object.keys(data);
+     this.quantities=Object.values(data);
+     if(type=='length')
+       return this.dishes.length;
+     else if(type=='loop')
+       return this.dishes;
   }
 }

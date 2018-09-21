@@ -33,17 +33,7 @@ export class IndexCompComponent implements OnInit {
   }
 
   SendOrderDetail(Order) {
-    this.Dishes=[];
-    this.Quantity=[];
     this.selectedOrder = Order;
-    let tempKeys:any;
-    for(let obj of Order.dishes){
-      tempKeys=Object.keys(obj);
-      for(let obj1 of tempKeys){
-           this.Dishes.push(obj1);
-           this.Quantity.push(obj[obj1]);
-      }
-    }
     this.TimeToReach = Object.values(Order.time_to_reach);
     
   }
