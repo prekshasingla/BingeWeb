@@ -62,7 +62,7 @@
         ||  ShowOrder.status === 'delivered' || ShowOrder.status === 'pending'" 
         *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder ,
          'delivered')">Order Delivered</button>
-      <button type="button" class="btn btn-primary" [disabled]="ShowOrder.payment!= 'done'" 
+      <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status!= 'delivered'" 
       *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="DeleteOrder(ShowOrder)">
       Delete</button>
       </div>
