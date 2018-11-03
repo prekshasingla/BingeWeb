@@ -10,10 +10,12 @@ declare var google: any;
 })
 export class OrderDetailComponent implements OnInit {
   @Input() ShowOrder;
+  @Input() InsideOrder;
   @Input() dishes;
   @Input() quantities;
   @Input() user;
   @Input() time_to_reach;
+
   @Output() naviGate = new EventEmitter<string>();
   map: google.maps.Map;
   private viewMap = false;
@@ -36,11 +38,15 @@ export class OrderDetailComponent implements OnInit {
     this.naviGate.emit('Orders');
   }
 
-  DeleteOrder(order: Object) {
-    console.log(order);
+  DeleteOrder(ShowOrder: Object,user: Object,InsideOrder: Object,dishes: Object,quantities: Object) {
+    console.log(this.ShowOrder.id);
+    console.log(user);
+    console.log(InsideOrder);
     console.log(this.user.restaurant_id);
+    console.log(dishes);
+    console.log(quantities);
     console.log('hi');
-    this.ordersService.DeleteOrder(this.user.restaurant_id, order);
+    this.ordersService.DeleteOrder(this.user.restaurant_id, ShowOrder);
     this.ShowOrder = null;
     
   }
