@@ -55,7 +55,8 @@ export class OrdersService {
   }
 
   getInsideOrders(restaurant_id: string) {
-    this.OrdersCollection = this.afs.collection(`orders/${restaurant_id}/InsideOrder` , ref => ref.orderBy('location_lat' , 'asc'));
+    this.OrdersCollection = this.afs.collection(`orders/${restaurant_id}/InsideOrder` , ref => 
+    ref.orderBy('location_lat' , 'asc'));
     this.InsideOrders = this.OrdersCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data();
@@ -66,10 +67,12 @@ export class OrdersService {
     return this.InsideOrders;
   }
 
-  DeleteOrder(restaurant_id: string, order, ) {
-    // console.log(order);
-    this.OrdersDoc = this.afs.doc(`orders/${restaurant_id}/order/${order.id}`);
-    this.OrdersDoc.delete();
+  DeleteOrder(restaurant_id: string, order) {
+     console.log(restaurant_id);
+     console.log(order.id);
+     console.log('bye');
+    this.OrdersDoc = this.afs.doc(`orders/${restaurant_id}/PreOrder/${order.id}`);
+   this.OrdersDoc.delete();
   }
 
   UpdateOrder(restaurant_id: string, order , status) {

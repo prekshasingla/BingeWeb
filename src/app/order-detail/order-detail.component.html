@@ -50,10 +50,21 @@
        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)='printFunction($event)'>Print</button>
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved'  || ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered'" *ngIf="ShowOrder.location_lat != 0" (click)="UpdateOrder(ShowOrder,'recieved')">Order Recieved</button>
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered' || ShowOrder.status === 'pending' "  *ngIf="ShowOrder.location_lat != 0"  (click)="UpdateOrder(ShowOrder,'mealPreparing')">Meal Preparing</button>
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved' ||  ShowOrder.status === 'delivered' || ShowOrder.status === 'pending'" *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder , 'delivered')">Order Delivered</button>
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.payment != 'done'" *ngIf="ShowOrder.location_lat === 0"  data-dismiss="modal" (click)="DeleteOrder(ShowOrder)">Delete</button>
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved'  
+        || ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered'" 
+        *ngIf="ShowOrder.location_lat != 0" (click)="UpdateOrder(ShowOrder,'recieved')">
+        Order Recieved</button>
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'mealPreparing'
+         || ShowOrder.status === 'delivered' || ShowOrder.status === 'pending' "  
+         *ngIf="ShowOrder.location_lat != 0"  (click)="UpdateOrder(ShowOrder,'mealPreparing')">
+         Meal Preparing</button>
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved' 
+        ||  ShowOrder.status === 'delivered' || ShowOrder.status === 'pending'" 
+        *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="UpdateOrder(ShowOrder ,
+         'delivered')">Order Delivered</button>
+      <button type="button" class="btn btn-primary" [disabled]="ShowOrder.payment!= 'done'" 
+      *ngIf="ShowOrder.location_lat != 0"  data-dismiss="modal" (click)="DeleteOrder(ShowOrder)">
+      Delete</button>
       </div>
      <!--  <div id='printDiv'>
          <table border='1px'>
