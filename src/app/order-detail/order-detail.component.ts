@@ -39,7 +39,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   DeleteOrder(ShowOrder: Object,user: Object,InsideOrder: Object,dishes: Object,quantities: Object) {
-    console.log(this.ShowOrder.id);
+    console.log(ShowOrder);
     console.log(user);
     console.log(InsideOrder);
     console.log(this.user.restaurant_id);
