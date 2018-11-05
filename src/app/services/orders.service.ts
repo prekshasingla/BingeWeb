@@ -21,6 +21,8 @@ export class OrdersService {
   Users: Observable<User[]>;
   OrdersDoc: AngularFirestoreDocument<any>;
   OrdersDoc2: AngularFirestoreDocument<any>;
+  OrdersDoc3: AngularFirestoreDocument<any>;
+  OrdersDoc4: AngularFirestoreDocument<any>;
   UsersDoc: AngularFirestoreDocument<any>;
   restaurant: User[];
   menu: Menu;
@@ -73,8 +75,12 @@ export class OrdersService {
      console.log(order.id);
      console.log('bye');
     this.OrdersDoc = this.afs.doc(`orders/${restaurant_id}/PreOrder/${order.id}`);
-   this.OrdersDoc.delete();
+    
+  
    this.OrdersDoc2 = this.afs.doc(`orders/${restaurant_id}/InsideOrder/${order.id}`);
+   this.OrdersDoc3 = this.afs.doc(`orders/${restaurant_id}/order/${order.id}`);
+   this.OrdersDoc3.set(order);
+    this.OrdersDoc.delete();
    this.OrdersDoc2.delete();
   }
 

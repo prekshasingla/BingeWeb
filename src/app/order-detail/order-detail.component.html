@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"> {{ ShowOrder.userId }} </h5>
-        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status!= 'delivered' &&  ShowOrder.payment!= 'done'" 
+        <button type="button" class="btn btn-primary" 
         data-dismiss="modal" (click)="DeleteOrder(ShowOrder,user,InsideOrder,dishes,quantities)">
       Delete</button>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -22,6 +22,7 @@
         </div>
         
       </div>
+      <div id="printableArea">
       <div class="modal-body">
         <p *ngIf="ShowOrder.location_lat != 0" >time to reach - {{time_to_reach}}<p>
       </div>
@@ -54,44 +55,11 @@
          <div *ngIf="ShowOrder.location_lat === 0"> <p>Table Number : {{ ShowOrder.tableNo }}</p></div>
         <p> <strong> payment via: Credit-Card</strong></p>
        </div>
-       
+     </div>  
       <div class="modal-footer">
-        <div class="w3-container">
-          <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Print</button>
-        
-          <div id="id01" class="w3-modal">
-            <div class="w3-modal-content">
-              <div class="w3-container">
-                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                <p>User Id:{{ShowOrder.userId}}</p>
-                <p>Table No. :{{ShowOrder.tableNo}}</p>
-                <table >
-                  <tr>
-                    <th>Serial Number</th>
-                    <th>Item Name</th>
-                    <th>Quantity</th>
-                  </tr>
-                  <ng-container *ngFor='let order of ShowOrder.dishes;let i=index'>
-                   <tr>
-                      <td [attr.rowspan]="separateKyesValues(order,'length')">{{i+1}}</td>
-                       <ng-container *ngFor='let dishe of separateKyesValues(order,"loop") ;let j=index'>
-                          <td *ngIf='j==0'>{{dishe}}</td>
-                          <td *ngIf='j==0'> {{quantities[j]}}</td>  
-                       </ng-container>    
-                   </tr>
-                   <tr *ngFor='let dishe of  dishes;let j=index'>
-                        <td *ngIf='j+1<dishes.length'>{{dishes[j+1]}}</td>
-                        <td *ngIf='j+1<dishes.length'> {{quantities[j+1]}}</td>    
-                  </tr>
-                  </ng-container>
-               </table>
-                <p>No. of Dishes:{{ShowOrder.dishes.length}}</p>
-                <p>Cart value: {{ShowOrder.cart_value}}</p>
-                <p>Payment Status :{{ShowOrder.payment}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <form>
+          <input type="button" class="btn btn-primary" onclick="printDiv('printableArea')" value="Print" />
+        </form>
         
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved'  
         || ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered'" 
@@ -123,5 +91,15 @@
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMMAaX6-zLoun2a_W5WYqvlE_rLzi6MCc&callback=initMap"
-    async defer></script>
+    async defer>
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}</script>
 
