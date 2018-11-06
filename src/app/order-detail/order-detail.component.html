@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"> {{ ShowOrder.userId }} </h5>
-        <button type="button" class="btn btn-primary" 
+        <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status!= 'delivered' &&  ShowOrder.payment!= 'done'"
         data-dismiss="modal" (click)="DeleteOrder(ShowOrder,user,InsideOrder,dishes,quantities)">
       Delete</button>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -22,7 +22,7 @@
         </div>
         
       </div>
-      <div id="printableArea">
+      
       <div class="modal-body">
         <p *ngIf="ShowOrder.location_lat != 0" >time to reach - {{time_to_reach}}<p>
       </div>
@@ -55,12 +55,45 @@
          <div *ngIf="ShowOrder.location_lat === 0"> <p>Table Number : {{ ShowOrder.tableNo }}</p></div>
         <p> <strong> payment via: Credit-Card</strong></p>
        </div>
-     </div>  
+      
       <div class="modal-footer">
         <form>
           <input type="button" class="btn btn-primary" onclick="printDiv('printableArea')" value="Print" />
         </form>
-        
+        <div id="printableArea">
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content">
+            <div class="w3-container">
+              
+              <p>User Id:{{ShowOrder.userId}}</p>
+              <p>Table No. :{{ShowOrder.tableNo}}</p>
+              <table >
+                <tr>
+                  
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                </tr>
+                <ng-container *ngFor='let order of ShowOrder.dishes;let i=index'>
+                 <tr>
+                    
+                     <ng-container *ngFor='let dishe of separateKyesValues(order,"loop") ;let j=index'>
+                        <td *ngIf='j==0'>{{dishe}}</td>
+                        <td *ngIf='j==0'> {{quantities[j]}}</td>  
+                     </ng-container>    
+                 </tr>
+                 <tr *ngFor='let dishe of  dishes;let j=index'>
+                      <td *ngIf='j+1<dishes.length'>{{dishes[j+1]}}</td>
+                      <td *ngIf='j+1<dishes.length'> {{quantities[j+1]}}</td>    
+                </tr>
+                </ng-container>
+             </table>
+              <p>No. of Dishes:{{ShowOrder.dishes.length}}</p>
+              <p>Cart value: {{ShowOrder.cart_value}}</p>
+              <p>Payment Status :{{ShowOrder.payment}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
         <button type="button" class="btn btn-primary" [disabled]="ShowOrder.status === 'recieved'  
         || ShowOrder.status === 'mealPreparing' || ShowOrder.status === 'delivered'" 
         *ngIf="ShowOrder.location_lat != 0" (click)="UpdateOrder(ShowOrder,'recieved')">

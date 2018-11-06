@@ -9,15 +9,22 @@
  gtag('js', new Date());
 
  gtag('config', 'UA-120983513-1');
- function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
+ function printDiv(elem)
+{
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
-     document.body.innerHTML = printContents;
+    mywindow.document.write('<html><head><title></title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
 
-     window.print();
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
 
-     document.body.innerHTML = originalContents;
+    mywindow.print();
+    mywindow.close();
+
+    return true;
 }
 </script>
   <meta charset="utf-8">
