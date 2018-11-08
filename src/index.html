@@ -25,9 +25,17 @@
     mywindow.close();
 
     return true;
-    var d = new Date();
-          document.getElementById("demo").innerHTML = d;
 }
+function Unix_timestamp(t)
+        {
+        var dt = new Date(t*1000);
+        var hr = dt.getHours();
+        var m = "0" + dt.getMinutes();
+        var s = "0" + dt.getSeconds();
+        return hr+ ':' + m.substr(-2) + ':' + s.substr(-2);  
+        }
+        console.log("nnnnnn");
+        console.log(Unix_timestamp(1412743274));
 </script>
   <meta charset="utf-8">
   <title>Binge- Discover and pre order Food at Restaurants near you from Delhi NCR best food discovery platform.</title>

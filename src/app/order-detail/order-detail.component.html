@@ -49,26 +49,7 @@
            </table>
       </div>
       <div  class="modal-body">
-          <script>
-              var timestamp1 = ShowOrder.timestamp;
-              date = new Date(timestamp1 * 1000);
-              var year    = date.getFullYear();
-    var month   = date.getMonth();
-    var day     = date.getDay();
-    var hour    = date.getHours();
-    var minute  = date.getMinutes();
-    var seconds = date.getSeconds(); 
-    console.log(month);
-    {{month}}
-    month
-          </script>
-          {{month}}
-          month
-        <p>Table No.: <input type="text" id="myText" value=""></p>
-        <script>
-        var x = document.getElementById("myText").value;
-        </script>
-        
+          Unix_timestamp(1412743274);
         <button data-dismiss="modal" (click)="myFunction(x,ShowOrder,user,InsideOrder,dishes,quantities)">Send</button>
         <p>cart value : {{ ShowOrder.cart_value }}</p>
         <p id="demo"></p>
