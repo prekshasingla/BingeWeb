@@ -50,7 +50,8 @@
       </div>
       <div  class="modal-body">
           <p id="demo"></p>
-        <p>Table No.: <input type="text" id="myText" value="Enter table no."></p>    
+        <p>Table No.: <input type="number" id="myText" value="Enter table no."></p>
+
         <button data-dismiss="modal" (click)="myFunction(ShowOrder,user,InsideOrder,dishes,quantities)">Send</button>
         <p>cart value : {{ ShowOrder.cart_value }}</p>
         <p id="demo"></p>

@@ -54,9 +54,9 @@ export class OrderDetailComponent implements OnInit {
   myFunction(ShowOrder: Object,user: Object,InsideOrder: Object,dishes: Object,quantities: Object) {
     
     console.log("bbbbbb");
-    var x2= document.getElementById("myText").value;
-    console.log(x2);
-     this.ordersService.table(x2,this.user.restaurant_id, ShowOrder);
+    let x3=(document.getElementById("myText"))["value"];
+    console.log(x3);
+     this.ordersService.table(x3,this.user.restaurant_id, ShowOrder);
   }
   UpdateOrder(order: Object , status: string) {
      console.log(status);
