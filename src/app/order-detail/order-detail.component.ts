@@ -51,7 +51,8 @@ export class OrderDetailComponent implements OnInit {
     
   }
 
-  myFunction(x:string,ShowOrder: Object,user: Object,InsideOrder: Object,dishes: Object,quantities: Object) {
+  myFunction(ShowOrder: Object,user: Object,InsideOrder: Object,dishes: Object,quantities: Object) {
+    
     console.log("bbbbbb");
     var x2= document.getElementById("myText").value;
     console.log(x2);
