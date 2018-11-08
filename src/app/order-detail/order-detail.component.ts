@@ -60,7 +60,7 @@ getDirection(){
   this.origin = { lat: this.ShowOrder.location_lat, lng: this.ShowOrder.location_long };
   this.destination = { lat: 28.5244, lng: 77.1855 };
 }
-
+addTableNo()
 
 // GOOGLE MAPS
 

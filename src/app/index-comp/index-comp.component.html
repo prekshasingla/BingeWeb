@@ -10,7 +10,18 @@
        <div *ngFor="let order of PreOrders ; let i = index;" style="display:inline-block;width: 45%" class="p-1 ml-1">
          <div class="card text-white mb-3 m-0"
                [ngClass]="{'bg-danger' : i >= 0 && i<10 , 'bg-warning' : i >= 10 && i<15 , 'bg-success' : i >= 15  }"
-               style="width: 100%;">
+               style="width: 100%;" >
+               <script>
+                  (function () { 
+                    if ("ShowOrder.status!= 'delivered'") {
+                      document.getElementById("bg-danger").style.backgroundColor = '#99C262';
+                    }
+                    else if ("ShowOrder.status!= 'mealPreparing'")
+                    {
+                      document.getElementById("bg-danger").style.backgroundColor = '#F8D347';
+                    }
+                  })();    
+                </script>
            <div class="card-body">
              <h5 class="card-title"> Order No : {{ i+1 }}</h5>
              <p class="card-text">User       : {{order.userId}} <br> cart value : {{order.cart_value}}</p>
