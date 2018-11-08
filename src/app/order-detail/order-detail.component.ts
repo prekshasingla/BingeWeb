@@ -51,6 +51,12 @@ export class OrderDetailComponent implements OnInit {
     
   }
 
+  myFunction(x:string,ShowOrder: Object,user: Object,InsideOrder: Object,dishes: Object,quantities: Object) {
+    console.log("bbbbbb");
+    var x2= document.getElementById("myText").value;
+    console.log(x2);
+     this.ordersService.table(x2,this.user.restaurant_id, ShowOrder);
+  }
   UpdateOrder(order: Object , status: string) {
      console.log(status);
     this.ordersService.UpdateOrder(this.user.restaurant_id, order, status);
@@ -60,7 +66,6 @@ getDirection(){
   this.origin = { lat: this.ShowOrder.location_lat, lng: this.ShowOrder.location_long };
   this.destination = { lat: 28.5244, lng: 77.1855 };
 }
-addTableNo()
 
 // GOOGLE MAPS
 

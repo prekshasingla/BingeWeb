@@ -64,6 +64,12 @@
           </script>
           {{month}}
           month
+        <p>Table No.: <input type="text" id="myText" value=""></p>
+        <script>
+        var x = document.getElementById("myText").value;
+        </script>
+        
+        <button data-dismiss="modal" (click)="myFunction(x,ShowOrder,user,InsideOrder,dishes,quantities)">Send</button>
         <p>cart value : {{ ShowOrder.cart_value }}</p>
         <p id="demo"></p>
         <p *ngIf="ShowOrder.location_lat != 0" >order type : {{ ShowOrder.status }}</p>

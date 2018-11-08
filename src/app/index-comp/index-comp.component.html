@@ -13,10 +13,11 @@
                style="width: 100%;" >
                <script>
                   (function () { 
-                    if ("ShowOrder.status!= 'delivered'") {
+                    if ("order.status!= 'delivered'") {
+                      
                       document.getElementById("bg-danger").style.backgroundColor = '#99C262';
                     }
-                    else if ("ShowOrder.status!= 'mealPreparing'")
+                    else if ("order.status!= 'mealPreparing'")
                     {
                       document.getElementById("bg-danger").style.backgroundColor = '#F8D347';
                     }

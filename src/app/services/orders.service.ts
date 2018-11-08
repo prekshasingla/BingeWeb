@@ -23,6 +23,7 @@ export class OrdersService {
   OrdersDoc2: AngularFirestoreDocument<any>;
   OrdersDoc3: AngularFirestoreDocument<any>;
   OrdersDoc4: AngularFirestoreDocument<any>;
+  OrdersDoc5: AngularFirestoreDocument<any>;
   UsersDoc: AngularFirestoreDocument<any>;
   restaurant: User[];
   menu: Menu;
@@ -83,7 +84,12 @@ export class OrdersService {
     this.OrdersDoc.delete();
    this.OrdersDoc2.delete();
   }
-
+  table(bb:string,restaurant_id: string, order)
+  {
+    order.table=bb;
+    this.OrdersDoc5 = this.afs.doc(`orders/${restaurant_id}/PreOrder/${order.id}`);
+    this.OrdersDoc5.update(order);
+  }
   UpdateOrder(restaurant_id: string, order , status) {
     order.status = status;
     this.OrdersDoc = this.afs.doc(`orders/${restaurant_id}/PreOrder/${order.id}`);
