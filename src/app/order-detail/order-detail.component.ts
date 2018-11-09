@@ -67,7 +67,17 @@ getDirection(){
   this.origin = { lat: this.ShowOrder.location_lat, lng: this.ShowOrder.location_long };
   this.destination = { lat: 28.5244, lng: 77.1855 };
 }
-
+time1(ShowOrder:Object)
+{
+  var dt = new Date(this.ShowOrder.timestamp*1000);
+  var d= dt.getDate();
+  var m =dt.getMonth()+1;
+  var y=dt.getFullYear();
+  var hr = dt.getHours();
+  var m1 = "0" + dt.getMinutes();
+  var s = "0" + dt.getSeconds();
+  return 'date : '+d+'/'+m1+'/'+y +'     time'+ hr+ ':' + m1.substr(-1) + ':' + s.substr(-2); 
+}
 // GOOGLE MAPS
 
   initMap() {

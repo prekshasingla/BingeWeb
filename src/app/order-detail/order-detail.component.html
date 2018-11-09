@@ -50,9 +50,10 @@
       </div>
       <div  class="modal-body">
           <p id="demo"></p>
-        <p>Table No.: <input type="number" id="myText" value="Enter table no."></p>
+          <p>Timestamp:{{ ShowOrder.timestamp }}</p>
+        <p *ngIf="ShowOrder.location_lat != 0">Table No.: <input type="number" id="myText"  value="Enter table no.">
 
-        <button data-dismiss="modal" (click)="myFunction(ShowOrder,user,InsideOrder,dishes,quantities)">Send</button>
+        <button data-dismiss="modal" (click)="myFunction(ShowOrder,user,InsideOrder,dishes,quantities)">Send</button></p>
         <p>cart value : {{ ShowOrder.cart_value }}</p>
         <p id="demo"></p>
         <p *ngIf="ShowOrder.location_lat != 0" >order type : {{ ShowOrder.status }}</p>
