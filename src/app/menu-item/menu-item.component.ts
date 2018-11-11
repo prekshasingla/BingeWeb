@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output, AfterViewInit} from '@angular/core';
 import { Menu } from '../models/menu-item.model';
 import { OrdersService } from '../services/orders.service';
 
@@ -12,10 +12,18 @@ export class MenuItemComponent implements OnInit {
   title; desc; category; price; course_type; serving; veg;
   @Input() Restaurant;
   @Input() Menu;
-
+  @Input() ShowOrder;
+  @Input() InsideOrder;
+  @Input() dishes;
+  @Input() quantities;
+  @Input() item;
+  @Input() time_to_reach;
   constructor(private orderService: OrdersService) { }
 
   ngOnInit() {
+    console.log("ans");
+    console.log(this.Menu);
+    console.log(this.Restaurant);
   }
 
   ShowMenuForm() {

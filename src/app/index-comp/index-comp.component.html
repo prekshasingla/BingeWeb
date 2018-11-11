@@ -91,7 +91,7 @@
 </div>
 
 <div class="container" *ngIf="LoadedFeature === 'Menu'">
-  <app-menu-item [Restaurant]="LoggedInUser" [Menu]="MenuItems"></app-menu-item>
+  <app-menu-item *ngIf="MenuItems" [Restaurant]="LoggedInUser" [Menu]="MenuItems"></app-menu-item>
 </div>
 
 <div class="container">

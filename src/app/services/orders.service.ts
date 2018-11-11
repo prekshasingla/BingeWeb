@@ -113,8 +113,8 @@ export class OrdersService {
     });
   }
 
-  getMenuItem(restaurant_id: string) {
-    this.MenuItems = this.afs.collection(`Menu/${restaurant_id}/course 1`).snapshotChanges().map(changes => {
+  getMenuItem() {
+    this.MenuItems = this.afs.collection(`Menu/too_indian_delhi1/course 1`).snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data();
         data.id = a.payload.doc.id;

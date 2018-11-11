@@ -81,6 +81,10 @@ time1(ShowOrder:Object)
 // GOOGLE MAPS
 
   initMap() {
+    const seeMore = document.getElementById("seeMoreBtn");
+              const article = document.getElementById("map");
+              
+                    article.classList.toggle("expanded");
     this.viewMap = !this.viewMap;
     const directionsService = new google.maps.DirectionsService;
     const directionsDisplay = new google.maps.DirectionsRenderer;

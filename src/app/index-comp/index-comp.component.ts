@@ -30,6 +30,11 @@ export class IndexCompComponent implements OnInit {
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
+    console.log(this.PreOrders);
+    console.log(this.MenuItems);
+    console.log(this.InsideOrders);
+    console.log(this.Offers);
+    console.log(this.CurrentOffers);
   }
 
   SendOrderDetail(Order) {
@@ -54,12 +59,17 @@ export class IndexCompComponent implements OnInit {
 
     this.ordersService.getPreOrders(user.restaurant_id).subscribe(PreOrder => {
       this.PreOrders = PreOrder;
-          console.log('this preorders',this.PreOrders);
+        //  console.log('this preorders',this.PreOrders);
     });
 
     this.ordersService.getInsideOrders(user.restaurant_id).subscribe(InsideOrder => {
       this.InsideOrders = InsideOrder;
-  
+     // console.log('baba',this.InsideOrders);
+    });
+
+    this.ordersService.getMenuItem().subscribe(item => {
+      this.MenuItems = item;
+      console.log('baba2',this.MenuItems);
     });
 
     this.LoadedFeature = 'Orders';
@@ -68,8 +78,9 @@ export class IndexCompComponent implements OnInit {
   }
 
   getMenuItems() {
-    this.ordersService.getMenuItem(this.LoggedInUser.restaurant_id).subscribe( item => {
+    this.ordersService.getMenuItem().subscribe(item => {
       this.MenuItems = item;
+      console.log(this.MenuItems);
     });
   }
 
