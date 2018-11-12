@@ -24,6 +24,8 @@ export class OrdersService {
   OrdersDoc3: AngularFirestoreDocument<any>;
   OrdersDoc4: AngularFirestoreDocument<any>;
   OrdersDoc5: AngularFirestoreDocument<any>;
+  OrdersDoc6: AngularFirestoreDocument<any>;
+  OrdersDoc7: AngularFirestoreDocument<any>;
   UsersDoc: AngularFirestoreDocument<any>;
   restaurant: User[];
   menu: Menu;
@@ -84,6 +86,11 @@ export class OrdersService {
     this.OrdersDoc.delete();
    this.OrdersDoc2.delete();
   }
+  DeleteOrder2(item)
+  {
+    this.OrdersDoc6 = this.afs.doc(`Menu/too_indian_delhi1/course 1/${item.id}`);
+    this.OrdersDoc6.delete();
+  }
   table(bb:string,restaurant_id: string, order)
   {
     order.table=bb;
@@ -124,18 +131,31 @@ export class OrdersService {
     return this.MenuItems;
   }
 
-  SaveMenuItem(restaurant_id: string , title: string, desc: string, category: string , price: string , veg: number , course_type: string, serving: string) {
-    console.log(title, desc , category , price , veg , course_type , serving);
+  SaveMenuItem(restaurant_id: string , title: string, desc: string, category: string , price: string , veg: number , course_type: string, Serving: string) {
+    console.log(title, desc , category , price , veg , course_type , Serving);
 
 
-    this.afs.collection(`Menu/${restaurant_id}/${course_type}`).add({
+    this.afs.collection(`Menu/too_indian_delhi1/course 1`).add({
       title: title,
       description: desc,
       category: category,
       price: price,
       veg: veg,
-      serving: serving
+      serving: Serving
     });
+  }
+
+  SaveMenuItem2(restaurant_id: string , title:string, desc, category , price, veg , course_type, Serving,item) {
+    console.log(title, desc , category , price , veg , course_type , Serving);
+      item.title = title;
+      item.description = desc;
+      item.category = category;
+      item.price = price;
+      item.veg = veg;
+      item.serving = Serving;
+      
+      this.OrdersDoc7 = this.afs.doc(`Menu/too_indian_delhi1/course 1`);
+      this.OrdersDoc7.update(item);
   }
 
   SaveOffer(restaurant_id, title, date, day, start_time, end_time, discount) {
