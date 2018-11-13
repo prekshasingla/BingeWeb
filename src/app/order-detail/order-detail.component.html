@@ -25,7 +25,7 @@
       </div>
       
       <div class="modal-body">
-        <p *ngIf="ShowOrder.location_lat != 0" >time to reach : {{time_to_reach}}<p>
+        <p *ngIf="ShowOrder.location_lat != 0" >time to reach : {{ ShowOrder.time_to_reach }}<p>
       </div>
       <div class="modal-body" id='printOrder'>
            <table >
@@ -84,7 +84,7 @@
                  <tr>
                     
                      <ng-container *ngFor='let dishe of separateKyesValues(order,"loop") ;let j=index'>
-                        <td *ngIf='j==0'>{{dishe}}</td>
+                        <td *ngIf='j==0'>{{dishes}}</td>
                         <td *ngIf='j==0'> {{quantities[j]}}</td>  
                      </ng-container>    
                  </tr>
