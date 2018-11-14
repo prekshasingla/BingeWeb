@@ -158,9 +158,10 @@ export class OrdersService {
       this.OrdersDoc7.update(item);
   }
 
-  SaveMenuItem3(restaurant_id: string ,ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
+  SaveMenuItem3(restaurant_id: string ,ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
-    console.log(restaurant_id,ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+    console.log(restaurant_id,ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+
   }
   SaveOffer(restaurant_id, title, date, day, start_time, end_time, discount) {
     console.log(restaurant_id, title, date, day, start_time, end_time, discount);

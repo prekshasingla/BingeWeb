@@ -47,12 +47,12 @@ export class MenuItemComponent implements OnInit {
     this.MenuForm2 = true;
 
   }
-  SaveMenu(ResId: string,Type: string,Category: string,CourseMeal: string,Desc: string,Discount: string,gst: string,hasv: string,name: string,posturl: string,price: string,veg: string,videourl: string) {
-    console.log(ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+  SaveMenu(ResId: string,Category: string,CourseMeal: string,Desc: string,Discount: string,gst: string,hasv: string,name: string,posturl: string,price: string,veg: string,videourl: string) {
+    console.log(ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
     if (veg === '1') {
-      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,0,videourl);
+      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,0,videourl);
     } else {
-      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,1,videourl);
+      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,1,videourl);
     }
   }
   SaveMenu2(title: string, desc: string, category: string , price: string , veg: string , course_type: string, Serving: string,item: Object) {
