@@ -18,14 +18,36 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="Category" class="col-sm-2 col-form-label">Category</label>
+        <label for="course_type" class="col-sm-2 col-form-label">Course Type</label>
         <div class="col-sm-10">
-          <select name="Category" class="custom-select" name="Category" [(ngModel)]="Category" id="Category">
-            <option selected>Classic Cocktail</option>
-            <option>Deserts</option>
+          <select name="course_type" class="custom-select" name="course_type" [(ngModel)]="course_type" id="course_type">
+            <option selected>Classic Cocktails</option>
+            <option>Desserts</option>
             <option>Mocktails</option>
             <option>Starters</option>
+            <option>European main plate</option>
+            <option>Shakes</option>
+            <option>Starters</option>
+            <option>Vegetarian Snacks</option>
+            <option>Burger & Sandwiches</option>
+            <option>Iced and Frozen Drinks</option>
+            <option>Meat & Poltry</option>
+            <option>Veggie By Nature</option>
+            <option>Appetizers</option>
+            <option>Burgers</option>
+            <option>Coolers</option>
+            <option>Foot Longs</option>
+            <option>Pastas and Salads</option>
+            <option>Pizzas n'breads</option>
+            <option>Sandwiches</option>
+            <option>Wraps n'more</option>
           </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Category" class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-10">
+          <input type="text" [(ngModel)]="Category" name="Category" class="form-control" id="Category" placeholder="Enter Category">
         </div>
       </div>
       <div class="form-group row">
@@ -101,7 +123,7 @@
           <input type="text" name="videourl" [(ngModel)]="videourl" class="form-control" id="videourl" placeholder="videourl">
         </div>
       </div>
-      <button type="submit" (click)="SaveMenu(ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" class="btn btn-primary">Submit</button>
+      <button type="submit" (click)="SaveMenu(ResId,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" class="btn btn-primary">Submit</button>
     </form>
   </div>
   <br>

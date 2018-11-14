@@ -158,9 +158,22 @@ export class OrdersService {
       this.OrdersDoc7.update(item);
   }
 
-  SaveMenuItem3(restaurant_id: string ,ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
+  SaveMenuItem3(restaurant_id: string ,ResId,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
-    console.log(restaurant_id,ResId,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+    console.log(restaurant_id,ResId,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+    this.afs.collection(`menu/${restaurant_id}/${course_type}`).add({
+      Category:Category,
+      CourseMeal:CourseMeal,
+      Desc:Desc,
+      Discount:Discount,
+      gst:gst,
+      hasv:hasv,
+      name:name,
+      posturl:posturl,
+      price:price,
+      veg:veg,
+      videourl:videourl
+    });
 
   }
   SaveOffer(restaurant_id, title, date, day, start_time, end_time, discount) {
