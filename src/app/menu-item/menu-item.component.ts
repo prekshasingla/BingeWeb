@@ -11,6 +11,7 @@ export class MenuItemComponent implements OnInit {
   public MenuForm = false;
   public MenuForm2 =false;
   title; desc; category; price; course_type; Serving; veg;
+  ResId;Type;Category;CourseMeal;Desc;Discount;gst;hasv;name;posturl;videourl;
   @Input() Restaurant;
   @Input() Menu;
   @Input() ShowOrder;
@@ -46,16 +47,13 @@ export class MenuItemComponent implements OnInit {
     this.MenuForm2 = true;
 
   }
-  SaveMenu(title: string, desc: string, category: string , price: string , veg: string , course_type: string, Serving: string) {
-    console.log('hero');
-    console.log(title, desc , category , price , 0 , course_type , Serving);
+  SaveMenu(ResId: string,Type: string,Category: string,CourseMeal: string,Desc: string,Discount: string,gst: string,hasv: string,name: string,posturl: string,price: string,veg: string,videourl: string) {
+    console.log(ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
     if (veg === '1') {
-      this.orderService.SaveMenuItem(this.Restaurant.restaurant_id , title , desc , category , price , 0 , course_type , Serving);
+      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,0,videourl);
     } else {
-      this.orderService.SaveMenuItem(this.Restaurant.restaurant_id , title , desc , category , price , 1 , course_type , Serving);
+      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,ResId,Type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,1,videourl);
     }
-    console.log(this.title);
-    this.title = '';
   }
   SaveMenu2(title: string, desc: string, category: string , price: string , veg: string , course_type: string, Serving: string,item: Object) {
     console.log('hero');

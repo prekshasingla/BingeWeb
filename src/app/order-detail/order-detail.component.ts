@@ -25,6 +25,7 @@ export class OrderDetailComponent implements OnInit {
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
+    //document.getElementById("demo").innerHTML = d;
    console.log(this.ShowOrder);
   }
 
