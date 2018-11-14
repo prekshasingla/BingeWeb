@@ -67,7 +67,7 @@ export class IndexCompComponent implements OnInit {
      // console.log('baba',this.InsideOrders);
     });
 
-    this.ordersService.getMenuItem().subscribe(item => {
+    this.ordersService.getMenuItem(this.LoggedInUser.restaurant_id).subscribe(item => {
       this.MenuItems = item;
       console.log('baba2',this.MenuItems);
     });
@@ -78,7 +78,7 @@ export class IndexCompComponent implements OnInit {
   }
 
   getMenuItems() {
-    this.ordersService.getMenuItem().subscribe(item => {
+    this.ordersService.getMenuItem(this.LoggedInUser.restaurant_id).subscribe(item => {
       this.MenuItems = item;
       console.log(this.MenuItems);
     });

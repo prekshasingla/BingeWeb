@@ -120,8 +120,8 @@ export class OrdersService {
     });
   }
 
-  getMenuItem() {
-    this.MenuItems = this.afs.collection(`Menu/too_indian_delhi1/course 1`).snapshotChanges().map(changes => {
+  getMenuItem(restaurant_id: string) {
+    this.MenuItems = this.afs.collection(`menu/${restaurant_id}/Classic Cocktails/0/category`).snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data();
         data.id = a.payload.doc.id;
