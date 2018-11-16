@@ -159,21 +159,21 @@ export class OrdersService {
       this.OrdersDoc7.update(item);
   }
 
-  SaveMenuItem3(restaurant_id: string ,ResId,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
+  SaveMenuItem3(restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
-    console.log(restaurant_id,ResId,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+    console.log(restaurant_id,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
     this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
-      Category:Category,
-      CourseMeal:CourseMeal,
-      Desc:Desc,
-      Discount:Discount,
+      category:Category,
+      course_meal:CourseMeal,
+      desc:Desc,
+      discount:Discount,
       gst:gst,
-      hasv:hasv,
+      has_video:hasv,
       name:name,
-      posturl:posturl,
+      poster_url:posturl,
       price:price,
       veg:veg,
-      videourl:videourl
+      video_url:videourl
     });
 
   }
