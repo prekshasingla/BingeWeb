@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Order } from '../models/order';
 import { Observable} from 'rxjs/Rx';
 import { User } from '../models/User.model';
@@ -30,7 +31,7 @@ export class OrdersService {
   restaurant: User[];
   menu: Menu;
 
-  constructor(public afs: AngularFirestore) {
+  constructor(public afs: AngularFirestore,private db: AngularFireDatabase) {
     this.UsersCollection = this.afs.collection('login/');
 
     this.Users = this.afs.collection('login').valueChanges();
@@ -161,7 +162,7 @@ export class OrdersService {
   SaveMenuItem3(restaurant_id: string ,ResId,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
     console.log(restaurant_id,ResId,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
-    this.afs.collection(`menu/${restaurant_id}/${course_type}`).add({
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
       Category:Category,
       CourseMeal:CourseMeal,
       Desc:Desc,
