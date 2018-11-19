@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, EventEmitter, Output, AfterViewInit} from '@angular/core';
 import { Menu } from '../models/menu-item.model';
 import { OrdersService } from '../services/orders.service';
+import { FormGroup, FormBuilder , Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-menu-item',
@@ -9,6 +10,7 @@ import { OrdersService } from '../services/orders.service';
 })
 export class MenuItemComponent implements OnInit {
   public MenuForm = false;
+  myForm:FormGroup;
   public MenuForm2 =false;
   title; desc; category; price; course_type; Serving; veg;
   ResId;Type;Category;CourseMeal;Desc;Discount;gst;hasv;name;posturl;videourl;
@@ -20,12 +22,30 @@ export class MenuItemComponent implements OnInit {
   @Input() quantities;
   @Input() item;
   @Input() time_to_reach;
-  constructor(private orderService: OrdersService) { }
+  constructor(private orderService: OrdersService,public fb:FormBuilder) {
+    this.myForm=fb.group(
+      {
+        'course_type':['',Validators.required],
+        'Category':['',Validators.required],
+        'CourseMeal':['',Validators.required],
+        'Desc':['',Validators.required],
+        'Discount':['',Validators.required],
+        'gst':['',Validators.required],
+        'hasv':['',Validators.required],
+        'name':['',Validators.required],
+        'posturl':['',Validators.required],
+        'price':['',Validators.required],
+        'veg/non-veg':['',Validators.required],
+        'videourl':['',Validators.required]
+      }
+    )
+   }
 
   ngOnInit() {
     console.log("ans");
     console.log(this.item);
     console.log(this.Restaurant);
+    console.log(this.Menu);
   }
 
   ShowMenuForm() {
@@ -47,13 +67,34 @@ export class MenuItemComponent implements OnInit {
     this.MenuForm2 = true;
 
   }
-  SaveMenu(course_type: string,Category: string,CourseMeal: string,Desc: string,Discount: string,gst: string,hasv: string,name: string,posturl: string,price: string,veg: string,videourl: string) {
+  SaveMenu(course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
-    if (veg === '1') {
-      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,0,videourl);
-    } else {
-      this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,1,videourl);
-    }
+    var a=(document.getElementById('CourseMeal'))["value"];
+      CourseMeal=parseInt(a);
+      var b=(document.getElementById('Discount'))["value"];
+      Discount=parseInt(b);
+      var c=(document.getElementById('gst'))["value"];
+      gst=parseInt(c);
+      if (veg === '1') {
+        if(hasv=='0')
+        {
+        this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
+        }
+        else
+        {
+          this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
+  
+        }
+      } else {
+        if(hasv=='0')
+        {
+        this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
+        }
+        else{
+          this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
+  
+        }
+      }
   }
   SaveMenu2(title: string, desc: string, category: string , price: string , veg: string , course_type: string, Serving: string,item: Object) {
     console.log('hero');

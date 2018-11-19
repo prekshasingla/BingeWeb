@@ -18,6 +18,7 @@ export class OrdersService {
   PreOrders: Observable<any[]>;
   InsideOrders: Observable<any[]>;
   MenuItems: Observable<any[]>;
+  MenuItems2: Observable<any[]>;
   Offers: Observable<any[]>;
   Users: Observable<User[]>;
   OrdersDoc: AngularFirestoreDocument<any>;
@@ -130,6 +131,10 @@ export class OrdersService {
       });
     });
     return this.MenuItems;
+  }
+  getMenuADDItem(restaurant_id: string): Observable<any[]>
+  {
+    return this.db.list(`menu/${restaurant_id}`).valueChanges();
   }
 
   SaveMenuItem(restaurant_id: string , title: string, desc: string, category: string , price: string , veg: number , course_type: string, Serving: string) {

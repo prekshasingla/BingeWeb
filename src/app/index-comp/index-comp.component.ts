@@ -14,6 +14,7 @@ export class IndexCompComponent implements OnInit {
   PreOrders: Array<Object>;
   InsideOrders: Array<Object>;
   MenuItems: Array<Object>;
+  MenuItems2: Array<Object>;
   Offers: Array<Offer>;
   CurrentOffers: Array<Offer> = [];
   public selectedOrder;
@@ -54,22 +55,27 @@ export class IndexCompComponent implements OnInit {
     this.LoggedInUser = user;
     this.ordersService.getOrders(user.restaurant_id).subscribe(order => {
       this.Orders = order;
-      // console.log(this.Orders);
+       console.log(this.Orders);
     });
 
     this.ordersService.getPreOrders(user.restaurant_id).subscribe(PreOrder => {
       this.PreOrders = PreOrder;
-        //  console.log('this preorders',this.PreOrders);
+          console.log('this preorders',this.PreOrders);
     });
 
     this.ordersService.getInsideOrders(user.restaurant_id).subscribe(InsideOrder => {
       this.InsideOrders = InsideOrder;
-     // console.log('baba',this.InsideOrders);
+      console.log('baba',this.InsideOrders);
     });
 
     this.ordersService.getMenuItem(this.LoggedInUser.restaurant_id).subscribe(item => {
       this.MenuItems = item;
       console.log('baba2',this.MenuItems);
+    });
+
+    this.ordersService.getMenuADDItem(this.LoggedInUser.restaurant_id).subscribe(item2 => {
+      this.MenuItems2 = item2;
+      console.log('baba3',this.MenuItems2);
     });
 
     this.LoadedFeature = 'Orders';
