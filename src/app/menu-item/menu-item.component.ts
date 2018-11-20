@@ -16,6 +16,7 @@ export class MenuItemComponent implements OnInit {
   ResId;Type;Category;CourseMeal;Desc;Discount;gst;hasv;name;posturl;videourl;
   @Input() Restaurant;
   @Input() Menu;
+  @Input() Menu2;
   @Input() ShowOrder;
   @Input() InsideOrder;
   @Input() dishes;
@@ -45,7 +46,10 @@ export class MenuItemComponent implements OnInit {
     console.log("ans");
     console.log(this.item);
     console.log(this.Restaurant);
-    console.log(this.Menu);
+    console.log(this.Restaurant.password);
+    console.log(this.Menu2);
+    console.log(this.Menu2[0][0].category);
+    console.log(this.Menu2[4]);
   }
 
   ShowMenuForm() {

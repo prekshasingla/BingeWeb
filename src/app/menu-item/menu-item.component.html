@@ -10,32 +10,16 @@
   <!-----------Menu Item Form------------------->
 
   <div *ngIf="MenuForm" class="menu-form">
+      <div *ngIf="sussMsg" class="alert alert-success">Success</div>
+      <div *ngIf="errMsg" class="alert alert-danger">Error</div>
     <form [formGroup]="myForm" (ngSubmit)="SaveMenu(course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
       
       <div class="form-group row">
         <label for="course_type" class="col-sm-2 col-form-label">Food Category</label>
         <div class="col-sm-10">
           <select name="course_type" class="custom-select" formControlName="course_type" [(ngModel)]="course_type" id="course_type">
-            <option selected>Classic Cocktails</option>
-            <option>Desserts</option>
-            <option>Mocktails</option>
-            <option>Starters</option>
-            <option>European main plate</option>
-            <option>Shakes</option>
-            <option>Starters</option>
-            <option>Vegetarian Snacks</option>
-            <option>Burger & Sandwiches</option>
-            <option>Iced and Frozen Drinks</option>
-            <option>Meat & Poltry</option>
-            <option>Veggie By Nature</option>
-            <option>Appetizers</option>
-            <option>Burgers</option>
-            <option>Coolers</option>
-            <option>Foot Longs</option>
-            <option>Pastas and Salads</option>
-            <option>Pizzas n'breads</option>
-            <option>Sandwiches</option>
-            <option>Wraps n'more</option>
+              <option value="" disabled selected>select a category</option>
+              <option *ngFor="let item of Menu2" [value]="item.category">{{item.category}}</option>
           </select>
         </div>
       </div>
@@ -215,27 +199,26 @@
   <table class="table table-striped">
     <thead class="thead-dark">
     <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Price</th>
-      <th scope="col">Veg/Non-Veg</th>
-      <th scope="col">Category</th>
-      <th scope="col">Serving</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th width="2000" scope="col">Category       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       Name    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             Veg/Non-veg       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Price           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Edit          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Delete</th>
+     
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let item of Menu">
-      <td>{{item.title}}</td>
-      <td>{{item.price}}</td>
-      <td *ngIf="item.veg === 0 ">Non-veg</td>
-      <td *ngIf="item.veg === 1 " >Veg</td>
-      <td> {{ item.category }}</td>
-      <td>{{ item.serving }}</td>
-      <td><button class="btn btn-primary btn-sm" (click)="edit(item)">Edit</button></td>
-      <td><button class="btn btn-danger btn-sm" (click)="DeleteOrder(item)">Delete</button></td>
+    
+    <div *ngFor="let Menu of Menu2;let j=index"> 
+    <div *ngFor="let Mm of Menu;let k=index">
+        <tbody>
+      <tr>
+      <td width="200">{{ Menu2[j][k].category }}</td>
+      <td width="200">{{ Menu2[j][k].name }}</td>
+      <td width="200">{{ Menu2[j][k].veg }}</td>
+      <td width="200">{{ Menu2[j][k].price }}</td>
+      <td width="200"><button class="btn btn-primary btn-sm" (click)="edit(item)">Edit</button></td>
+      <td width="200"><button class="btn btn-danger btn-sm" (click)="DeleteOrder(item)">Delete</button></td>
     </tr>
-    </tbody>
+  </tbody>
+    </div>
+    </div>
+    
   </table>
 </div>
 
