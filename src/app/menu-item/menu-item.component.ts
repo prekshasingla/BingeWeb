@@ -71,6 +71,10 @@ export class MenuItemComponent implements OnInit {
     this.MenuForm2 = true;
 
   }
+  toggleState1(j,k)
+  {
+    this.Menu2[j][k].veg == 0;
+  }
   SaveMenu(course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
     var a=(document.getElementById('CourseMeal'))["value"];
@@ -83,21 +87,25 @@ export class MenuItemComponent implements OnInit {
         if(hasv=='0')
         {
         this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
+        this.MenuForm=false;
         }
         else
         {
           this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
-  
+          this.MenuForm=false;
         }
       } else {
         if(hasv=='0')
         {
         this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
+        this.MenuForm=false;
         }
         else{
           this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
+          this.MenuForm=false;
   
         }
+        this.MenuForm=false;
       }
   }
   SaveMenu2(title: string, desc: string, category: string , price: string , veg: string , course_type: string, Serving: string,item: Object) {
@@ -105,10 +113,11 @@ export class MenuItemComponent implements OnInit {
     console.log(title, desc , category , price , 0 , course_type , Serving);
     if (veg === '1') {
       this.orderService.SaveMenuItem2(this.Restaurant.restaurant_id , title , desc , category , price , 0 , course_type , Serving,item);
+      this.category = '';
     } else {
       this.orderService.SaveMenuItem2(this.Restaurant.restaurant_id , title , desc , category , price , 1 , course_type , Serving,item);
     }
     console.log(this.title);
-    this.title = '';
+    this.category = '';
   }
 }
