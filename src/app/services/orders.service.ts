@@ -182,6 +182,14 @@ export class OrdersService {
     });
 
   }
+  toggle(restaurant_id: string,i,j,k,Menu2,course_type)
+  {
+    console.log('baba');
+    console.log(restaurant_id,i,j,k);
+    Menu2[j][k].switch=i;
+    console.log(Menu2[j][k]);
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).set(Menu2[j][k]);
+  }
   SaveOffer(restaurant_id, title, date, day, start_time, end_time, discount) {
     console.log(restaurant_id, title, date, day, start_time, end_time, discount);
     this.afs.collection(`Offers/${restaurant_id}/offer`).add({

@@ -12,6 +12,7 @@ export class MenuItemComponent implements OnInit {
   public MenuForm = false;
   myForm:FormGroup;
   public MenuForm2 =false;
+  public 
   title; desc; category; price; course_type; Serving; veg;
   ResId;Type;Category;CourseMeal;Desc;Discount;gst;hasv;name;posturl;videourl;
   @Input() Restaurant;
@@ -48,20 +49,9 @@ export class MenuItemComponent implements OnInit {
     console.log(this.Restaurant);
     console.log(this.Restaurant.password);
     console.log(this.Menu2);
-    console.log(this.Menu2[0][0].category);
+    console.log(this.Menu2[1][0].category);
     console.log(this.Menu2[4]);
     
-    var isChecked = document.getElementById("myCheckBox");
-    console.log("ans");
-    console.log(isChecked);
-   if(isChecked==null){
-     console.log("Input is checked");
-     document.getElementById("myCheckBox").innerHTML= 'notnull';
-     var isChecked2 = document.getElementById("myCheckBox");
-     console.log(isChecked2);
-   } else {
-     console.log("Input is NOT checked");
-   }
   }
 
   ShowMenuForm() {
@@ -83,9 +73,52 @@ export class MenuItemComponent implements OnInit {
     this.MenuForm2 = true;
 
   }
-  toggleState1(j,k)
+  toggleState1(i,j :number,k :number,Menu2 :object)
   {
-    this.Menu2[j][k].veg == 0;
+    console.log(i);
+    console.log(j,k,Menu2[j]);
+    if(i==0)
+    {
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2,'Classic Cocktails');
+      }
+      if(j==1)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2,'Desserts');
+      }
+      if(j==2)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2,'Mocktails');
+      }
+      if(j==3)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2,'Starters');
+      }
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+    else
+    {
+      console.log('hi2');
+      if(j==0)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,0,j,k,Menu2,'Classic Cocktails');
+      }
+      if(j==1)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,0,j,k,Menu2,'Desserts');
+      }
+      if(j==2)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,0,j,k,Menu2,'Mocktails');
+      }
+      if(j==3)
+      {
+        this.orderService.toggle(this.Restaurant.restaurant_id,0,j,k,Menu2,'Starters');
+      }
+      //this.orderService.toggle(this.Restaurant.restaurant_id,0,j,k,Menu2);
+    }
   }
   SaveMenu(course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
