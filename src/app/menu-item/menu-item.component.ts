@@ -50,6 +50,18 @@ export class MenuItemComponent implements OnInit {
     console.log(this.Menu2);
     console.log(this.Menu2[0][0].category);
     console.log(this.Menu2[4]);
+    
+    var isChecked = document.getElementById("myCheckBox");
+    console.log("ans");
+    console.log(isChecked);
+   if(isChecked==null){
+     console.log("Input is checked");
+     document.getElementById("myCheckBox").innerHTML= 'notnull';
+     var isChecked2 = document.getElementById("myCheckBox");
+     console.log(isChecked2);
+   } else {
+     console.log("Input is NOT checked");
+   }
   }
 
   ShowMenuForm() {
