@@ -227,11 +227,17 @@
         <tbody>
       <tr id="kk">
       <td width="200" *ngIf="Menu2[j][k].switch == 1">{{ Menu2[j][k].category }}</td>
+      <td width="200" *ngIf="Menu2[j][k].switch == 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td width="200" *ngIf="Menu2[j][k].switch == 1">{{ Menu2[j][k].name }}</td>
+      <td width="200" *ngIf="Menu2[j][k].switch == 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td width="200" *ngIf="Menu2[j][k].switch == 1">{{ Menu2[j][k].veg }}</td>
+      <td width="200" *ngIf="Menu2[j][k].switch == 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td width="200" *ngIf="Menu2[j][k].switch == 1">{{ Menu2[j][k].price }}</td>
+      <td width="200" *ngIf="Menu2[j][k].switch == 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td width="200" *ngIf="Menu2[j][k].switch == 1"><button class="btn btn-primary btn-sm">Edit</button></td>
+      <td width="200" *ngIf="Menu2[j][k].switch == 0">&nbsp;&nbsp;</td>
       <td width="200" *ngIf="Menu2[j][k].switch == 1"><button class="btn btn-danger btn-sm">Delete</button></td>
+      <td width="200" *ngIf="Menu2[j][k].switch == 0"></td>
       <td width="200" *ngIf="Menu2[j][k].switch == 1"><button class="btn btn-danger btn-sm" (click)="toggleState1(1,j,k,Menu2)">O&nbsp;&nbsp;&nbsp;</button></td>
       <td width="200" *ngIf="Menu2[j][k].switch == 0"><button class="btn btn-primary btn-sm" (click)="toggleState1(0,j,k,Menu2)">&nbsp;&nbsp;&nbsp;O</button></td>
     </tr>
