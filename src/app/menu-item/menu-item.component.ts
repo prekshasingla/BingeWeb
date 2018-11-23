@@ -12,6 +12,7 @@ export class MenuItemComponent implements OnInit {
   public MenuForm = false;
   myForm:FormGroup;
   public MenuForm2 =false;
+  public Men =1;
   public 
   title; desc; category; price; course_type; Serving; veg;
   ResId;Type;Category;CourseMeal;Desc;Discount;gst;hasv;name;posturl;videourl;
@@ -24,6 +25,7 @@ export class MenuItemComponent implements OnInit {
   @Input() quantities;
   @Input() item;
   @Input() time_to_reach;
+
   constructor(private orderService: OrdersService,public fb:FormBuilder) {
     this.myForm=fb.group(
       {
@@ -75,6 +77,7 @@ export class MenuItemComponent implements OnInit {
   }
   toggleState1(i,j :number,k :number,Menu2 :object)
   {
+    this.Men = 0;
     console.log(i);
     console.log(j,k,Menu2[j]);
     if(i==0)
