@@ -136,6 +136,10 @@ export class OrdersService {
   {
     return this.db.list(`menu/${restaurant_id}/`).valueChanges();
   }
+  getMenuADDItem1(restaurant_id: string): Observable<any[]>
+  {
+    return this.db.list(`categories/`).valueChanges();
+  }
 
   SaveMenuItem(restaurant_id: string , title: string, desc: string, category: string , price: string , veg: number , course_type: string, Serving: string) {
     console.log(title, desc , category , price , veg , course_type , Serving);

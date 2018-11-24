@@ -19,6 +19,7 @@ export class MenuItemComponent implements OnInit {
   @Input() Restaurant;
   @Input() Menu;
   @Input() Menu2;
+  @Input() Mek;
   @Input() ShowOrder;
   @Input() InsideOrder;
   @Input() dishes;
@@ -47,12 +48,15 @@ export class MenuItemComponent implements OnInit {
 
   ngOnInit() {
     console.log("ans");
-    console.log(this.item);
+    //console.log(this.item);
+    console.log(this.Mek[0].category_name);
+    console.log(this.Mek[1].category_name);
     console.log(this.Restaurant);
     console.log(this.Restaurant.password);
     console.log(this.Menu2);
     console.log(this.Menu2[1][0].category);
-    console.log(this.Menu2[4]);
+   // console.log(this.Menu2[4].getKey);
+   // console.log(this.Menu2[2][0].id);
     
   }
 
