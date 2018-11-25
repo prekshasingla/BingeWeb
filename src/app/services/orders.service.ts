@@ -140,6 +140,10 @@ export class OrdersService {
   {
     return this.db.list(`categories/`).valueChanges();
   }
+  getMenuADDItem2(restaurant_id: string): Observable<any[]>
+  {
+    return this.db.list(`menu/${restaurant_id}/`).valueChanges();
+  }
 
   SaveMenuItem(restaurant_id: string , title: string, desc: string, category: string , price: string , veg: number , course_type: string, Serving: string) {
     console.log(title, desc , category , price , veg , course_type , Serving);
@@ -184,6 +188,25 @@ export class OrdersService {
       veg:veg,
       video_url:videourl
     });
+
+  }
+  SaveMenuItem4(j,k,Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
+  {
+    console.log(restaurant_id,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+    Menu2[j][k].category=Category;
+    Menu2[j][k].course_meal=CourseMeal;
+    Menu2[j][k].desc=Desc;
+    Menu2[j][k].discount=Discount;
+    Menu2[j][k].gst=gst;
+    Menu2[j][k].has_video=hasv;
+    Menu2[j][k].name=name;
+    Menu2[j][k].poster_url=posturl;
+    Menu2[j][k].price=price;
+    Menu2[j][k].veg=veg;
+    Menu2[j][k].video_url=videourl;
+    console.log('nananana');
+    console.log(Menu2[j][k]);
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).set(Menu2[j][k]);
 
   }
   toggle(restaurant_id: string,i,j,k,Menu2,course_type)

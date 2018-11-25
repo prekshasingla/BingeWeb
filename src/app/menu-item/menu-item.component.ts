@@ -55,6 +55,7 @@ export class MenuItemComponent implements OnInit {
     console.log(this.Restaurant.password);
     console.log(this.Menu2);
     console.log(this.Menu2[1][0].category);
+    console.log(this.Menu2[1][0].category.$Key);
    // console.log(this.Menu2[4].getKey);
    // console.log(this.Menu2[2][0].id);
     
@@ -160,16 +161,37 @@ export class MenuItemComponent implements OnInit {
         this.MenuForm=false;
       }
   }
-  SaveMenu2(title: string, desc: string, category: string , price: string , veg: string , course_type: string, Serving: string,item: Object) {
-    console.log('hero');
-    console.log(title, desc , category , price , 0 , course_type , Serving);
-    if (veg === '1') {
-      this.orderService.SaveMenuItem2(this.Restaurant.restaurant_id , title , desc , category , price , 0 , course_type , Serving,item);
-      this.category = '';
-    } else {
-      this.orderService.SaveMenuItem2(this.Restaurant.restaurant_id , title , desc , category , price , 1 , course_type , Serving,item);
-    }
-    console.log(this.title);
-    this.category = '';
+  SaveMenu2(j :number,k :number,Menu2 :object,course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
+    console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+    var a=(document.getElementById('CourseMeal'))["value"];
+      CourseMeal=parseInt(a);
+      var b=(document.getElementById('Discount'))["value"];
+      Discount=parseInt(b);
+      var c=(document.getElementById('gst'))["value"];
+      gst=parseInt(c);
+      if (veg === '1') {
+        if(hasv=='0')
+        {
+        this.orderService.SaveMenuItem4(j,k,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
+        this.MenuForm=false;
+        }
+        else
+        {
+          this.orderService.SaveMenuItem4(j,k,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
+          this.MenuForm=false;
+        }
+      } else {
+        if(hasv=='0')
+        {
+        this.orderService.SaveMenuItem4(j,k,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
+        this.MenuForm=false;
+        }
+        else{
+          this.orderService.SaveMenuItem4(j,k,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
+          this.MenuForm=false;
+  
+        }
+        this.MenuForm=false;
+      }
   }
 }

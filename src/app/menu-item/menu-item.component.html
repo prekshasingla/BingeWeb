@@ -151,84 +151,7 @@
 
   <!-----------Menu Item Form------------------->
 
-  <div *ngIf="MenuForm2" class="menu-form">
-    <form>
-      <div class="form-group row">
-        <label for="Title" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-          <input type="text" [(ngModel)]="title" name="title" class="form-control" id="Title" placeholder="Title">
-        </div>
-        
-      </div>
-      <div class="form-group row">
-        <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-10">
-          <textarea class="form-control" name="desc" [(ngModel)]="desc" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="CategoryType" class="col-sm-2 col-form-label">Category</label>
-        <div class="col-sm-10">
-          <select name="CategoryType" class="custom-select" name="CategoryType" [(ngModel)]="category" id="CategoryType">
-            <option selected>Category Type</option>
-            <option>French</option>
-            <option>Cocktail</option>
-            <option>Desert</option>
-            <option>Sushi</option>
-            <option>Thai/Asian</option>
-            <option>Coffee</option>
-            <option>Pizza</option>
-            <option>Burger</option>
-            <option>Salad</option>
-            <option>Breakfast</option>
-            <option>Italian</option>
-            <option>Modern India</option>
-            <option>Middle Eastern</option>
-            <option>Sea Food</option>
-            <option>Mexican</option>
-            <option>European</option>
-            <option>Brewery</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="Price" class="col-sm-2 col-form-label">Price</label>
-        <div class="col-sm-10">
-          <input type="number" name="price" [(ngModel)]="price" class="form-control" id="Price" placeholder="Price">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="veg-nonveg" class="col-sm-2 col-form-label">Veg/Non-Veg</label>
-        <div class="col-sm-10">
-          <select class="custom-select" name="veg/non-veg" [(ngModel)]="veg" id="veg-nonveg">
-            <option selected>Category</option>
-            <option value="1">Veg</option>
-            <option value="2">Non Veg</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="Course Type" class="col-sm-2 col-form-label">Course Type</label>
-        <div class="col-sm-10">
-          <select class="custom-select" name="courseType" [(ngModel)]="course_type" id="Course Type">
-            <option selected>Course Type</option>
-            <option>course 1</option>
-            <option>course 2</option>
-            <option>course 3</option>
-            <option>course 4</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="Serving" class="col-sm-2 col-form-label">Serving</label>
-        <div class="col-sm-10">
-          <input type="text" name="Serving" [(ngModel)]="Serving" class="form-control" id="Serving" placeholder="Serving">
-        </div>
-      </div>
-      <button type="submit" (click)="SaveMenu2(title,desc,category,price,veg,course_type,Serving,item)" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
+  
   <br>
 
   <!-------------Menu Table--------------------->
@@ -252,12 +175,150 @@
         <td width="200" >{{ Menu2[j][k].veg }}</td>
         
         <td width="200" >{{ Menu2[j][k].price }}</td>
-        
-        <td width="200" ><button class="btn btn-primary btn-sm">Edit</button></td>
-        
+        <div class="container">
+        <td width="200" ><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button></td>
+        <div id="id01" class="modal">
+              <div class="menu-form">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                <form class="modal-content animate" [formGroup]="myForm" (ngSubmit)="SaveMenu2(j,k,Menu2,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
+                  <div class="form-group row">
+                    <label for="course_type" class="col-sm-2 col-form-label">Restaurant Category</label>
+                    <div class="col-sm-10">
+                      <select name="course_type" class="custom-select" formControlName="course_type" [(ngModel)]="course_type" id="course_type">
+                          <option value="" disabled selected>select a category</option>
+                          <option>Desserts</option>
+                          <option>Mocktails</option>
+                        <option>Starters</option>
+                        <option>European main plate</option>
+                        <option>Shakes</option>
+                        <option>Starters</option>
+                        <option>Vegetarian Snacks</option>
+                        <option>Burger & Sandwiches</option>
+                        <option>Iced and Frozen Drinks</option>
+                        <option>Meat & Poltry</option>
+                        <option>Veggie By Nature</option>
+                        <option>Appetizers</option>
+                        <option>Burgers</option>
+                        <option>Coolers</option>
+                        <option>Foot Longs</option>
+                        <option>Pastas and Salads</option>
+                        <option>Pizzas n'breads</option>
+                        <option>Sandwiches</option>
+                        <option>Wraps n'more</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="Category" class="col-sm-2 col-form-label">Food Category</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" formControlName="Category" [(ngModel)]="Category" id="Category">
+                            <option value="" disabled selected>select a category</option>
+                            <option *ngFor="let Me of Mek" [value]="Me.category_name">{{ Me.category_name }}</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="CourseMeal" class="col-sm-2 col-form-label">Course Meal</label>
+                    <div class="col-sm-10">
+                      <select name="CourseMeal" class="custom-select" formControlName="CourseMeal" [(ngModel)]="CourseMeal" id="CourseMeal">
+                        <option value=1 selected>1</option>
+                        <option value=2>2</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="Desc" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                      <input type="text" [(ngModel)]="Desc" formControlName="Desc" class="form-control" id="Desc" placeholder="Enter Description">
+                      <div *ngIf="myForm.controls['Desc'].invalid && myForm.controls['Desc'].touched" class="alert alert-danger">
+                          Description is required
+                       </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="Discount" class="col-sm-2 col-form-label">Discount</label>
+                    <div class="col-sm-10">
+                      <select class="custom-select" [(ngModel)]="Discount" formControlName="Discount"  id="Discount" name="Discount">
+                        <option value=5 selected>5</option>
+                        <option value=10>10</option>
+                        <option value=15>15</option>
+                        <option value=20>20</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="gst" class="col-sm-2 col-form-label">GST</label>
+                    <div class="col-sm-10">
+                      <select name="gst" class="custom-select" formControlName="gst" [(ngModel)]="gst" id="gst">
+                        <option value=15 selected>5</option>
+                        <option value=18>18</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="hasv" class="col-sm-2 col-form-label">Has Video</label>
+                    <div class="col-sm-10">
+                      <select name="hasv" class="custom-select" formControlName="hasv" [(ngModel)]="hasv" id="hasv">
+                        <option value=1 selected>Yes</option>
+                        <option value=0>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Dish item name</label>
+                    <div class="col-sm-10">
+                      <input type="text" [(ngModel)]="name" formControlName="name" class="form-control" id="name" placeholder="Enter name">
+                      <div *ngIf="myForm.controls['name'].invalid && myForm.controls['name'].touched" class="alert alert-danger">
+                          Name is required
+                       </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="posturl" class="col-sm-2 col-form-label">Poster URL</label>
+                    <div class="col-sm-10">
+                      <input type="text" [(ngModel)]="posturl" formControlName="posturl" class="form-control" id="posturl" placeholder="Enter poster url">
+                      <div *ngIf="myForm.controls['posturl'].invalid && myForm.controls['posturl'].touched" class="alert alert-danger">
+                          Post url is required
+                       </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="Price" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                      <input type="text" formControlName="price" [(ngModel)]="price" class="form-control" id="Price" placeholder="Price">
+                      <div *ngIf="myForm.controls['price'].invalid && myForm.controls['price'].touched" class="alert alert-danger">
+                          price is required
+                       </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="veg-nonveg" class="col-sm-2 col-form-label">Veg/Non-Veg</label>
+                    <div class="col-sm-10">
+                      <select class="custom-select" formControlName="veg/non-veg" [(ngModel)]="veg" id="veg-nonveg">
+                        <option selected>Category</option>
+                        <option value="1">Veg</option>
+                        <option value="2">Non Veg</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="videourl" class="col-sm-2 col-form-label">Video URL</label>
+                    <div class="col-sm-10">
+                      <input type="text" formControlName="videourl" [(ngModel)]="videourl" class="form-control" id="videourl" placeholder="videourl">
+                      <div *ngIf="myForm.controls['videourl'].invalid && myForm.controls['videourl'].touched" class="alert alert-danger">
+                          Video url is required
+                       </div>
+                    </div>
+                  </div>
+                  <input type="submit" value="ADD" class="btn btn-success" [disabled]="myForm.invalid"/>
+                </form>
+              </div>
+              </div>
+              </div>
         <td width="200" ><button class="btn btn-danger btn-sm">Delete</button></td>
-        <td width="200" *ngIf="Menu2[j][k].switch == 1 || Men==1"><button class="btn" (click)="toggleState1(1,j,k,Menu2)">O&nbsp;&nbsp;&nbsp;</button></td>
-        <td width="200" *ngIf="Menu2[j][k].switch == 0"><button class="btn btn-primary btn-sm" (click)="toggleState1(0,j,k,Menu2)">&nbsp;&nbsp;&nbsp;O</button></td>
+        <td width="200" *ngIf="Menu2[j][k].switch == 1 || Men==1"><button class="btn btn-primary btn-sm" (click)="toggleState1(1,j,k,Menu2)">O&nbsp;&nbsp;&nbsp;</button></td>
+        <td width="200" *ngIf="Menu2[j][k].switch == 0"><button class="btn" (click)="toggleState1(0,j,k,Menu2)">&nbsp;&nbsp;&nbsp;O</button></td>
       </tr>
     </tbody>
       </div>
