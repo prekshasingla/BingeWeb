@@ -175,6 +175,7 @@
         <td width="200" >{{ Menu2[j][k].veg }}</td>
         
         <td width="200" >{{ Menu2[j][k].price }}</td>
+
         <div class="container">
         <td width="200" ><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button></td>
         <div id="id01" class="modal">
@@ -183,10 +184,10 @@
 
                 <form class="modal-content animate" [formGroup]="myForm" (ngSubmit)="SaveMenu2(j,k,Menu2,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
                   <div class="form-group row">
-                    <label for="course_type" class="col-sm-2 col-form-label">Restaurant Category</label>
+                    <label for="course_type" class="col-sm-2 col-form-label">Restaurant Category </label>
                     <div class="col-sm-10">
-                      <select name="course_type" class="custom-select" formControlName="course_type" [(ngModel)]="course_type" id="course_type">
-                          <option value="" disabled selected>select a category</option>
+                      <select name="course_type" class="custom-select" formControlName="course_type" [(ngModel)]="course_type" id="course_type" >
+                          <option value="" selected>select a category</option>
                           <option>Desserts</option>
                           <option>Mocktails</option>
                         <option>Starters</option>
@@ -213,7 +214,7 @@
                     <label for="Category" class="col-sm-2 col-form-label">Food Category</label>
                     <div class="col-sm-10">
                         <select class="custom-select" formControlName="Category" [(ngModel)]="Category" id="Category">
-                            <option value="" disabled selected>select a category</option>
+                            <option value="{{ Menu2[j][k].category }}" disabled selected>{{ Menu2[j][k].category }}</option>
                             <option *ngFor="let Me of Mek" [value]="Me.category_name">{{ Me.category_name }}</option>
                         </select>
                       </div>
@@ -230,7 +231,7 @@
                   <div class="form-group row">
                     <label for="Desc" class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-10">
-                      <input type="text" [(ngModel)]="Desc" formControlName="Desc" class="form-control" id="Desc" placeholder="Enter Description">
+                      <input type="text" [(ngModel)]="Desc" formControlName="Desc" class="form-control" id="Desc" placeholder="{{ Menu2[j][k].desc }}{{j}}{{k}}">
                       <div *ngIf="myForm.controls['Desc'].invalid && myForm.controls['Desc'].touched" class="alert alert-danger">
                           Description is required
                        </div>
@@ -268,7 +269,7 @@
                   <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">Dish item name</label>
                     <div class="col-sm-10">
-                      <input type="text" [(ngModel)]="name" formControlName="name" class="form-control" id="name" placeholder="Enter name">
+                      <input type="text" [(ngModel)]="name" formControlName="name" class="form-control" id="name" placeholder= {{Mm.name}}  value="{{ Menu2[j][k].name }}">
                       <div *ngIf="myForm.controls['name'].invalid && myForm.controls['name'].touched" class="alert alert-danger">
                           Name is required
                        </div>
@@ -277,7 +278,7 @@
                   <div class="form-group row">
                     <label for="posturl" class="col-sm-2 col-form-label">Poster URL</label>
                     <div class="col-sm-10">
-                      <input type="text" [(ngModel)]="posturl" formControlName="posturl" class="form-control" id="posturl" placeholder="Enter poster url">
+                      <input type="text" [(ngModel)]="posturl" formControlName="posturl" class="form-control" id="posturl" placeholder="{{ Menu2[j][k].poster_url }}">
                       <div *ngIf="myForm.controls['posturl'].invalid && myForm.controls['posturl'].touched" class="alert alert-danger">
                           Post url is required
                        </div>
@@ -286,7 +287,7 @@
                   <div class="form-group row">
                     <label for="Price" class="col-sm-2 col-form-label">Price</label>
                     <div class="col-sm-10">
-                      <input type="text" formControlName="price" [(ngModel)]="price" class="form-control" id="Price" placeholder="Price">
+                      <input type="text" formControlName="price" [(ngModel)]="price" class="form-control" id="Price" placeholder="{{ Menu2[j][k].price }}">
                       <div *ngIf="myForm.controls['price'].invalid && myForm.controls['price'].touched" class="alert alert-danger">
                           price is required
                        </div>
@@ -305,7 +306,7 @@
                   <div class="form-group row">
                     <label for="videourl" class="col-sm-2 col-form-label">Video URL</label>
                     <div class="col-sm-10">
-                      <input type="text" formControlName="videourl" [(ngModel)]="videourl" class="form-control" id="videourl" placeholder="videourl">
+                      <input type="text" formControlName="videourl" [(ngModel)]="videourl" class="form-control" id="videourl" placeholder="{{ Menu2[j][k].video_url }}">
                       <div *ngIf="myForm.controls['videourl'].invalid && myForm.controls['videourl'].touched" class="alert alert-danger">
                           Video url is required
                        </div>
