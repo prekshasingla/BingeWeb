@@ -213,7 +213,7 @@ export class OrdersService {
   {
     console.log('baba');
     console.log(restaurant_id,i,j,k);
-    Menu2[j][k].switch=i;
+    Menu2[j][k].dish_switch=i;
     console.log(Menu2[j][k]);
     this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).set(Menu2[j][k]);
   }
