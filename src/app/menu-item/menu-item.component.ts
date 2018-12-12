@@ -2,7 +2,7 @@ import {Component, Input, OnInit, EventEmitter, Output, AfterViewInit} from '@an
 import { Menu } from '../models/menu-item.model';
 import { OrdersService } from '../services/orders.service';
 import { FormGroup, FormBuilder , Validators } from '@angular/forms';
-
+import Swa1 from 'sweetalert2';
 @Component({
   selector: 'app-menu-item',
   templateUrl: './menu-item.component.html',
@@ -55,6 +55,8 @@ export class MenuItemComponent implements OnInit {
     console.log(this.Restaurant.password);
     console.log(this.Menu2);
     console.log(this.Menu2[1][0].category);
+    console.log(this.Menu2[1][0]._id);
+    console.log(this.Menu2[1][0].id);
     console.log(this.Menu2[8]);
     console.log(this.Menu2[8].restaurant_id);
     console.log(this.Menu2.restaurant_id);
@@ -82,6 +84,205 @@ export class MenuItemComponent implements OnInit {
   {
     this.MenuForm2 = true;
 
+  }
+  del1(j :number,k :number,Menu2 :object)
+  {
+    Swa1({
+      title:'are usure u want to remove this?',
+      text:"u won't be able to revert this!",
+      type:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor:'#d33',
+      confirmButtonText:'yes,remove it!'
+    }).then((result)=>
+    {
+      if(result.value)
+      {
+        if(Menu2[8]=='38_barracks')
+        {
+          if(j==0)
+      {
+        console.log('hahahahahallll');
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Classic Cocktails');
+      }
+      if(j==1)
+      {
+        console.log('hahahahahallggg');
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Desserts');
+      }
+      if(j==2)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Mocktails');
+      }
+      if(j==3)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Starters');
+      }
+    }
+    if(Menu2[8]=='ministry_of_beer')
+    {
+    
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Cocktails');
+      }
+      if(j==1)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Desserts');
+      }
+      if(j==2)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Mains');
+      }
+      if(j==3)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Starters');
+      }
+      if(j==4)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Wraps, Burgers and Sandwiches');
+      }
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+    if(Menu2[7]=='am_pm')
+    {
+    
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Cocktails');
+      }
+      if(j==1)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Desserts');
+      }
+      if(j==2)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'European Main Plate');
+      }
+      if(j==3)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Shakes');
+      }
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+    if(Menu2[9]=='rabbit_hole')
+    {
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Appetizers');
+      }
+      if(j==1)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Desserts');
+      }
+      if(j==2)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Main Course');
+      }
+      if(j==3)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Salad');
+      }
+      if(j==4)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Small Plates');
+      }
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+    if(Menu2[3]=='axis_gurgaon')
+    {
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Vegetarian snacks');
+      }
+     
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+    if(Menu2[7]=='cafe_delhi_heights')
+    {
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Burger & Sandwiches');
+      }
+      if(j==1)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Iced and Frozen Drinks');
+      }
+      if(j==2)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Meat & Poltry');
+      }
+      if(j==3)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Veggie By Nature');
+      }
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+    if(Menu2[10]=='cafe_hangout_faridabad')
+    {
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Appetizers');
+      }
+      if(j==1)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Burgers');
+      }
+      if(j==2)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Coolers');
+      }
+      if(j==3)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Foot Longs');
+      }
+      if(j==4)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Pastas and Salads');
+      }
+      if(j==5)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Pizzas n\'breads');
+      }
+      if(j==6)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Sandwiches');
+      }
+      if(j==7)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Wraps n\'more');
+      }
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+    if(Menu2[6]=='informal_janpath')
+    {
+      console.log('hi');
+      if(j==0)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Homemade Ravioli & Risotto');
+      }
+      if(j==1)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Oriental');
+      }
+      if(j==2)
+      {
+        this.orderService.del1(this.Restaurant.restaurant_id,j,k,Menu2,'Waffle Burger');
+      }
+     
+    //this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2);
+    }
+  }
+})
+
+        
   }
   toggleState1(i,j :number,k :number,Menu2 :object)
   {

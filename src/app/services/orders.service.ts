@@ -209,6 +209,11 @@ export class OrdersService {
     this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).set(Menu2[j][k]);
 
   }
+  del1(restaurant_id: string,j,k,Menu2,course_type)
+  {
+    console.log(Menu2[j][k]);
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).remove();
+  }
   toggle(restaurant_id: string,i,j,k,Menu2,course_type)
   {
     console.log('baba');

@@ -75,6 +75,7 @@ export class IndexCompComponent implements OnInit {
     });
 
     this.ordersService.getMenuADDItem(this.LoggedInUser.restaurant_id).subscribe(item2 => {
+      console.log('baba444',item2);
       this.MenuItems2 = item2;
       console.log('baba3',this.MenuItems2);
     });
