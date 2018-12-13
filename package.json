@@ -36,6 +36,7 @@
     "@types/googlemaps": "3.30.8",
     "agm-direction": "^0.7.3",
     "angularfire2": "5.0.0-rc.6",
+    "async": "^2.6.1",
     "bootstrap": "4.0.0",
     "core-js": "2.5.4",
     "express": "4.16.3",

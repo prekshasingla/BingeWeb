@@ -11,6 +11,7 @@ import Swa1 from 'sweetalert2';
 export class MenuItemComponent implements OnInit {
   public MenuForm = false;
   myForm:FormGroup;
+  myForm3:FormGroup;
   public MenuForm2 =false;
   //public Men =1;
   public 
@@ -44,6 +45,22 @@ export class MenuItemComponent implements OnInit {
         'videourl':['',Validators.required]
       }
     )
+    this.myForm3=fb.group(
+      {
+        'course_type':['',Validators.required],
+        'Category':['',Validators.required],
+        'CourseMeal':['',Validators.required],
+        'Desc':['',Validators.required],
+        'Discount':['',Validators.required],
+        'gst':['',Validators.required],
+        'hasv':['',Validators.required],
+        'name':['',Validators.required],
+        'posturl':['',Validators.required],
+        'price':['',Validators.required],
+        'veg/non-veg':['',Validators.required],
+        'videourl':['',Validators.required]
+      }
+    )
    }
 
   ngOnInit() {
@@ -55,11 +72,14 @@ export class MenuItemComponent implements OnInit {
     console.log(this.Restaurant.password);
     console.log(this.Menu2);
     console.log(this.Menu2[1][0].category);
-    console.log(this.Menu2[1][0]._id);
-    console.log(this.Menu2[1][0].id);
-    console.log(this.Menu2[8]);
-    console.log(this.Menu2[8].restaurant_id);
-    console.log(this.Menu2.restaurant_id);
+   // console.log(this.Menu2[1][0]._id);
+    //console.log(this.Menu2[1][0].id);
+    console.log(this.Menu2[0].length);
+    console.log('ds')
+    console.log(this.Menu2[0].length());
+    //console.log(this.Menu2[8]);
+    //console.log(this.Menu2[8].restaurant_id);
+    //console.log(this.Menu2.restaurant_id);
    // console.log(this.Menu2[1][0].category.$Key);
    // console.log(this.Menu2[4].getKey);
    // console.log(this.Menu2[2][0].id);
@@ -284,12 +304,27 @@ export class MenuItemComponent implements OnInit {
 
         
   }
+  baba(j,k,Menu2 :object)
+  {
+    this.myForm3.controls.course_type.setValue(this.Menu2[j][k].course_type);
+    this.myForm3.controls.Category.setValue(this.Menu2[j][k].Category);
+    this.myForm3.controls.CourseMeal.setValue(this.Menu2[j][k].CourseMeal);
+    this.myForm3.controls.Desc.setValue(this.Menu2[j][k].Desc);
+    this.myForm3.controls.Discount.setValue(this.Menu2[j][k].Discount);
+    this.myForm3.controls.gst.setValue(this.Menu2[j][k].gst);
+    this.myForm3.controls.hasv.setValue(this.Menu2[j][k].hasv);
+    this.myForm3.controls.name.setValue(this.Menu2[j][k].name);
+    this.myForm3.controls.posturl.setValue(this.Menu2[j][k].posturl);
+    this.myForm3.controls.price.setValue(this.Menu2[j][k].price);
+    this.myForm3.controls.videourl.setValue(this.Menu2[j][k].videourl);
+
+  }
   toggleState1(i,j :number,k :number,Menu2 :object)
   {
    // this.Men = 0;
-    console.log(i);
-    console.log(j,k,Menu2[j]);
-    console.log('babababababab');
+   // console.log(i);
+    console.log(Menu2[9]);
+  //  console.log('babababababab');
     if(Menu2[8]=='38_barracks')
     {
     if(i==0)
@@ -433,13 +468,17 @@ export class MenuItemComponent implements OnInit {
       //this.orderService.toggle(this.Restaurant.restaurant_id,0,j,k,Menu2);
     }
   }
-  if(Menu2[9]=='rabbit_hole')
+  if(Menu2[8]=='rabbit_hole')
     {
+      console.log("sdjkbvsdjkb");
+      console.log(i);
     if(i==0)
     {
       console.log('hi');
       if(j==0)
       {
+        console.log("sdjkbvsdjkb");
+      console.log(i);
         this.orderService.toggle(this.Restaurant.restaurant_id,1,j,k,Menu2,'Appetizers');
       }
       if(j==1)
@@ -670,8 +709,29 @@ export class MenuItemComponent implements OnInit {
     }
   }
   }
-  SaveMenu(course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
+  SaveMenu(Menu2 :object,course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
+    var i,j;
+    if(course_type=='Classic Cocktails')
+    {
+       j = 0;
+       i=this.Menu2[0].length;
+    }
+    if(course_type=='Desserts')
+    {
+     j = 1;
+       i=this.Menu2[1].length;
+    }
+    if(course_type=='Mocktails')
+    {
+       j = 2;
+       i=this.Menu2[2].length;
+    }
+    if(course_type=='Starters')
+    {
+       j = 3;
+       i=this.Menu2[3].length;
+    }
     var a=(document.getElementById('CourseMeal'))["value"];
       CourseMeal=parseInt(a);
       var b=(document.getElementById('Discount'))["value"];
@@ -681,22 +741,22 @@ export class MenuItemComponent implements OnInit {
       if (veg === '1') {
         if(hasv=='0')
         {
-        this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
+        this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
         this.MenuForm=false;
         }
         else
         {
-          this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
+          this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
           this.MenuForm=false;
         }
       } else {
         if(hasv=='0')
         {
-        this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
+        this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
         this.MenuForm=false;
         }
         else{
-          this.orderService.SaveMenuItem3(this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
+          this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
           this.MenuForm=false;
   
         }

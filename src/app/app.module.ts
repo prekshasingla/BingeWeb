@@ -41,6 +41,7 @@ import { LocationSearchComponent } from './location-search/location-search.compo
 import { IndexCompComponent } from './index-comp/index-comp.component';
 import { AgmDirectionModule } from 'agm-direction';
 import { PrivayPolicyComponent } from './privay-policy/privay-policy.component';
+import { ObjectfilterPipe } from './objectfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { PrivayPolicyComponent } from './privay-policy/privay-policy.component';
     PageTwoRightDataComponent,
     IndexCompComponent,
     LoginNewComponent,
-    PrivayPolicyComponent
+    PrivayPolicyComponent,
+    ObjectfilterPipe
   ],
   imports: [
     RouterModule.forRoot([

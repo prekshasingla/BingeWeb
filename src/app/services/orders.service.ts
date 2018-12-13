@@ -28,6 +28,7 @@ export class OrdersService {
   OrdersDoc5: AngularFirestoreDocument<any>;
   OrdersDoc6: AngularFirestoreDocument<any>;
   OrdersDoc7: AngularFirestoreDocument<any>;
+  
   UsersDoc: AngularFirestoreDocument<any>;
   restaurant: User[];
   menu: Menu;
@@ -85,7 +86,7 @@ export class OrdersService {
    this.OrdersDoc2 = this.afs.doc(`orders/${restaurant_id}/InsideOrder/${order.id}`);
    this.OrdersDoc3 = this.afs.doc(`orders/${restaurant_id}/order/${order.id}`);
    this.OrdersDoc3.set(order);
-    this.OrdersDoc.delete();
+   this.OrdersDoc.delete();
    this.OrdersDoc2.delete();
   }
   DeleteOrder2(item)
@@ -172,11 +173,12 @@ export class OrdersService {
       this.OrdersDoc7.update(item);
   }
 
-  SaveMenuItem3(restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
+  SaveMenuItem3(j,i,Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
     console.log(restaurant_id,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
-    this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
-      category:Category,
+    console.log('bhai');
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}/${i}`).set({
+      category:course_type,
       course_meal:CourseMeal,
       desc:Desc,
       discount:Discount,
@@ -188,7 +190,9 @@ export class OrdersService {
       veg:veg,
       video_url:videourl
     });
-
+   // this.db.database.ref(`menu/${restaurant_id}/${course_type}/${i}`).set(Menu2[j][i]
+      
+  //  );
   }
   SaveMenuItem4(j,k,Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
@@ -212,7 +216,19 @@ export class OrdersService {
   del1(restaurant_id: string,j,k,Menu2,course_type)
   {
     console.log(Menu2[j][k]);
-    this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).remove();
+    Menu2[j][k].category='';
+    Menu2[j][k].course_meal='';
+    Menu2[j][k].desc='';
+    Menu2[j][k].discount='';
+    Menu2[j][k].gst='';
+    Menu2[j][k].has_video='';
+    Menu2[j][k].name='';
+    Menu2[j][k].poster_url='';
+    Menu2[j][k].price='';
+    Menu2[j][k].veg='';
+    Menu2[j][k].video_url='';
+    console.log(Menu2[j][k]);
+  //  this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).set(Menu2[j][k]);
   }
   toggle(restaurant_id: string,i,j,k,Menu2,course_type)
   {

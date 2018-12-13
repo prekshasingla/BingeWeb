@@ -12,13 +12,14 @@
   <div *ngIf="MenuForm" class="menu-form">
       <div *ngIf="sussMsg" class="alert alert-success">Success</div>
       <div *ngIf="errMsg" class="alert alert-danger">Error</div>
-    <form [formGroup]="myForm" (ngSubmit)="SaveMenu(course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
+    <form [formGroup]="myForm" (ngSubmit)="SaveMenu(Menu2,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
       
       <div class="form-group row">
         <label for="course_type" class="col-sm-2 col-form-label">Restaurant Category</label>
         <div class="col-sm-10">
           <select name="course_type" class="custom-select" formControlName="course_type" [(ngModel)]="course_type" id="course_type">
               <option value="" disabled selected>select a category</option>
+              <option>Classic Cocktails</option>
               <option>Desserts</option>
               <option>Mocktails</option>
             <option>Starters</option>
@@ -159,7 +160,7 @@
   <table class="table table-striped">
       <thead class="thead-dark">
       <tr>
-        <th width="2000" scope="col">Category       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       Name    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             Veg/Non-veg       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Price           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Edit       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Delete   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light</th>
+        <th width="2000" scope="col">Category       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       Name    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             Veg/Non-veg       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Price           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Edit       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Delete   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light</th>
        
       </tr>
       </thead>
@@ -168,22 +169,18 @@
       <div *ngFor="let Mm of Menu;let k=index">
           <tbody>
         <tr id="kk">
-
-        <td width="200">{{ Mm.category }}</td>
-        
-        <td width="200" >{{ Mm.name }}</td>
-        
-        <td width="200" >{{ Mm.veg }}</td>
-        
-        <td width="200" >{{ Mm.price }}</td>
+        <td width="200" *ngIf="Menu2[j][k].category!=''">{{ Mm.category }}</td>
+        <td width="200" *ngIf="Menu2[j][k].category!=''">{{ Mm.name }}</td>
+        <td width="200" *ngIf="Menu2[j][k].category!=''">{{ Mm.veg }}</td>
+        <td width="200" *ngIf="Menu2[j][k].category!=''">{{ Mm.price }}</td>
 
         <div class="container">
-        <td width="200" ><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button></td>
+        <td width="200" ><button (click)="baba(j,k,Menu2)" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" *ngIf="Menu2[j][k].category!=''">Edit</button></td>
         <div id="id01" class="modal">
               <div class="menu-form">
                   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
-                <form class="modal-content animate" [formGroup]="myForm" (ngSubmit)="SaveMenu2(j,k,Menu2,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
+                <form class="modal-content animate" [formGroup]="myForm3" (ngSubmit)="SaveMenu2(j,k,Menu2,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
                   <div class="form-group row">
                     <label for="course_type" class="col-sm-2 col-form-label">Restaurant Category </label>
                     <div class="col-sm-10">
@@ -232,7 +229,7 @@
                   <div class="form-group row">
                     <label for="Desc" class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-10">
-                      <input type="text" [(ngModel)]="Desc" formControlName="Desc" class="form-control" id="Desc" placeholder="{{ Menu2[j][k].desc }}{{j}}{{k}}">
+                      <input type="text" [(ngModel)]="Desc" formControlName="Desc" class="form-control" id="Desc" >
                       <div *ngIf="myForm.controls['Desc'].invalid && myForm.controls['Desc'].touched" class="alert alert-danger">
                           Description is required
                        </div>
@@ -318,9 +315,9 @@
               </div>
               </div>
               </div>
-        <td width="200" ><button class="btn btn-danger btn-sm" (click)="del1(j,k,Menu2)">Delete</button></td>
-        <td width="200" *ngIf="Menu2[j][k].dish_switch != 0"><button class="btn btn-primary btn-sm" (click)="toggleState1(1,j,k,Menu2)">O&nbsp;&nbsp;&nbsp;</button></td>
-        <td width="200" *ngIf="Menu2[j][k].dish_switch == 0"><button class="btn" (click)="toggleState1(0,j,k,Menu2)">&nbsp;&nbsp;&nbsp;O</button></td>
+        <td width="200" ><button class="btn btn-danger btn-sm" (click)="del1(j,k,Menu2)" *ngIf="Menu2[j][k].category!=''">Delete</button></td>
+        <td width="200" *ngIf="Menu2[j][k].dish_switch != 0 && Menu2[j][k].category!=''"><button class="btn btn-primary btn-sm" (click)="toggleState1(1,j,k,Menu2)">O&nbsp;&nbsp;&nbsp;</button></td>
+        <td width="200" *ngIf="Menu2[j][k].dish_switch == 0 && Menu2[j][k].category!=''"><button class="btn" (click)="toggleState1(0,j,k,Menu2)">&nbsp;&nbsp;&nbsp;O</button></td>
       </tr>
     </tbody>
       </div>
