@@ -711,27 +711,7 @@ export class MenuItemComponent implements OnInit {
   }
   SaveMenu(Menu2 :object,course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
-    var i,j;
-    if(course_type=='Classic Cocktails')
-    {
-       j = 0;
-       i=this.Menu2[0].length;
-    }
-    if(course_type=='Desserts')
-    {
-     j = 1;
-       i=this.Menu2[1].length;
-    }
-    if(course_type=='Mocktails')
-    {
-       j = 2;
-       i=this.Menu2[2].length;
-    }
-    if(course_type=='Starters')
-    {
-       j = 3;
-       i=this.Menu2[3].length;
-    }
+    
     var a=(document.getElementById('CourseMeal'))["value"];
       CourseMeal=parseInt(a);
       var b=(document.getElementById('Discount'))["value"];
@@ -741,22 +721,22 @@ export class MenuItemComponent implements OnInit {
       if (veg === '1') {
         if(hasv=='0')
         {
-        this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
+        this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
         this.MenuForm=false;
         }
         else
         {
-          this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
+          this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
           this.MenuForm=false;
         }
       } else {
         if(hasv=='0')
         {
-        this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
+        this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
         this.MenuForm=false;
         }
         else{
-          this.orderService.SaveMenuItem3(j,i,Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
+          this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
           this.MenuForm=false;
   
         }

@@ -173,11 +173,12 @@ export class OrdersService {
       this.OrdersDoc7.update(item);
   }
 
-  SaveMenuItem3(j,i,Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
+  
+  SaveMenuItem3(Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
+    console.log('get');
     console.log(restaurant_id,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
-    console.log('bhai');
-    this.db.database.ref(`menu/${restaurant_id}/${course_type}/${i}`).set({
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
       category:course_type,
       course_meal:CourseMeal,
       desc:Desc,
@@ -190,9 +191,7 @@ export class OrdersService {
       veg:veg,
       video_url:videourl
     });
-   // this.db.database.ref(`menu/${restaurant_id}/${course_type}/${i}`).set(Menu2[j][i]
-      
-  //  );
+
   }
   SaveMenuItem4(j,k,Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
@@ -216,19 +215,7 @@ export class OrdersService {
   del1(restaurant_id: string,j,k,Menu2,course_type)
   {
     console.log(Menu2[j][k]);
-    Menu2[j][k].category='';
-    Menu2[j][k].course_meal='';
-    Menu2[j][k].desc='';
-    Menu2[j][k].discount='';
-    Menu2[j][k].gst='';
-    Menu2[j][k].has_video='';
-    Menu2[j][k].name='';
-    Menu2[j][k].poster_url='';
-    Menu2[j][k].price='';
-    Menu2[j][k].veg='';
-    Menu2[j][k].video_url='';
-    console.log(Menu2[j][k]);
-  //  this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).set(Menu2[j][k]);
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}/${k}`).remove();
   }
   toggle(restaurant_id: string,i,j,k,Menu2,course_type)
   {
