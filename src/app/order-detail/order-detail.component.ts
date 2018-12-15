@@ -40,13 +40,6 @@ export class OrderDetailComponent implements OnInit {
   }
 
   DeleteOrder(ShowOrder: Object,user: Object,InsideOrder: Object,dishes: Object,quantities: Object) {
-    console.log(ShowOrder);
-    console.log(user);
-    console.log(InsideOrder);
-    console.log(this.user.restaurant_id);
-    console.log(dishes);
-    console.log(quantities);
-    console.log('hi');
     this.ordersService.DeleteOrder(this.user.restaurant_id, ShowOrder);
     this.ShowOrder = null;
     
@@ -108,11 +101,15 @@ time1(ShowOrder:Object)
       destination: end,
       travelMode: 'DRIVING'
     }
+    
     directionsService.route(req , function(response, status) {
       if (status === 'OK') {
         directionsDisplay.setDirections(response);
       } else {
-        window.alert('Directions request failed due to ' + status);
+        status = 'OK';
+        setTimeout("status = 'OK'", 100000);
+        directionsDisplay.setDirections(response);
+       // window.alert('Directions request failed due to ' + status);
       }
     });
   }
