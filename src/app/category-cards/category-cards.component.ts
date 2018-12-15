@@ -19,6 +19,7 @@ export class CategoryCardsComponent implements OnInit {
 
   constructor(db: AngularFireDatabase) {
     this.navEle = db.list('categories').valueChanges();
+    console.log(this.navEle);
   }
 
   setActive(menuItem){
@@ -28,6 +29,9 @@ export class CategoryCardsComponent implements OnInit {
   }
 
   navEleClick(res){
+    console.log('hi');
+    console.log(this.navEle);
+    console.log(res);
     res=res.toLowerCase();
     var ele = "[id='"+res+"']"; //selecting using this so that id's with spaces can be used
     const selectedDiv=$(ele);

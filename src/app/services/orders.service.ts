@@ -178,8 +178,8 @@ export class OrdersService {
   {
     console.log('get');
     console.log(restaurant_id,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
-    this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
-      category:course_type,
+    this.db.database.ref(`menu/${restaurant_id}/${course_type}/0`).push({
+      category:Category,
       course_meal:CourseMeal,
       desc:Desc,
       discount:Discount,
