@@ -17,7 +17,7 @@ export class SixthSectionComponent implements OnInit {
   }
 
   submit() {
-    this.sussMsg='success';
+    this.sussMsg='Your request submitted successfully';
     console.log(this.name, this.email, this.message);
     this.Service.SubmitContact(this.name, this.email, this.message);
     this.name='';
