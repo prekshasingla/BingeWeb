@@ -264,11 +264,15 @@ export class OrdersService {
   }
 
   SubmitContact(name: string, email: string, message: string){
-    console.log(name,email,message);
+    
+    var date= new Date();
+    var timestamp=date.getTime();
+    console.log(name,email,message,timestamp);
     this.afs.collection('ContactUs/').add({
       Email: email,
       Name: name,
-      Message: message
+      Message: message,
+      Time : timestamp
     });
   }
 }
