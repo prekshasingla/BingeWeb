@@ -33,11 +33,12 @@ export class IndexCompComponent implements OnInit {
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
-    console.log(this.PreOrders);
-    console.log(this.MenuItems);
-    console.log(this.InsideOrders);
-    console.log(this.Offers);
-    console.log(this.CurrentOffers);
+    //console.log(this.PreOrders);
+    //console.log(this.MenuItems);
+    //console.log(this.InsideOrders);
+    //console.log(this.Offers);
+    //console.log(this.CurrentOffers);
+    this.function33(this.PreOrders);
   }
 
   SendOrderDetail(Order) {
@@ -156,7 +157,16 @@ export class IndexCompComponent implements OnInit {
        return this.keys.length;
      }
   }
-
+ function33 (order: Object) { 
+ /*   if ("order.status!= 'delivered'") {
+      
+      document.getElementById("kk").style.backgroundColor = '#99C262';
+    }
+    else if ("order.status!= 'mealPreparing'")
+    {
+      document.getElementById("kk").style.backgroundColor = '#F8D347';
+    }*/
+  }
    printFunction()  {
     // let printData=document.getElementById('printData').innerHTML;
     // let oldData=document.getElementById('holdprintData').innerHTML;

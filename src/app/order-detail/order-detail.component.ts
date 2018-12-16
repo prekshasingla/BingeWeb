@@ -9,13 +9,19 @@ declare var google: any;
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent implements OnInit {
+  
   @Input() ShowOrder;
   @Input() InsideOrder;
   @Input() dishes;
   @Input() quantities;
   @Input() user;
   @Input() time_to_reach;
-
+  d: String;
+  m: Number;
+  y: Number;
+  hr: Number;
+  m1: Number;
+  s: String;
   @Output() naviGate = new EventEmitter<string>();
   map: google.maps.Map;
   private viewMap = false;
@@ -27,6 +33,7 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit() {
     //document.getElementById("demo").innerHTML = d;
    console.log(this.ShowOrder);
+   this.time1(this.ShowOrder);
   }
 
   printFunction(event:any)  {
@@ -66,13 +73,9 @@ getDirection(){
 time1(ShowOrder:Object)
 {
   var dt = new Date(this.ShowOrder.timestamp*1000);
-  var d= dt.getDate();
-  var m =dt.getMonth()+1;
-  var y=dt.getFullYear();
-  var hr = dt.getHours();
-  var m1 = "0" + dt.getMinutes();
-  var s = "0" + dt.getSeconds();
-  return 'date : '+d+'/'+m1+'/'+y +'     time'+ hr+ ':' + m1.substr(-1) + ':' + s.substr(-2); 
+  this.d = dt.toDateString();
+  this.s = dt.toLocaleTimeString(); 
+  
 }
 // GOOGLE MAPS
 

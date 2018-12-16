@@ -51,7 +51,8 @@
       </div>
       <div  class="modal-body">
           <p id="demo"></p>
-          <p>Timestamp:{{ ShowOrder.timestamp }}</p>
+          <p>Date:{{d}}</p>
+          <p>Time:{{s}}</p>
           <p *ngIf="ShowOrder.location_lat != 0">Table number:{{ ShowOrder.table}}</p>
         <p *ngIf="ShowOrder.location_lat != 0">Choose Table Number: <input type="number" id="myText"  placeholder="Enter table no.">
 

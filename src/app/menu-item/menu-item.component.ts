@@ -75,18 +75,25 @@ export class MenuItemComponent implements OnInit {
     console.log(this.Menu2[1][0].category);
     console.log(this.nn);
     console.log(this.nn.restaurant_id);
-    console.log(this.nn.Starter);
-    console.log(this.nn[7].id);
+    console.log(this.nn.Starters);
+   // console.log(this.nn.type);
+   // console.log(this.nn[7].value);
+   //console.log(this.nn.payload);
+ //   console.log(this.nn.payload.val());
+    //console.log(this.nn[7].id);
     console.log('hh');
     //console.log(this.nn.$key);
     console.log('sdfsadf');
-    console.log(this.nn._id);
+   // console.log(this.nn[1].key);
+  //  console.log(this.nn[1].$key);
+    console.log(this.nn.Desserts[1]);
+    console.log(this.nn.Starters[4].category);
    // console.log(this.Menu2[1][0]._id);
     //console.log(this.Menu2[1][0].id);
-    console.log(this.Menu2[0].length);
+   // console.log(this.Menu2[0].length);
     console.log('ds')
-    console.log(this.Menu2[0].length());
-
+   // console.log(this.Menu2[0].length());
+    //Menu2[0].length; classic cocktail ke length
     //console.log(this.Menu2[8]);
     //console.log(this.Menu2[8].restaurant_id);
     //console.log(this.Menu2.restaurant_id);
@@ -95,7 +102,7 @@ export class MenuItemComponent implements OnInit {
    // console.log(this.Menu2[2][0].id);
     
   }
-
+  
   ShowMenuForm() {
     console.log(this.MenuForm);
     if (this.MenuForm) {

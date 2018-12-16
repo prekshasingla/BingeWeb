@@ -1,7 +1,7 @@
 <ul class="p-5 pb-0 mt-5" style="border-top: 5px solid white; width:100%">
   <li *ngFor = "let ele of navEle | async" class="m-1 mb-3 p-3 cat-card" (click)="navEleClick(ele.category_name)" [routerLink] = "['/page-one',ele.category_name]">
     <div>
-         <span>{{ ele.category_id }}</span>
+         <span>{{ ele.category_name }}</span>
          <img src="{{ele.logo_url}}" alt="image" width="40%"style="max-width: 100px;min-height:80px">
     </div>  
   </li>                                
