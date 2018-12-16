@@ -51,6 +51,8 @@ export class OrderDetailComponent implements OnInit {
     let x3=(document.getElementById("myText"))["value"];
     console.log(x3);
      this.ordersService.table(x3,this.user.restaurant_id, ShowOrder);
+     (document.getElementById("myText"))["value"]=1;
+     this.ShowOrder=null;
   }
   UpdateOrder(order: Object , status: string) {
      console.log(status);

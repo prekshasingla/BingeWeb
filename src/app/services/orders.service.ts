@@ -28,7 +28,7 @@ export class OrdersService {
   OrdersDoc5: AngularFirestoreDocument<any>;
   OrdersDoc6: AngularFirestoreDocument<any>;
   OrdersDoc7: AngularFirestoreDocument<any>;
-  
+  class: Observable<any>;
   UsersDoc: AngularFirestoreDocument<any>;
   restaurant: User[];
   menu: Menu;
@@ -135,7 +135,13 @@ export class OrdersService {
   }
   getMenuADDItem(restaurant_id: string): Observable<any[]>
   {
+
     return this.db.list(`menu/${restaurant_id}/`).valueChanges();
+  }
+  getMenuADDItem3(restaurant_id: string): Observable<any>
+  {
+    
+    return this.db.object(`menu/${restaurant_id}/`).valueChanges();
   }
   getMenuADDItem1(restaurant_id: string): Observable<any[]>
   {
@@ -177,6 +183,14 @@ export class OrdersService {
   SaveMenuItem3(Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)
   {
     console.log('get');
+    if(videourl===undefined)
+    {
+      videourl='';
+    }
+    if(posturl===undefined)
+    {
+      posturl='';
+    }
     console.log(restaurant_id,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
     this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
       category:Category,
@@ -191,6 +205,7 @@ export class OrdersService {
       veg:veg,
       video_url:videourl
     });
+    console.log('data inserted');
 
   }
   SaveMenuItem4(j,k,Menu2,restaurant_id: string ,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)

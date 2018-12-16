@@ -15,6 +15,7 @@ export class IndexCompComponent implements OnInit {
   InsideOrders: Array<Object>;
   MenuItems: Array<Object>;
   MenuItems2: Array<Object>;
+  MenuItems4: Array<Object>;
   MenuItems3: Array<Object>;
   Offers: Array<Offer>;
   CurrentOffers: Array<Offer> = [];
@@ -79,7 +80,10 @@ export class IndexCompComponent implements OnInit {
       this.MenuItems2 = item2;
       console.log('baba3',this.MenuItems2);
     });
-
+    this.ordersService.getMenuADDItem3(this.LoggedInUser.restaurant_id).subscribe(item4 => {
+      this.MenuItems4 = item4;
+      console.log('kkkkkkkk',this.MenuItems4);
+    });
     this.ordersService.getMenuADDItem1(this.LoggedInUser.restaurant_id).subscribe(item3 => {
       this.MenuItems3 = item3;
       console.log('kk',this.MenuItems3);

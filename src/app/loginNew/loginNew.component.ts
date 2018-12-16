@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { OrdersService} from '../services/orders.service';
 import { User } from '../models/User.model';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-loginNew',
   templateUrl: './loginNew.component.html',
@@ -14,7 +14,7 @@ export class LoginNewComponent implements OnInit {
   @Output() LoginSuccess = new EventEmitter<User>();
   public LoginUser: User;
 
-  constructor(private ordersService: OrdersService) { }
+  constructor(private ordersService: OrdersService,private router:Router) { }
 
   ngOnInit() {
     this.ordersService.getUsers().subscribe(user => {
