@@ -42,7 +42,6 @@ import { IndexCompComponent } from './index-comp/index-comp.component';
 import { AgmDirectionModule } from 'agm-direction';
 import { PrivayPolicyComponent } from './privay-policy/privay-policy.component';
 import { ObjectfilterPipe } from './objectfilter.pipe';
-import { RoutingModule } from './routing/routing.module';
 @NgModule({
   declarations: [
     AppComponent,
