@@ -13,6 +13,7 @@ export class MenuItemComponent implements OnInit {
   myForm:FormGroup;
   myForm3:FormGroup;
   public MenuForm2 =false;
+  sussMsg: string;
   //public Men =1;
   public 
   title; desc; category; price; course_type; Serving; veg;
@@ -105,8 +106,22 @@ export class MenuItemComponent implements OnInit {
   
   ShowMenuForm() {
     console.log(this.MenuForm);
+    this.sussMsg='';
     if (this.MenuForm) {
       this.MenuForm = false;
+      (document.getElementById('CourseMeal'))["value"]='';
+      (document.getElementById('course_type'))["value"]='';
+      (document.getElementById('Category'))["value"]='';
+      (document.getElementById('Desc'))["value"]='';
+      (document.getElementById('hasv'))["value"]='';
+      (document.getElementById('name'))["value"]='';
+      (document.getElementById('posturl'))["value"]='';
+      (document.getElementById('Price'))["value"]='';
+      (document.getElementById('gst'))["value"]='';
+      (document.getElementById('veg-nonveg'))["value"]='';
+      (document.getElementById('videourl'))["value"]='';
+      (document.getElementById('Discount'))["value"]='';
+      
     } else {
       this.MenuForm = true;
     }
@@ -151,26 +166,61 @@ export class MenuItemComponent implements OnInit {
         if(hasv=='0')
         {
         this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
-        this.MenuForm=false;
+        this.sussMsg='Added successfully';
+        setTimeout(()=>
+      {
+        this.sussMsg='';
+      },10000)
+       // this.MenuForm=false;
         }
         else
         {
           this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
-          this.MenuForm=false;
+          this.sussMsg='Added successfully';
+        setTimeout(()=>
+      {
+        this.sussMsg='';
+      },10000)
+      
+          // this.MenuForm=false;
         }
       } else {
         if(hasv=='0')
         {
         this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
-        this.MenuForm=false;
+        this.sussMsg='Added successfully';
+        setTimeout(()=>
+      {
+        this.sussMsg='';
+      },10000)
+      
+        //this.MenuForm=false;
         }
         else{
           this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
-          this.MenuForm=false;
+          this.sussMsg='Added successfully';
+        setTimeout(()=>
+      {
+        this.sussMsg='';
+      },10000)
+      
+          //this.MenuForm=false;
   
         }
-        this.MenuForm=false;
+        //this.MenuForm=false;
       }
+      (document.getElementById('CourseMeal'))["value"]='';
+      (document.getElementById('course_type'))["value"]='';
+      (document.getElementById('Category'))["value"]='';
+      (document.getElementById('Desc'))["value"]='';
+      (document.getElementById('hasv'))["value"]='';
+      (document.getElementById('name'))["value"]='';
+      (document.getElementById('posturl'))["value"]='';
+      (document.getElementById('Price'))["value"]='';
+      (document.getElementById('gst'))["value"]='';
+      (document.getElementById('veg-nonveg'))["value"]='';
+      (document.getElementById('videourl'))["value"]='';
+      (document.getElementById('Discount'))["value"]='';
   }
   SaveMenu2(j :number,k :number,Menu2 :object,course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);

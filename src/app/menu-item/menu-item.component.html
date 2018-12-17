@@ -8,46 +8,25 @@
   <br>
 
   <!-----------Menu Item Form------------------->
-
+  <div *ngIf="sussMsg" class="alert alert-success">{{sussMsg}}</div>
   <div *ngIf="MenuForm" class="menu-form">
-      <div *ngIf="sussMsg" class="alert alert-success">Success</div>
-      <div *ngIf="errMsg" class="alert alert-danger">Error</div>
     <form [formGroup]="myForm" (ngSubmit)="SaveMenu(Menu2,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl)" >
       
       <div class="form-group row">
         <label for="course_type" class="col-sm-2 col-form-label">Restaurant Category</label>
         <div class="col-sm-10">
-          <select name="course_type" class="custom-select" formControlName="course_type" [(ngModel)]="course_type" id="course_type">
-              <option value="" disabled selected>select a category</option>
-              <option>Classic Cocktails</option>
-              <option>Desserts</option>
-              <option>Mocktails</option>
-            <option>Starters</option>
-            <option>European main plate</option>
-            <option>Shakes</option>
-            <option>Starters</option>
-            <option>Vegetarian Snacks</option>
-            <option>Burger & Sandwiches</option>
-            <option>Iced and Frozen Drinks</option>
-            <option>Meat & Poltry</option>
-            <option>Veggie By Nature</option>
-            <option>Appetizers</option>
-            <option>Burgers</option>
-            <option>Coolers</option>
-            <option>Foot Longs</option>
-            <option>Pastas and Salads</option>
-            <option>Pizzas n'breads</option>
-            <option>Sandwiches</option>
-            <option>Wraps n'more</option>
-          </select>
-        </div>
+          <input type="text" [(ngModel)]="course_type" formControlName="course_type" class="form-control" id="course_type" placeholder="Enter Restaurant Category">
+          <div *ngIf="myForm.controls['course_type'].invalid && myForm.controls['course_type'].touched" class="alert alert-danger">
+              Restaurant Category is required
+           </div>
+        </div>  
       </div>
       <div class="form-group row">
         <label for="Category" class="col-sm-2 col-form-label">Food Category</label>
         <div class="col-sm-10">
             <select class="custom-select" formControlName="Category" [(ngModel)]="Category" id="Category">
                 <option value="" disabled selected>select a category</option>
-                <option *ngFor="let Me of Mek" [value]="Me.category_name">{{ Me.category_name }}</option>
+                <option *ngFor="let Me of Mek" [value]="Me.category_id">{{ Me.category_name }}</option>
             </select>
           </div>
       </div>
@@ -93,8 +72,8 @@
         <label for="hasv" class="col-sm-2 col-form-label">Has Video</label>
         <div class="col-sm-10">
           <select name="hasv" class="custom-select" formControlName="hasv" [(ngModel)]="hasv" id="hasv">
-            <option value=1 selected>Yes</option>
-            <option value=0>No</option>
+            <option value=0 ></option>Yes</option>
+            <option value=1>No</option>
           </select>
         </div>
       </div>
@@ -110,9 +89,9 @@
       <div class="form-group row">
         <label for="posturl" class="col-sm-2 col-form-label">Poster URL</label>
         <div class="col-sm-10">
-          <input type="text" [(ngModel)]="posturl" formControlName="posturl" class="form-control" id="posturl" placeholder="Enter poster url">
-          <div *ngIf="hasv==='1'" class="alert alert-danger">
-              Post url is required
+          <input type="text" [(ngModel)]="posturl" formControlName="posturl" class="form-control" id="posturl" placeholder="Enter poster url" ng-disabled="hasv == 1" />
+          <div *ngIf="hasv==='0'" class="alert alert-danger">
+              Poster url is required
            </div>
         </div>
       </div>
@@ -138,8 +117,8 @@
       <div class="form-group row">
         <label for="videourl" class="col-sm-2 col-form-label">Video URL</label>
         <div class="col-sm-10">
-          <input type="text" formControlName="videourl" [(ngModel)]="videourl" class="form-control" id="videourl" placeholder="videourl">
-          <div *ngIf="hasv==='1' " class="alert alert-danger">
+          <input type="text" formControlName="videourl" [(ngModel)]="videourl" class="form-control" id="videourl" placeholder="videourl" ng-disabled="hasv == 1" />
+          <div *ngIf="hasv==='0'" class="alert alert-danger">
               Video url is required
            </div>
         </div>
