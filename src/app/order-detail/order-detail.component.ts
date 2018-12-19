@@ -77,7 +77,7 @@ time1(ShowOrder:Object)
   this.s = dt.toLocaleTimeString(); 
   
 }
-// GOOGLE MAPS
+// GOOGLE MAPS//
 
   initMap() {
     const seeMore = document.getElementById("seeMoreBtn");
