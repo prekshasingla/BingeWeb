@@ -192,7 +192,7 @@ export class OrdersService {
       posturl='';
     }
     console.log(restaurant_id,course_type,Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
-    this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
+   /* this.db.database.ref(`menu/${restaurant_id}/${course_type}`).push({
       category:Category,
       course_meal:CourseMeal,
       desc:Desc,
@@ -204,7 +204,7 @@ export class OrdersService {
       price:price,
       veg:veg,
       video_url:videourl
-    });
+    });*/
     console.log('data inserted');
 
   }

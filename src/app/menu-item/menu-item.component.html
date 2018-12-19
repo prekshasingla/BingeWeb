@@ -16,7 +16,7 @@
         <label for="course_type" class="col-sm-2 col-form-label">Restaurant Category</label>
         <div class="col-sm-10">
           <input type="text" [(ngModel)]="course_type" formControlName="course_type" class="form-control" id="course_type" placeholder="Enter Restaurant Category">
-          <div *ngIf="myForm.controls['course_type'].invalid && myForm.controls['course_type'].touched" class="alert alert-danger">
+          <div *ngIf="myForm.controls['course_type'].invalid && myForm.controls['course_type'].touched && myForm.controls['course_type'].dirty" class="alert alert-danger">
               Restaurant Category is required
            </div>
         </div>  
@@ -71,9 +71,9 @@
       <div class="form-group row">
         <label for="hasv" class="col-sm-2 col-form-label">Has Video</label>
         <div class="col-sm-10">
-          <select name="hasv" class="custom-select" formControlName="hasv" [(ngModel)]="hasv" id="hasv">
-            <option value=0 >Yes</option>
-            <option value=1>No</option>
+          <select name="hasv" class="custom-select" formControlName="hasv" [(ngModel)]="hasv" id="hasv" ng-model="hasv">
+            <option value="0" >Yes</option>
+            <option value="1">No</option>
           </select>
         </div>
       </div>

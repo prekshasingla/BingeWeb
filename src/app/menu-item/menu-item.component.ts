@@ -2,6 +2,8 @@ import {Component, Input, OnInit, EventEmitter, Output, AfterViewInit} from '@an
 import { Menu } from '../models/menu-item.model';
 import { OrdersService } from '../services/orders.service';
 import { FormGroup, FormBuilder , Validators } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import Swa1 from 'sweetalert2';
 @Component({
   selector: 'app-menu-item',
@@ -167,6 +169,7 @@ export class MenuItemComponent implements OnInit {
         {
         this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,0,videourl);
         this.sussMsg='Added successfully';
+        
         setTimeout(()=>
       {
         this.sussMsg='';
@@ -177,6 +180,7 @@ export class MenuItemComponent implements OnInit {
         {
           this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,0,videourl);
           this.sussMsg='Added successfully';
+          
         setTimeout(()=>
       {
         this.sussMsg='';
@@ -189,6 +193,7 @@ export class MenuItemComponent implements OnInit {
         {
         this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,0,name,posturl,price,1,videourl);
         this.sussMsg='Added successfully';
+        
         setTimeout(()=>
       {
         this.sussMsg='';
@@ -199,6 +204,7 @@ export class MenuItemComponent implements OnInit {
         else{
           this.orderService.SaveMenuItem3(Menu2,this.Restaurant.restaurant_id ,course_type,Category,CourseMeal,Desc,Discount,gst,1,name,posturl,price,1,videourl);
           this.sussMsg='Added successfully';
+          
         setTimeout(()=>
       {
         this.sussMsg='';
@@ -209,7 +215,8 @@ export class MenuItemComponent implements OnInit {
         }
         //this.MenuForm=false;
       }
-      (document.getElementById('CourseMeal'))["value"]='';
+      this.myForm.reset();
+     /* (document.getElementById('CourseMeal'))["value"]='';
       (document.getElementById('course_type'))["value"]='';
       (document.getElementById('Category'))["value"]='';
       (document.getElementById('Desc'))["value"]='';
@@ -220,7 +227,7 @@ export class MenuItemComponent implements OnInit {
       (document.getElementById('gst'))["value"]='';
       (document.getElementById('veg-nonveg'))["value"]='';
       (document.getElementById('videourl'))["value"]='';
-      (document.getElementById('Discount'))["value"]='';
+      (document.getElementById('Discount'))["value"]='';*/
   }
   SaveMenu2(j :number,k :number,Menu2 :object,course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
