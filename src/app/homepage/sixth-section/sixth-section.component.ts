@@ -23,7 +23,10 @@ export class SixthSectionComponent implements OnInit {
     this.name='';
     this.email='';
     this.message='';
-  
+    setTimeout(()=>
+      {
+        this.sussMsg='';
+      },10000)
   }
 
 }

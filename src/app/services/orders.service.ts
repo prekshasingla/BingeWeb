@@ -282,12 +282,16 @@ export class OrdersService {
     
     var date= new Date();
     var timestamp = date.toLocaleTimeString();
-    console.log(name,email,message,timestamp);
+    var date1 = date.toLocaleDateString();
+	var timestamp1=date.getTime();
+    console.log(name,email,message,timestamp,date1,timestamp1);
     this.afs.collection('ContactUs/').add({
       Email: email,
       Name: name,
       Message: message,
-      Time : timestamp
+      Time : timestamp,
+      Date : date1,
+      Timestamp : timestamp1
     });
   }
 }
