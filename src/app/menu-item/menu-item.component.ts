@@ -102,7 +102,16 @@ export class MenuItemComponent implements OnInit {
    // console.log(this.Menu2[2][0].id);
     
   }
-  
+  checkQuestions() {
+    var hasv=(document.getElementById('hasv'))["value"];
+    console.log(hasv);
+    if (hasv==1) { // your question said "more than one element"
+      return true;
+     }
+     else {
+      return false;
+     }
+   }
   ShowMenuForm() {
     console.log(this.MenuForm);
     this.sussMsg='';
@@ -175,8 +184,8 @@ export class MenuItemComponent implements OnInit {
         //this.MenuForm=false;
       }
       this.myForm.reset();
-     /* (document.getElementById('CourseMeal'))["value"]='';
-      (document.getElementById('course_type'))["value"]='';
+      (document.getElementById('course_type'))["value"]=course_type;
+     /* (document.getElementById('course_type'))["value"]='';
       (document.getElementById('Category'))["value"]='';
       (document.getElementById('Desc'))["value"]='';
       (document.getElementById('hasv'))["value"]='';
