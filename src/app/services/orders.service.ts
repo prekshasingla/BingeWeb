@@ -281,7 +281,7 @@ export class OrdersService {
   SubmitContact(name: string, email: string, message: string){
     
     var date= new Date();
-    var timestamp=date.getTime();
+    var timestamp = date.toLocaleTimeString();
     console.log(name,email,message,timestamp);
     this.afs.collection('ContactUs/').add({
       Email: email,

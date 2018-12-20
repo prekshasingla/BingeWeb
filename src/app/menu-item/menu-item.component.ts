@@ -123,7 +123,8 @@ export class MenuItemComponent implements OnInit {
     }
   }
   
-  SaveMenu(Menu2 :object,course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) {
+  SaveMenu(Menu2 :object,course_type: string,Category: string,CourseMeal: number,Desc: string,Discount: number,gst: number,hasv: string,name: string,posturl: string,price: number,veg: string,videourl: string) 
+  {
     console.log(Category,CourseMeal,Desc,Discount,gst,hasv,name,posturl,price,veg,videourl);
     
     var a=(document.getElementById('CourseMeal'))["value"];
@@ -184,7 +185,8 @@ export class MenuItemComponent implements OnInit {
         //this.MenuForm=false;
       }
       this.myForm.reset();
-      (document.getElementById('course_type'))["value"]=course_type;
+      this.myForm.controls.course_type.setValue(course_type);
+     // (document.getElementById('course_type'))["value"]=course_type;
      /* (document.getElementById('course_type'))["value"]='';
       (document.getElementById('Category'))["value"]='';
       (document.getElementById('Desc'))["value"]='';
